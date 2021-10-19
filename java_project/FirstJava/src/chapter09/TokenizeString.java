@@ -1,4 +1,4 @@
-package chpater09;
+package chapter09;
 
 import java.util.StringTokenizer;
 
