@@ -1,4 +1,4 @@
-package practice;
+package exam;
 
 public class PersonMain {
 //	3. main()메소드를 정의해봅시다. 
@@ -7,5 +7,6 @@ public class PersonMain {
 	public static void main(String[] args) {
 		Person p1 = new PersonMale("홍길동", "941205-111111");
 		p1.sayHello();
+		
 	}
 }

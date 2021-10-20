@@ -1,4 +1,4 @@
-package practice;
+package exam;
 
 import java.util.Calendar;
 
