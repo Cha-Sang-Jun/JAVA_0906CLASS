@@ -20,7 +20,7 @@ public class ExceptionTest {
 
 			} catch (BadInputException e) {
 				System.out.println("> ");
-//				System.out.println(e.getMessage());
+				System.out.println(e.getMessage());
 //				e.printStackTrace();
 			}
 
