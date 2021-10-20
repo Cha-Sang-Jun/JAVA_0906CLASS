@@ -1,27 +1,16 @@
 package chapter06;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
-
-public class ScoreManager2 {
-	// 배열을 가지고 있꼬
-	// 배열의 요소를 추가, 검색, 삭제 기능
-	// 배열 - > ArrayList로 변경
+public class ScoreManager {
 	
-	public static final Scanner sc = new Scanner(System.in);
-	
-//	private Student[] score;
-	private List<Student> score;
+	private Student[] score;
 	private int numOfStudent; // 입력시 index로 사용!, 입력한 데이터의 개수
 	
-	public ScoreManager2(int size) {
-//		score = new Student[size];
-		score = new ArrayList()<Student>(size);
+	public ScoreManager(int size) {
+		score = new Student[size];
 		numOfStudent = 0;
 	}
 
-	public ScoreManager2() {
+	public ScoreManager() {
 		this(10);
 	}
 	
