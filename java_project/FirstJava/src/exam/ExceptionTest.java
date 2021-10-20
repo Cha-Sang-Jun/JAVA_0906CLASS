@@ -11,16 +11,21 @@ public class ExceptionTest {
 		System.out.println("아이디를 입력해주세요.");
 		System.out.println("> ");
 
-		try {
-			String id = getId();
-			System.out.println("아이디는" + id + "입니다.");
+		while (true) {
 
-		} catch (BadInputException e) {
-			System.out.println(e.getMessage());
-			e.printStackTrace();
+			try {
+				String id = getId();
+				System.out.println("입력하신 아이디는" + id + "입니다.");
+				break;
+
+			} catch (BadInputException e) {
+				System.out.println("> ");
+//				System.out.println(e.getMessage());
+//				e.printStackTrace();
+			}
+
+			
 		}
-
-		System.out.println("프로그램 종료");
 	}
 
 	public static String getId() throws BadInputException {

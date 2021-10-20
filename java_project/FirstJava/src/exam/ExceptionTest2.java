@@ -10,21 +10,25 @@ public class ExceptionTest2 {
 		System.out.println("태어난 년도를 입력해주세요.");
 		System.out.println("> ");
 
-		try {
-			Scanner sc = new Scanner(System.in);
-			int birthYear = sc.nextInt();
-			System.out.println("태어난 년도는" + birthYear + "입니다.");
-		
-		} catch(InputMismatchException e) {
-			System.out.println("예외발생 - 예외처리");
-			System.out.println(e.getMessage());
-			e.printStackTrace();
-			
-		} catch (Exception e) {
-			System.out.println("예외발생 - 예외처리");
-			System.out.println(e.getMessage());
-			e.printStackTrace();
-		}
+		while (true) {
 
+			try {
+				Scanner sc = new Scanner(System.in);
+				int birthYear = sc.nextInt();
+				System.out.println("태어난 년도는" + birthYear + "입니다.");
+				break;
+				
+			} catch (InputMismatchException e) {
+				System.out.println("태어난 년도를 다시 입력해주세요");
+//				System.out.println(e.getMessage());
+//				e.printStackTrace();
+
+			} catch (Exception e) {
+				System.out.println("태어난 년도를 다시 입력해주세요.");
+//				System.out.println(e.getMessage());
+//				e.printStackTrace();
+			}
+
+		}
 	}
 }
