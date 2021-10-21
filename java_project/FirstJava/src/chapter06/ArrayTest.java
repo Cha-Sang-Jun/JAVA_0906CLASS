@@ -71,7 +71,7 @@ public class ArrayTest {
 			System.out.println(arr[i]);
 		}
 		
-		for(int num : arr) { // 요소의 갯수만큼 돈다? // 각 요소를 변경할때 쓰지 않고 참조하여 값을 읽어올때만 사용
+		for(int num : arr) { // arr을 num의 수만큼 돌림  // 각 요소를 변경할때 쓰지 않고 참조하여 값을 읽어올때만 사용
 			System.out.println(num);
 		}
 	}
