@@ -22,7 +22,7 @@ public class Person implements Comparable<Person> {
 		} else if(this.age < o.age) {
 			return -1; // 음수
 		} else {
-			return (this.name.compareTo(o.name)) * -1;  // 나이가 같을 경우 이름순으로 정렬
+			return this.name.compareTo(o.name);  // 나이가 같을 경우 이름순으로 정렬
 		}
 //		return -(this.age - o.age);  // 간결화  // 정렬을 반전시키고 싶을때 (-) 연산자
 	}
