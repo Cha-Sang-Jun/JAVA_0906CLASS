@@ -53,7 +53,7 @@ public class ScoreManager2 {
 	
 		
 	// 데이터 검색 : 이름 기준 검색 -> 배열의 요소들 중 이름(검색 어)을 비교
-	public void searcData() {
+	public void searchData() {
 		
 		System.out.println("검색 하고자하는 학생의 이름을 입력해주세요.");
 		String name = sc.nextLine();
