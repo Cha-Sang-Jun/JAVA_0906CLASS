@@ -27,7 +27,7 @@ public class ScoreMain2 {
 					break;
 				case 3: 
 					System.out.println("학생 정보를 검색합니다.");
-					manager.searcData();
+					manager.searchData();
 					break;
 				case 4: 
 					System.out.println("학생 정보를 삭제합니다.");

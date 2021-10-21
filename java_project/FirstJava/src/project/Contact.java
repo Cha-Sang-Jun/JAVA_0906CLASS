@@ -1,5 +1,5 @@
 package project;
-//추가 요구 사항 
+//추가 요구 사항  
 
 // 변수들은 직접 참조를 막아 캡슐화 처리를 하도록 해봅시다. 
 //변수의 직접 참조는 안되지만 변수의 값을 얻을 수 있는 메소드(getter)와
@@ -74,9 +74,11 @@ public class Contact {
 	public void setGroup(String group) {
 		this.group = group;
 	}
+	
+	public Contact() {}
 
 	// 데이터를 초기화 할 수 있는 생성자
-	public void Contact(String name, String callNum, String email, String adress, int birthDay, String group) {
+	public Contact(String name, String callNum, String email, String adress, int birthDay, String group) {
 		this.name = name;
 		this.callNum = callNum;
 		this.email = email;
