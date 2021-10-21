@@ -23,7 +23,7 @@ public class Contact {
 	private String callNum;
 	private String email;
 	private String address;
-	private String birthDay;
+	private int birthDay;
 	private String group;
 
 	// 변수의 값을 저장 / 호출 할 수있는 getter setter 메소드
@@ -59,11 +59,11 @@ public class Contact {
 		this.address = address;
 	}
 
-	public String getBirthDay() {
+	public int getBirthDay() {
 		return birthDay;
 	}
 
-	public void setBirthDay(String birthDay) {
+	public void setBirthDay(int birthDay) {
 		this.birthDay = birthDay;
 	}
 
@@ -76,7 +76,7 @@ public class Contact {
 	}
 
 	// 데이터를 초기화 할 수 있는 생성자
-	public void Contact(String name, String callNum, String email, String adress, String birthDay, String group) {
+	public void Contact(String name, String callNum, String email, String adress, int birthDay, String group) {
 		this.name = name;
 		this.callNum = callNum;
 		this.email = email;
@@ -88,58 +88,59 @@ public class Contact {
 	// 사용자로부터 데이터를 입력받는 메소드
 	public void insert() {
 		Scanner scanner = new Scanner(System.in);
-		Contact c = new Contact();
+		Contact contact = new Contact();
 
 		System.out.println("이름을 입력해주세요.");
 		System.out.println("> ");
-		c.setName(scanner.nextLine());
+		contact.setName(scanner.nextLine());
 
 		System.out.println("전화번호를 입력해주세요.");
 		System.out.println("> ");
-		c.setCallNum(scanner.nextLine());
+		contact.setCallNum(scanner.nextLine());
 
 		System.out.println("이메일을 입력해주세요.");
 		System.out.println("> ");
-		c.setEmail(scanner.nextLine());
+		contact.setEmail(scanner.nextLine());
 
 		System.out.println("주소를 입력해주세요.");
 		System.out.println("> ");
-		c.setAddress(scanner.nextLine());
+		contact.setAddress(scanner.nextLine());
 
 		System.out.println("생일을 입력해주세요.");
 		System.out.println("> ");
-		c.setBirthDay(scanner.nextLine());
+		contact.setBirthDay(scanner.nextInt());
 
 		System.out.println("그룹을 입력해주세요.");
 		System.out.println("> ");
-		c.setGroup(scanner.nextLine());
+		scanner.nextLine();
+		contact.setGroup(scanner.nextLine());
 
-		c.printData(c);
-		c.update(c);
+		contact.printData(contact);
+		contact.update(contact);
 
 	}
 	
 	// 출력 메소드
-	public void printData(Contact c) {
-		System.out.println("이름: " + c.getName());
-		System.out.println("전화번호: " + c.getCallNum());
-		System.out.println("이메일: " + c.getEmail());
-		System.out.println("주소: " + c.getAddress());
-		System.out.println("생일: " + c.getBirthDay());
-		System.out.println("그룹: " + c.getGroup());
+	public void printData(Contact contact) {
+		System.out.println("이름: " + contact.getName());
+		System.out.println("전화번호: " + contact.getCallNum());
+		System.out.println("이메일: " + contact.getEmail());
+		System.out.println("주소: " + contact.getAddress());
+		System.out.println("생일: " + contact.getBirthDay());
+		System.out.println("그룹: " + contact.getGroup());
 	}
 
 	// 수정 메소드
-	public void update(Contact c) {
+	public void update(Contact contact) {
 		Scanner scanner = new Scanner(System.in);
 		System.out.println("정보를 수정하시겠습니까? y/n");
 		System.out.println("> ");
 		String yesNo = scanner.nextLine();
 		while (true) {
 			if (yesNo.equalsIgnoreCase("y")) {
-				c.insert();
+				contact.insert();
 			} else {
-				c.printData(c);
+				contact.printData(contact);
 				scanner.close();
 			}
 
@@ -156,4 +157,12 @@ public class Contact {
 		contact.insert();
 
 	}
+
+	@Override
+	public String toString() {
+		return "Contact [name=" + name + ", callNum=" + callNum + ", email=" + email + ", address=" + address
+				+ ", birthDay=" + birthDay + ", group=" + group + "]";
+	}
+	
+	
 }

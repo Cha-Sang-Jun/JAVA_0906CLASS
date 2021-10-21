@@ -37,7 +37,7 @@ public class ExceptionTest {
 
 		boolean result = id.matches("[0-9|a-z|A-Z]*");
 
-		if (result == false) {
+		if (!result) {
 			BadInputException e = new BadInputException();
 
 			throw e;
