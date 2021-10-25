@@ -1,5 +1,5 @@
 package project;
-//추가 요구 사항  
+//추가 요구 사항   
 
 // 변수들은 직접 참조를 막아 캡슐화 처리를 하도록 해봅시다. 
 //변수의 직접 참조는 안되지만 변수의 값을 얻을 수 있는 메소드(getter)와
@@ -19,12 +19,12 @@ import java.util.Scanner;
 
 public class Contact {
 	// 연락처 데이터 인스턴스 생성
-	private String name;
-	private String callNum;
-	private String email;
-	private String address;
-	private int birthDay;
-	private String group;
+	private String name; // 이름
+	private String callNum; // 전화번호
+	private String email; // 이메일
+	private String address; // 주소
+	private int birthDay; // 생일
+	private String group; // 그룹
 
 	// 변수의 값을 저장 / 호출 할 수있는 getter setter 메소드
 	public String getName() {
@@ -85,6 +85,11 @@ public class Contact {
 		this.address = adress;
 		this.birthDay = birthDay;
 		this.group = group;
+	}
+	
+	public Contact(String name, String callNum) {
+		this.name = name;
+		this.callNum = callNum;
 	}
 	
 	// 사용자로부터 데이터를 입력받는 메소드

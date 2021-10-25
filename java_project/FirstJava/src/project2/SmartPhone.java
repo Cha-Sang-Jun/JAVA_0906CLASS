@@ -1,91 +1,111 @@
 package project2;
-//3. SmartPhone 클래스의 배열을 다형성의 특징을 이용해서 상위 타입의 배열을 생성해서 하위 클래스의 
-
-//   인스턴스를 저장하는 형태로 프로그 램은 작성해봅시다
 
 import java.util.Scanner;
 
 public class SmartPhone {
-	private Contact[] contacts;
-	private int cnt;
+//	1. SmartPhone 클래스를 정의합니다. 이 클래스는 연락처 정보를 관리하는 클래스입니다. 
+//	① Contact 클래스의 인스턴스 10개를 저장 할 수 있는 배열을 정의합시다. 
+//	② 배열에 인스턴스를 저장하고, 수정하고, 삭제, 저장된 데이터의 리스트를 출력하는 메소드를 정의합니다. 
 
-	public static Scanner sc = new Scanner(System.in);
+	public static final Scanner sc = new Scanner(System.in);
+
+	private Contact[] phoneNum;
+	private int numOfContact;
 
 	public SmartPhone(int size) {
-		contacts = new Contact[size];
-		cnt = 0;
+		phoneNum = new Contact[size];
+		numOfContact = 0;
 	}
 
-	public void addContact(Contact contact) {
-		contacts[cnt++] = contact;
-		System.out.println("데이터가 저장되었습니다.");
+	// 연락처 정보 전체 출력
+	public void showAllData() {
+		System.out.println("연락처 정보 출력");
+		for (int i = 0; i < numOfContact; i++) {
+			phoneNum[i].printData();
+		}
+
+		System.out.println("-------------------------");
 	}
 
-	public void insertContact(int userChoice) {
-		System.out.println("연락처 등록을 시작합니다.");
-		System.out.println("이름 >>");
+	// 배열에 요소를 추가
+	public void addList(Contact c) {
+		phoneNum[numOfContact++] = c;
+	}
+
+	// 검색 메소드
+	public void searchList() {
+		System.out.println("찾는 친구의 이름을 입력해주세요.");
 		String name = sc.nextLine();
 
-		System.out.println("전화번호 >>");
-		String phoneNumber = sc.nextLine();
+		int index = searchIndex(name);
 
-		System.out.println("이메일 >>");
-		String email = sc.nextLine();
-
-		System.out.println("주소 >>");
-		String address = sc.nextLine();
-
-		System.out.println("생일 >>");
-		String birthday = sc.nextLine();
-
-		System.out.println("그룹 >>");
-		String group = sc.nextLine();
-
-		if (userChoice == 1) {
-			System.out.println("회사이름 >>");
-			String companyName = sc.nextLine();
-
-			System.out.println("부서이름 >>");
-			String divName = sc.nextLine();
-
-			System.out.println("직급>>");
-			String job = sc.nextLine();
-
-			addContact(
-					new CompanyContact(name, phoneNumber, email, address, birthday, group, companyName, divName, job));
-		
+		if (index > -1) {
+			for (int i = 0; i < numOfContact; i++) {
+				phoneNum[i].printData();
+			}
+			
 		} else {
-			System.out.println("거래처  회사명>>");
-			String customerName = sc.nextLine();
-
-			System.out.println("거래품목>>");
-			String product = sc.nextLine();
-
-			System.out.println("직급>>");
-			String job = sc.nextLine();
-
-			addContact(new CustomerContact(name, phoneNumber, email, address, birthday, group, customerName, product,
-					job));
+			System.out.println("검색하신 이름의 정보가 없습니다.");
 		}
 
 	}
 
-	public void printAllData() {
+	// 삭제 메소드
+	public void delete() {
+		System.out.println("삭제하려는 친구의 이름을 입력해주세요.");
+		String name = sc.nextLine();
 
-		System.out.println("리스트를 출력합니다.(" + cnt + "명)");
-		System.out.println("===========================");
+		int index = searchIndex(name);
 
-		for (int i = 0; i < cnt; i++) {
-			contacts[i].printContact();
-			System.out.println("----------------------");
+		if (index > -1) {
+			for (int i = index; i < numOfContact - 1; i++) {
+				phoneNum[i] = phoneNum[i + 1];
+			}
+
+			numOfContact--;
+			System.out.println("정보가 삭제되었습니다.");
+		} else {
+			System.out.println("검색하신 이름의 정보가 존재하지 않습니다.");
 		}
 	}
 
+	// 수정 메소드
+	public void update() {
+		System.out.println("수정하고 싶은 친구의 이름을 입력해주세요.");
+		String name = sc.nextLine();
+
+		int index = searchIndex(name);
+		if (index > -1) {
+			System.out.println(name + "의 연락처 정보를 수정합니다.");
+			System.out.println("새로운 전화번호를 입력해주세요.");
+			phoneNum[index].setCallNum(sc.nextLine());
+
+			System.out.println("새로운 이메일을 입력해주세요.");
+			phoneNum[index].setEmail(sc.nextLine());
+
+			System.out.println("새로운 주소를 입력해주세요.");
+			phoneNum[index].setAddress(sc.nextLine());
+
+			System.out.println("새로운 생일을 입력해주세요.");
+			phoneNum[index].setBirthDay(Integer.parseInt(sc.nextLine()));
+
+			System.out.println("새로운 그룹을 입력해주세요.");
+			phoneNum[index].setGroup(sc.nextLine());
+
+			System.out.println("연락처 정보가 수정되었습니다.");
+
+		} else {
+			System.out.println("입력하신 이름의 연락처 정보가 존재하지 않습니다.");
+		}
+
+	}
+
+	// 이름을 전달받아 배열의 각 요소와 비교, 같은 요소가 있을시 return index
 	private int searchIndex(String name) {
 		int index = -1;
 
-		for (int i = 0; i < cnt; i++) {
-			if (contacts[i].getName().equals(name)) {
+		for (int i = 0; i < numOfContact; i++) {
+			if (phoneNum[i].getName().equals(name)) {
 				index = i;
 				break;
 			}
@@ -94,129 +114,37 @@ public class SmartPhone {
 		return index;
 	}
 
-	public void searchPrint() {
+	// 연락처 정보 입력
+	public void insertContact() {
+		System.out.println("새 연락처 정보를 입력합니다.");
 
-		System.out.println("검색을 시작합니다.");
-		System.out.println("찾고자 하는 이름을 입력하세요. >>");
+		System.out.println("이름을 입력해주세요");
+		System.out.println("> ");
 		String name = sc.nextLine();
 
-		int index = searchIndex(name);
+		System.out.println("전화번호를 입력해주세요.");
+		System.out.println("> ");
+		String callNum = sc.nextLine();
 
-		if (index < 0) {
-			// 찾는 데이터가 없다
-			System.out.println("찾으시는 이름" + name + "의 정보가 존재하지 않습니다.");
-		} else {
-			// 데이터 출력
-			System.out.println("검색결과 입니다.");
-			System.out.println("--------------------");
-			contacts[index].printContact();
-			System.out.println("-----------------------");
-		}
-	}
+		System.out.println("이메일을 입력해주세요.");
+		System.out.println("> ");
+		String email = sc.nextLine();
 
-	// 이름으로 검색 -> 해당 데이터 삭제
-	public void deleteContact() {
-		System.out.println("데이터를 삭제합니다.");
-		System.out.println("삭제하고자 하는 이름을 입력해주세요.");
+		System.out.println("주소를 입력해주세요.");
+		System.out.println("> ");
+		String address = sc.nextLine();
 
-		String name = sc.nextLine();
+		System.out.println("생일을 입력해주세요.");
+		System.out.println("> ");
+		int birthDay = Integer.parseInt(sc.nextLine());
 
-		int index = searchIndex(name);
+		System.out.println("그룹이름을 입력해주세요.");
+		System.out.println("> ");
+		String group = sc.nextLine();
 
-		if (index < 0) {
-			System.out.println("삭제하고자 하는 이름" + name + "의 데이터가 존재하지 않습니다.");
-		} else {
-			// 삭제처리 : index 위치의 참조값을 index + 1 위치의 값으로 치환, 시프트
-			for (int i = index; i < cnt - 1; i++) {
-				contacts[index] = contacts[index + 1];
-				cnt--;
-			}
+		addList(new Contact(name, callNum, email, address, birthDay, group));
+		System.out.println("연락처 정보가 입력되었습니다.");
 
-			System.out.println(name + "의 데이터가 삭제되었습니다.");
-		}
-	}
-
-	// 이름으로 검색 -> 데이터 수정 : 사용자에게 수정할 데이터를 받아서 처리
-	public void editContact() {
-		System.out.println("데이터 수정을 시작합니다.");
-		System.out.println("변경을 원하는 정보의 이름을 입력하세요. >>");
-		String name = sc.nextLine();
-
-		int index = searchIndex(name);
-
-		if (index < 0) {
-			System.out.println("찾으시는 이름" + name + "의 정보가 존재하지 않습니다.");
-		} else {
-			System.out.println("데이터 수정을 위해 각각의 데이터를 입력하세요.");
-
-			System.out.println("연락처 등록을 시작합니다.");
-			System.out.println("이름 >>");
-			String ename = sc.nextLine();
-
-			System.out.println("전화번호 >>");
-			String phoneNumber = sc.nextLine();
-
-			System.out.println("이메일 >>");
-			String email = sc.nextLine();
-
-			System.out.println("주소 >>");
-			String address = sc.nextLine();
-
-			System.out.println("생일 >>");
-			String birthday = sc.nextLine();
-
-			System.out.println("그룹 >>");
-			String group = sc.nextLine();
-
-			if (contacts[index] instanceof CompanyContact) { // CompanyContact
-				CompanyContact contact = (CompanyContact) contacts[index];
-
-				System.out.println("회사이름을 새로 입력>>");
-				String companyName = sc.nextLine();
-
-				System.out.println("부서이름을 새로 입력>>");
-				String divName = sc.nextLine();
-
-				System.out.println("직급을 새로 입력>>");
-				String job = sc.nextLine();
-
-				contact.setName(ename);
-				contact.setPhoneNumber(phoneNumber);
-				contact.setEmail(email);
-				contact.setAddress(address);
-				contact.setBirthday(birthday);
-				contact.setGroup(group);
-				contact.setCompanyName(companyName);
-				contact.setDivName(divName);
-				contact.setJob(job);
-
-			} else { // CustomerContact
-				CustomerContact contact = (CustomerContact) contacts[index];
-
-				System.out.println("거래처 회사명을 새로 입력>>");
-				String customerName = sc.nextLine();
-
-				System.out.println("거래품목을 새로 입력>>");
-				String product = sc.nextLine();
-
-				System.out.println("직급을 새로 입력>>");
-				String job = sc.nextLine();
-
-				// Contact c
-				contact.setName(ename);
-				contact.setPhoneNumber(phoneNumber);
-				contact.setEmail(email);
-				contact.setAddress(address);
-				contact.setBirthday(birthday);
-				contact.setGroup(group);
-				contact.setCustomerName(customerName);
-				contact.setProduct(product);
-				contact.setJob(job);
-
-			}
-
-			System.out.println(name + " 의 정보가 수정되었습니다.");
-		}
 	}
 
 }

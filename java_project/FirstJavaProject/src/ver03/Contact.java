@@ -24,6 +24,7 @@ public class Contact {
 	
 	// 생성자 : 변수들을 초기화 할 때 사용
 	public Contact(String name, String phoneNumber, String email, String address, String birthday, String group) {
+		super();
 		this.name = name;
 		this.phoneNumber = phoneNumber;
 		this.email = email;

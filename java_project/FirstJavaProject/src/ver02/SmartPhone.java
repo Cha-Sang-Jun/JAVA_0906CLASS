@@ -61,7 +61,7 @@ public class SmartPhone {
 		}
 	}
 
-	// 이름(문자열)을 전달 받아서 배얼의 각 요소의 이름과 비교 같은 요소가 있으면 해당 index 반환
+	// 이름(문자열)을 전달 받아서 배열의 각 요소의 이름과 비교 같은 요소가 있으면 해당 index 반환
 	private int searchIndex(String name) {
 		int index = -1;
 
