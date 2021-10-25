@@ -1,4 +1,4 @@
-package ver03;
+package ver05;
 
 // ② CustomerContact 회사, 거래처의 정보를 저장하는 하위 클래스를 정의합니다. 
 //   - 거래처회사이름, 거래품목, 직급 변수 추가 
@@ -26,8 +26,8 @@ public class CustomerContact extends Contact {
 	}
 
 	@Override
-	public void printData() {
-		super.printData();
+	public void showData() {
+		super.showData();
 		System.out.println("거래처 이름: " + customerName);
 		System.out.println("거래품목: " + product);
 		System.out.println("직급: " + rank);

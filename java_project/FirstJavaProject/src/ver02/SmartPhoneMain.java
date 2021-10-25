@@ -59,7 +59,7 @@ public class SmartPhoneMain {
 //
 //		// 배열의 요소를 수정해봅시다.
 //		phone.editContact();
-//
+
 //		// 삭제와 변경 여부 확인
 //		phone.printAllData();
 	}

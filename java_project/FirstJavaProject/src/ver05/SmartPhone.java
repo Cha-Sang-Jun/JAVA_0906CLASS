@@ -1,6 +1,6 @@
-package ver03;
+package ver05;
 
-// 3. SmartPhone 클래스의 배열을 다형성의 특징을 이용해서 상위 타입의 배열을 생성해서 
+// 3. SmartPhone 클래스의 배열을 다형성의 특징을 이용해서 상위 타입의 배열을 생성해서  
 // 하위 클래스의 인스턴스를 저장하는 형태로 프로그 램은 작성해봅시다
 
 import java.util.Scanner;
@@ -21,7 +21,7 @@ public class SmartPhone {
 	public void showAllData() {
 		System.out.println("연락처 전체 정보 출력");
 		for (int i = 0; i < numOfContact; i++) {
-			phoneNum[i].printData();
+			phoneNum[i].showData();
 			System.out.println("==========================");
 		}
 
@@ -41,7 +41,7 @@ public class SmartPhone {
 		int index = searchIndex(name);
 
 		if (index > -1) {
-			phoneNum[index].printData();
+			phoneNum[index].showData();
 		} else {
 			System.out.println("검색하신 이름의 정보가 없습니다.");
 		}

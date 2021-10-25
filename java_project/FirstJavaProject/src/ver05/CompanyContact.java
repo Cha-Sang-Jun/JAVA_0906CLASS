@@ -1,4 +1,4 @@
-package ver03;
+package ver05;
 
 // 2. 그룹에 해당하는 정보들을 추가적으로 정의하는 새로운 클래스들을 정의합니다. 
 //    회사, 거래처의 정보를 저장하는 하위 클래스를 정의합니다. 
@@ -30,8 +30,8 @@ public class CompanyContact extends Contact {
 	}
 
 	@Override
-	public void printData() {
-		super.printData();
+	public void showData() {
+		super.showData();
 		System.out.println("회사이름: " + companyName);
 		System.out.println("부서이름: " + departName);
 		System.out.println("직급: " + rank);

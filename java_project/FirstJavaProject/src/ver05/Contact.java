@@ -1,16 +1,13 @@
-package ver03;
-//  프로젝트-2 에서 정의한 Contact 클래스를 상속의 구조로 만들어 봅니다. 
+package ver05;
 
-//1. Contact 클래스는 기본정보를 저장하고 기본 정보를 출력하는 메소드를 정의합니다. 
-//    - 생성자를 통해 기본 정보들을 초기화 합니다. 
+//2. Contact클래스가 ShowData인터페이스를 상속하면서 추상 메소드를 보유하는 관계로 생성 
 
-
-
-
+//3. Contact클래스는 추상 메소드를 가지고 있어 추상클래스가 되는 형태로 정의 
 
 import java.util.Scanner;
 
-public class Contact {
+public abstract class Contact implements ShowData {
+	
 	// 연락처 데이터 인스턴스 생성
 	private String name; // 이름
 	private String callNum; // 전화번호
@@ -87,7 +84,8 @@ public class Contact {
 	}
 
 	// 출력 메소드
-	public void printData() {
+	@Override
+	public void showData() {
 		System.out.println("이름: " + name);
 		System.out.println("전화번호: " + callNum);
 		System.out.println("이메일: " + email);
