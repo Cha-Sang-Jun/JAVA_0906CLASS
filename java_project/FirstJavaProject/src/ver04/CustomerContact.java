@@ -1,36 +1,36 @@
 package ver04;
-//② CustomerContact 회사, 거래처의 정보를 저장하는 하위 클래스를 정의합니다. 
-// - 거래처회사이름, 거래품목, 직급 변수 추가 - 정보를 출력하는 메소드를 오버라이딩 해서
-//   추가된 정보를 추가해서 출력 
+
+// ② CustomerContact 회사, 거래처의 정보를 저장하는 하위 클래스를 정의합니다. 
+//   - 거래처회사이름, 거래품목, 직급 변수 추가 
+//   - 정보를 출력하는 메소드를 오버라이딩 해서 추가된 정보를 추가해서 출력 
 
 public class CustomerContact extends Contact {
 
-	private String customerName;
-	private String product;
-	private String job;
+	private String customerName; // 거래처 회사명
+	private String product; // 거래 품목
+	private String rank; // 직급
 
-	public CustomerContact(String name, String phoneNumber, String email, String address, String birthday, String group,
-			String customerName, String product, String job) {
-		super(name, phoneNumber, email, address, birthday, group);
+	public CustomerContact(String name, String callNum, String email, String address, int birthDay, String group,
+			String customerName, String product, String rank) {
+		super(name, callNum, email, address, birthDay, group);
 		this.customerName = customerName;
 		this.product = product;
-		this.job = job;
+		this.rank = rank;
 	}
 
-	public CustomerContact(String name, String phoneNumber, String email, String address, String birthday,
-			String group) {
-		super(name, phoneNumber, email, address, birthday, group);
+	public CustomerContact(String name, String callNum, String email, int birthDay, String address, String group) {
+		super(name, callNum, email, address, birthDay, group);
 		this.customerName = customerName;
 		this.product = product;
-		this.job = job;
+		this.rank = rank;
 	}
 
 	@Override
 	public void showData() {
 		super.showData();
-		System.out.println("거래처 회사 이름: " + customerName);
+		System.out.println("거래처 이름: " + customerName);
 		System.out.println("거래품목: " + product);
-		System.out.println("직급: " + job);
+		System.out.println("직급: " + rank);
 	}
 
 	public String getCustomerName() {
@@ -49,12 +49,12 @@ public class CustomerContact extends Contact {
 		this.product = product;
 	}
 
-	public String getJob() {
-		return job;
+	public String getRank() {
+		return rank;
 	}
 
-	public void setJob(String job) {
-		this.job = job;
+	public void setRank(String rank) {
+		this.rank = rank;
 	}
 
 }
