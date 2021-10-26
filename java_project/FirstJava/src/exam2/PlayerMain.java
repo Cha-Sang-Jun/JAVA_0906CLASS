@@ -1,13 +1,29 @@
 package exam2;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
+import java.util.List;
 import java.util.TreeSet;
 
 public class PlayerMain {
 	public static void main(String[] args) {
+		
+		List<FootballPlayer> player = new ArrayList<>();
 
+		player.add(new FootballPlayer("손흥민", 7, "토트넘", 28));
+		player.add(new FootballPlayer("박지성", 44, "맨유", 25));
+		player.add(new FootballPlayer("황희찬", 27, "울버햄튼", 26));
+		player.add(new FootballPlayer("이영표", 14, "PSV", 27));
+
+		for (int i = 0; i < player.size(); i++) {
+			System.out.print(player.get(i) + "\t");
+			System.out.println();
+		}
+
+		System.out.println("---------------------------");
+		
 		HashSet<FootballPlayer> set = new HashSet<FootballPlayer>();
 
 		set.add(new FootballPlayer("음바페", 8, "파리생제르망", 25));

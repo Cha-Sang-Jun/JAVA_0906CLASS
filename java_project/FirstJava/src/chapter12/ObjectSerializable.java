@@ -24,7 +24,7 @@ public class ObjectSerializable {
 		// 저장된 파일을 이용해서 인스턴스를 생성 -> 복원
 		// 복원시에는 저장 순서에 맞게 복원해주어야 한다
 		ObjectInputStream in = new ObjectInputStream(new FileInputStream("Object.txt"));
-//		String str = (String) in.readObject(); --> 타입이 안맞아서 오류난다. 순서대로해야함
+//		String str = (String) in.readObject(); --> Circle/String 타입이 안맞아서 오류난다. 순서대로해야함
 
 
 		// 복원 : 인스턴스 생성하고 반환

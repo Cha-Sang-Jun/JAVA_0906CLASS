@@ -1,5 +1,6 @@
 package exam2;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -9,7 +10,7 @@ import java.util.TreeSet;
 import chapter11.Person;
 import chapter11.SimpleNumber;
 
-public class FootballPlayer implements Comparable<FootballPlayer> {
+public class FootballPlayer implements Comparable<FootballPlayer>, Serializable {
 	private String name;
 	private int number;
 	private String team;
@@ -74,19 +75,6 @@ public class FootballPlayer implements Comparable<FootballPlayer> {
 		return "FootballPlayer [name=" + name + ", number=" + number + ", team=" + team + ", age=" + age + "]";
 	}
 
-//	public static void main(String[] args) {
-//
-//		List<FootballPlayer> player = new ArrayList<>();
-//
-//		player.add(new FootballPlayer("손흥민", 7, "토트넘", 28));
-//		player.add(new FootballPlayer("박지성", 44, "맨유", 25));
-//		player.add(new FootballPlayer("황희찬", 27, "울버햄튼", 26));
-//		player.add(new FootballPlayer("이영표", 14, "PSV", 27));
-//
-//		for (int i = 0; i < player.size(); i++) {
-//			System.out.print(player.get(i) + "\t");
-//			System.out.println();
-//		}
 
 	@Override
 	public boolean equals(Object obj) {
