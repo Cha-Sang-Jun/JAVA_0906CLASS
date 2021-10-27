@@ -15,12 +15,13 @@ public class HighLowGame {
 		CountDownThread t = new CountDownThread();
 		t.start();
 
+		Random ran = new Random();
+		int randomNum = ran.nextInt(49) + 1;
+
 		while (true) {
-			int input = Integer.parseInt(JOptionPane.showInputDialog("'1~10'까지의 숫자 하나를 입력하세요."));
+			int input = Integer.parseInt(JOptionPane.showInputDialog("'1~50' 까지의 숫자 하나를 입력하세요."));
 			System.out.println("입력하신 숫자는 " + input + " 입니다.");
 
-			Random ran = new Random();
-			int randomNum = ran.nextInt(9) + 1;
 			if (randomNum > input) {
 				System.out.println("입력하신 숫자보다 큰 숫자 입니다.");
 			} else if (randomNum < input) {

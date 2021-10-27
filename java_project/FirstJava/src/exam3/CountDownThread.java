@@ -9,7 +9,7 @@ public class CountDownThread extends Thread {
 	@Override
 	public void run() {
 
-		for (int i = 30; i > 0; i--) {
+		for (int i = 20; i > 0; i--) {
 
 			if (HighLowGame.inputCheck) {
 				System.out.println("숫자 맞추기에 성공하여 카운트다운을 멈춥니다.");
