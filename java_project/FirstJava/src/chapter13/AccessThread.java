@@ -1,0 +1,20 @@
+package chapter13;
+
+public class AccessThread extends Thread {
+
+	IHaveTwoNum twoNum;
+	
+	// 생성자로 주입받기
+	public AccessThread(IHaveTwoNum twoNum) {
+		this.twoNum = twoNum;
+	}
+	
+	@Override
+	public void run() {
+		twoNum.addOneNum1(); // num1
+		twoNum.addTwoNum1(); // num1
+		
+		twoNum.addOneNum2(); // num2
+		twoNum.addTwoNum2(); // num2
+	}
+}

@@ -2,7 +2,7 @@ package chapter13;
 
 import javax.swing.JOptionPane;
 
-// 실제 스레드를 만드는 것이 아닌 스레드가 필요한 상황을 만든다.
+// 카운트 다운 내 데이터값 입력하기
 
 public class ThreadTest4 {
 
