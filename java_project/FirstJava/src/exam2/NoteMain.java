@@ -8,7 +8,7 @@ import java.io.PrintWriter;
 import java.util.Calendar;
 import java.util.Date;
 
-public class Note {
+public class NoteMain {
 //	1. 콘솔기반으로 메모장 기능을 만들어 봅시다.
 
 //	② 문자기반 스트림을 이용해서 날짜와 제목, 메모를 파일에 저장

@@ -5,5 +5,5 @@ package ver04;
 
 public interface ShowData {
 	
-	abstract void showData();
+	public abstract void showData();
 }
