@@ -21,8 +21,12 @@ public class HighLowGame {
 
 			Random ran = new Random();
 			int randomNum = ran.nextInt(9) + 1;
-			if (randomNum == input) {
-				System.out.println("랜덤 숫자 맞추기에 성공하셨습니다.");
+			if (randomNum > input) {
+				System.out.println("입력하신 숫자보다 큰 숫자 입니다.");
+			} else if (randomNum < input) {
+				System.out.println("입력하신 숫자보다 작은 숫자 입니다.");
+			} else if (randomNum == input) {
+				System.out.println("랜덤숫자 맞추기에 성공하셨습니다.");
 				inputCheck = true;
 				break;
 			}
