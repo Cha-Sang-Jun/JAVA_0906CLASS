@@ -1,9 +1,8 @@
+-- ì£¼ì„ìž…ë‹ˆë‹¤.
+-- ì˜ˆì œë¥¼ ìœ„í•œ í…Œì´ë¸” ìƒì„±, ë°ì´í„° ì‚½ìž…í•˜ëŠ” SQL
 
--- ÁÖ¼®ÀÔ´Ï´Ù.
--- ¿¹Á¦¸¦ À§ÇÑ Å×ÀÌºí »ý¼º, µ¥ÀÌÅÍ »ðÀÔÇÏ´Â SQL
 
-
--- Å×ÀÌºíÀ» »èÁ¦
+-- í…Œì´ë¸”ì„ ì‚­ì œ
 DROP TABLE dept;
 DROP TABLE emp;
 DROP TABLE salgrade;
@@ -87,5 +86,4 @@ commit;
 
 -- rollback;
 
-Select * from dept;  --dept ¾ÈÀÇ ¸ðµç ÇàÀ» °¡Á®¿À¶ó´Â ¸í·É
-
+Select * from dept;  --dept ì•ˆì˜ ëª¨ë“  í–‰ì„ ê°€ì ¸ì˜¤ë¼ëŠ” ëª…ë ¹
