@@ -10,16 +10,16 @@ public class CustomerContact extends Contact {
 	private String product; // 거래 품목
 	private String rank; // 직급
 
-	public CustomerContact(String name, String callNum, String email, String address, int birthDay, String group,
+	public CustomerContact(String name, String callNum, String email, String address, String birth, String group,
 			String customerName, String product, String rank) {
-		super(name, callNum, email, address, birthDay, group);
+		super(name, callNum, email, address, birth, group);
 		this.customerName = customerName;
 		this.product = product;
 		this.rank = rank;
 	}
 
-	public CustomerContact(String name, String callNum, String email, int birthDay, String address, String group) {
-		super(name, callNum, email, address, birthDay, group);
+	public CustomerContact(String name, String callNum, String email, String birth, String address, String group) {
+		super(name, callNum, email, address, birth, group);
 		this.customerName = customerName;
 		this.product = product;
 		this.rank = rank;

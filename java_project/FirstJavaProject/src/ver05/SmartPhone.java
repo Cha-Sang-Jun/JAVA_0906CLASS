@@ -1,9 +1,10 @@
 package ver05;
 
-// 3. SmartPhone 클래스의 배열을 다형성의 특징을 이용해서 상위 타입의 배열을 생성해서  
-// 하위 클래스의 인스턴스를 저장하는 형태로 프로그 램은 작성해봅시다
+// 2. 입력 또는 수정할 때 공백 문자열을 입력 받으면 다시 입력 받도록 흐름을 만들어봅시다. 
+// 3. 입력할 때 전화번호가 같은 데이터가 입력되면 입력이 되지 않도록 흐름을 만들어봅시다. 
 
 import java.util.Scanner;
+import java.util.regex.Pattern;
 
 public class SmartPhone {
 
@@ -77,7 +78,7 @@ public class SmartPhone {
 		if (index > -1) {
 			System.out.println(name + "의 연락처 정보를 수정합니다.");
 			System.out.println("새로운 전화번호를 입력해주세요.");
-			String callNum = sc.nextLine();
+			String callNum = getNum();
 
 			System.out.println("새로운 이메일을 입력해주세요.");
 			String email = sc.nextLine();
@@ -86,7 +87,7 @@ public class SmartPhone {
 			String address = sc.nextLine();
 
 			System.out.println("새로운 생일을 입력해주세요.");
-			int birthDay = Integer.parseInt(sc.nextLine());
+			String birth = sc.nextLine();
 
 			System.out.println("새로운 그룹을 입력해주세요.");
 			String group = sc.nextLine();
@@ -111,7 +112,7 @@ public class SmartPhone {
 				contact.setCallNum(callNum);
 				contact.setEmail(email);
 				contact.setAddress(address);
-				contact.setBirthDay(birthDay);
+				contact.setBirth(birth);
 				contact.setGroup(group);
 				contact.setCompanyName(companyName);
 				contact.setDepartName(departName);
@@ -136,7 +137,7 @@ public class SmartPhone {
 				contact.setCallNum(callNum);
 				contact.setEmail(email);
 				contact.setAddress(address);
-				contact.setBirthDay(birthDay);
+				contact.setBirth(birth);
 				contact.setGroup(group);
 				contact.setCustomerName(customerName);
 				contact.setProduct(product);
@@ -169,61 +170,118 @@ public class SmartPhone {
 
 		System.out.println("이름을 입력해주세요");
 		System.out.println("> ");
-		String name = sc.nextLine();
+		String name = getString();
 
 		System.out.println("전화번호를 입력해주세요.");
 		System.out.println("> ");
-		String callNum = sc.nextLine();
+		String callNum = getNum();
 
 		System.out.println("이메일을 입력해주세요.");
 		System.out.println("> ");
-		String email = sc.nextLine();
+		String email = getString();
 
 		System.out.println("주소를 입력해주세요.");
 		System.out.println("> ");
-		String address = sc.nextLine();
+		String address = getString();
 
 		System.out.println("생일을 입력해주세요.");
 		System.out.println("> ");
-		int birthDay = Integer.parseInt(sc.nextLine());
+		String birth = getString();
 
 		System.out.println("그룹이름을 입력해주세요.");
 		System.out.println("> ");
-		String group = sc.nextLine();
+		String group = getString();
 
-		if (userChoice == 1) { // 같은 회사 동료일 경우
+		if (userChoice == 1) {
 			System.out.println("회사이름을 입력해주세요.");
 			System.out.println("> ");
-			String companyName = sc.nextLine();
+			String companyName = getString();
 
 			System.out.println("부서이름을 입력해주세요.");
 			System.out.println("> ");
-			String departName = sc.nextLine();
+			String departName = getString();
 
 			System.out.println("직급을 입력해주세요.");
 			System.out.println("> ");
-			String rank = sc.nextLine();
+			String rank = getString();
 
-			addList(new CompanyContact(name, callNum, email, address, birthDay, group, companyName, departName, rank));
+			addList(new CompanyContact(name, callNum, email, address, birth, group, companyName, departName, rank));
 
-		} else { // 거래처 직원일 경우
+		} else {
 			System.out.println("거래처 회사명을 입력해주세요.");
 			System.out.println("> ");
-			String customerName = sc.nextLine();
+			String customerName = getString();
 
 			System.out.println("거래품목을 입력해주세요.");
 			System.out.println("> ");
-			String product = sc.nextLine();
+			String product = getString();
 
 			System.out.println("직급을 입력해주세요.");
 			System.out.println("> ");
-			String rank = sc.nextLine();
+			String rank = getString();
 
-			addList(new CustomerContact(name, callNum, email, address, birthDay, group, customerName, product, rank));
+			addList(new CustomerContact(name, callNum, email, address, birth, group, customerName, product, rank));
 		}
-
 		System.out.println("연락처 정보가 입력되었습니다.");
 
+	}
+
+	// 특수문자와 공백 입력은 다시 입력받는 메소드
+	public static String getString() {
+		String result = null;
+
+		String pattern = "^[0-9|a-z|A-Z|ㄱ-ㅎ|ㅏ-ㅣ|가-힣]*$";
+
+		while (true) {
+			result = sc.nextLine();
+			if (!Pattern.matches(pattern, result)) {
+				System.out.println("특수문자와 공백은 입력 할 수 없습니다.");
+				System.out.println("다시 입력해주세요.");
+
+			} else {
+				break;
+			}
+		}
+
+		return result;
+	}
+
+	// 이미 같은 전화번호가 들어왔는지 확인 후 결과 반환
+	public boolean getNum(String number) {
+		boolean check = false;
+		for (int i = 0; i < numOfContact; i++) {
+			if (phoneNum[i].getCallNum().equals(number)) {
+				check = true;
+				break;
+			}
+
+		}
+
+		return check;
+	}
+
+	public String getNum() {
+		String number = null;
+
+		while (true) {
+			number = sc.nextLine();
+
+			boolean check = false;
+
+			if (number.length() > 0) {
+				for (int i = 0; i < numOfContact; i++) {
+					if (phoneNum[i].getCallNum().contentEquals(number)) {
+						check = true;
+						System.out.println("같은번호가 존재합니다. 다시 입력해주세요.");
+						break;
+					}
+				}
+				if (!check) {
+					break;
+				}
+			}
+		}
+		return number;
 	}
 
 }

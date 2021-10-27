@@ -1,5 +1,8 @@
 package ver05;
 
+// 이번 Project에서는 메뉴를 두고 연락처의 입출력 및 관리가 프로그램이 종료되지 않고 유지가 되도록 하는 프로그램을 만들어봅시다. 
+// 1. 아래의 흐름이 유지가 되도록 메뉴를 무한반복 처리해 봅시다. 
+
 import java.util.Scanner;
 
 public class SmartPhoneMain {

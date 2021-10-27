@@ -24,9 +24,9 @@ public class ExceptionTest7 {
 
 	// 사용자의 나이를 입력받아 반환하는 메소드
 	public static int getAge() throws AgeInputException {
-		// thows AgeInputException
+		// throws AgeInputException
 		// 메소드 내부에서 AgeInputException 예외가 발생하면
-		// 메소드 내부에서 예외처리하지 않고 호출한 메소드로 예외 객체를 전달(thorw)
+		// 메소드 내부에서 예외처리하지 않고 호출한 메소드로 예외 객체를 전달(throw)
 
 		int age = 0;
 
