@@ -1,6 +1,7 @@
 
 -- 2021.11.01
 -- JOIN
+-- 스키마의 결합, 행은 집합의 합 연산이다.
 
 
 -- Cross Join : 단순히 테이블을 붙이는 조인
@@ -76,4 +77,21 @@ on emp.deptno = dept.deptno
 where emp.ename = 'SCOTT';
 
 
+select *
+from emp e join dept d
+-- on e.deptno = d.deptno
+using (deptno);
 
+select *
+-- from emp inner join dept
+-- on emp.deptno = dept.deptno;
+from emp natural join dept;
+
+
+-- ANSI Outer Join
+-- from R1 [LEFT | RIGH | FULL] outer join R2
+-- 사원 이름과 상관의 이름을 출력
+select e.ename, m.ename
+-- from emp e left outer join emp m
+from emp m right outer join emp e
+on e.mgr = m.empno;
