@@ -2,6 +2,8 @@
 -- 2021.11.01
 -- JOIN
 -- 스키마의 결합, 행은 집합의 합 연산이다.
+-- 컬럼의 개수가 늘어난다. 행은 행 x 행 의 결과가 생성
+-- 의미 있는 데이터를 만들기 위해 컬럼의 비교 연산이 필요하다
 
 
 -- Cross Join : 단순히 테이블을 붙이는 조인
@@ -95,3 +97,10 @@ select e.ename, m.ename
 -- from emp e left outer join emp m
 from emp m right outer join emp e
 on e.mgr = m.empno;
+
+
+-- 테이블 세개 조인 : 주문내역 (고객정보, 책의 정보, 구매정보)
+-- 주문 고객의 이름과 책의 이름 구매 날짜와 구매 금액을 출력
+select c.name, b.bookname, o.orderdate, o.saleprice
+from book b, customer c, orders o
+where o.custid = c.custid and o.bookid = b.bookid;
