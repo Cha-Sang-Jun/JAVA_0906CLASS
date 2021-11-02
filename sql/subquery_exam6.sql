@@ -7,7 +7,7 @@
 -- 사원번호가 7788인 사원의 담당업무
 select ename, empno, job from emp where empno = 7788;
 -- 그와 업무가 같은 사원
-select ename, empno, job
+select ename, job
 from emp
 where job = 
     (select job from emp where empno = 7788);
@@ -16,7 +16,7 @@ where job =
 -- 사원번호가 7499인 사원의 급여
 select ename, empno, sal from emp where empno = 7499;
 -- 그 사원의 급여보다 더 많이 받는 사원
-select ename, job, sal
+select ename, job
 from emp
 where sal >
     (select sal from emp where empno = 7499);
@@ -38,11 +38,10 @@ having avg(sal) =
     (select min(avg(sal)) from emp group by job);
 
 
---47. 각 부서의 최소 급여를 받는 사원의 이름, 급여, 부서번호를 표시하시오.
-select ename, sal, deptno
+--47. 각 부서의 최소 급여를 받는 사원의 이름, 급여, 부서번호를 표시하시오. (X)
+select deptno, ename, min(sal)
 from emp
-where sal = 
-    (select min(sal) from emp);
+group by deptno, ename;
 
 --48. 담당업무가 ANALYST 인 사원보다 급여가 적으면서 업무가 ANALYST가 아닌 사원들을 표시(사원번호, 이름, 담당 업무, 급여)하시오.
 select empno, ename, job, sal
@@ -50,13 +49,13 @@ from emp
 where sal <= all
     (select sal from emp where job = 'ANALYST') and job != 'ANALYST';
     
---49. 부하직원이 없는 사원의 이름을 표시하시오.
-select ename, mgr
-from emp
-where mgr =
-    (select min(mgr) from emp);
+--49. 부하직원이 없는 사원의 이름을 표시하시오. (X)
+select ename
+from emp e
+where exists
+    (select * from emp m where e.mgr = m.empno);
 
---50. 부하직원이 있는 사원의 이름을 표시하시오.
+--50. 부하직원이 있는 사원의 이름을 표시하시오. (X)
 select ename, mgr
 from emp
 where mgr >
@@ -69,7 +68,7 @@ where deptno =
    (select deptno from emp where ename like 'BLAKE') and ename != 'BLAKE';
 
 --52. 급여가 평균 급여보다 많은 사원들의 사원 번호와 이름을 표시하되 결과를 급여에 대해서 오름차순으로 정렬하시오.
-select ename, empno
+select ename
 from emp
 where sal >
     (select avg(sal) from emp)
