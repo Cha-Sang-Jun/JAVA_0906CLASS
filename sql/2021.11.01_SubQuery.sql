@@ -97,7 +97,8 @@ select avg(saleprice) from orders;
 -- 주문금액 이하의 주문에 대해서 주문번호와 금액
 select orderid, saleprice
 from orders
-where saleprice <= (select avg(saleprice) from orders);
+where saleprice <=
+    (select avg(saleprice) from orders);
 
 -- 각 고객의 평균 금액보다 큰 금액의 주문 내역에 대해서 주문번호, 고객번호, 금액을 보이시오
 -- 각 고객의 평균 주문금액
@@ -106,7 +107,9 @@ select avg(saleprice) from orders where custid = 1;
 -- 주문 내역에 대해서 주문번호, 고객번호, 금액
 select custid, orderid, saleprice
 from orders o
-where saleprice > (select avg(saleprice) from orders OA where OA.custid = O.custid);
+where saleprice > 
+    (select avg(saleprice) from orders OA where OA.custid = O.custid);
+    
 
 
 -- 다중행 서브 쿼리
