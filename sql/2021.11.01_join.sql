@@ -70,7 +70,7 @@ from emp cross join dept;
 -- Inner Join
 -- select * 
 -- from t1 inner join t2
--- on 컬럼의 비교 조건(Join의 비교)
+-- on 컬럼의 비교 조건(Join의 비교)  --> inner 조인은 반드시 on 비교 조건이 들어가야한다.
 
 -- 'SCOTT' 사원의 사원 정보와 부서정보를 inner join을 이용해서 출력한다면
 select *
