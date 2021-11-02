@@ -63,11 +63,10 @@ where mgr >
     (select min(mgr) from emp);
     
 --51. BLAKE와 동일한 부서에 속한 사원의 이름과 입사일을 표시하는 질의를 작성하시오. ( 단 BLAKE는 제외 )
---select ename, hiredate
---from emp
---where deptno =
---    (select deptno from emp where ename like 'BLAKE')
-----having not ename = 'BLAKE';
+select ename, hiredate
+from emp
+where deptno =
+   (select deptno from emp where ename like 'BLAKE') and ename != 'BLAKE';
 
 --52. 급여가 평균 급여보다 많은 사원들의 사원 번호와 이름을 표시하되 결과를 급여에 대해서 오름차순으로 정렬하시오.
 select ename, empno
@@ -118,8 +117,9 @@ where ename like '%M%';
 
 select empno, ename, sal
 from emp
-where exists
-    (select avg(sal) from where ename like '%M%');
+where sal >
+    (select avg(sal) from emp) and deptno = any (select deptno from emp where ename like '%M%');
+
 
 -- 58. 평균급여가 가장 적은 업무를 찾으시오.
 select job, avg(sal)
