@@ -21,7 +21,7 @@ drop table phoneInfo_univ;
 create table phoneInfo_univ (
     idx number(6) constraint phoneInfo_univ_idx primary key,
     fr_u_major varchar2(20) default 'N' not null,
-    fr_u_year number(1) default 1 constraint phoneInfo_univ_fr_u_year check (fr_u_year between 0 and 5) not null,
+    fr_u_year number(1) default 1 constraint phoneInfo_univ_fr_u_year check (fr_u_year between 1 and 4) not null,
     fr_ref number(7) constraint phoneInfo_univ_fr_ref references phoneInfo_basic not null
     );
 desc phoneInfo_univ;
