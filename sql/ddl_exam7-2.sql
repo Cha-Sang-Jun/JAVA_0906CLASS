@@ -3,6 +3,8 @@
 
 -- PhoneBook DDL : 테이블 정의서 를 참고 해서 DDL 작성한다.
 
+drop table phoneInfo_basic;
+
 CREATE table phoneInfo_basic (
     idx number(6) constraint pi_basic_idx_PK primary key,
     fr_name VARCHAR2(20) not null,
@@ -20,38 +22,7 @@ insert into phoneinfo_univ  values(1, '축구', 1, 3);  --> phoneinfo_univ의 id
                                                                        --> basic에 없는 idx 참조를 하게 되면 오류발생 'parent key is not found'
                                                                        --> 또한 원래 basic 테이블의 idx는 pk로 만들면 안된다.
                                                                        --> 일반적으로 기본키로 만들고 다른 변수로 외래키 참조를 해야한다.
--- select
-select * from phoneinfo_univ; -- 이 테이블의 데이터만으로는 의미가 없음
-
--- 기본 정보만 입력된 데이터도 출력 : outer join
-select 
-    pb.fr_name, pb.fr_phonenumber, 
-    nvl (pu.fr_u_major, '입력정보없음') major, 
-    nvl (pu.fr_u_year, 0) year, 
-    to_char (pb.fr_regdate, 'YYYY.MM.DD HH24:mi')
-from phoneinfo_basic pb, phoneinfo_univ pu
-where pb.idx = pu.fr_ref(+);
-
-
-create table phoneinfo_univ (
-    idx number(6),
-    fr_u_major VARCHAR2(20) default 'N' not null,
-    fr_u_year number(1) default 1  not null, --check (fr_u_year between 1 and 4),
-    fr_ref number(6) not null,
-    constraint pi_univ_idx_PK primary key (idx),
-    constraint chk check (fr_u_year between 1 and 4), -- 테이블 레벨에서 check  제약 설정 
-    constraint pi_univ_ref_FK FOREIGN KEY (fr_ref) REFERENCES phoneInfo_basic (idx)
-);
-
-
-
-create table phoneinfo_com (
-    idx number(6) constraint pi_com_idx_PK primary key,
-    fr_c_company VARCHAR2(20) default 'N' not null,
-    fr_ref number(6) not null constraint pi_com_ref_FK REFERENCES phoneinfo_basic (idx)
-);
-
-
+                                                                       
 -- insert : CREATE
 
 desc phoneinfo_basic;
@@ -64,7 +35,7 @@ insert into phoneinfo_basic values (1, '이강인', '010-9999-0000', 'lee@gmail.
 select * from phoneinfo_basic;
 
 -- 이름으로 검색
-select * from phoneinfo_basic where fr_name like '%손%';  -- > 같다(=) 공식을 사용하게 되면 검색조건이 까다로워지므로 주로 like를 사용하도록 한다.
+select * from phoneinfo_basic where fr_name like '%손%';  --> 같다(=) 공식을 사용하게 되면 검색조건이 까다로워지므로 주로 like를 사용하도록 한다.
 
 -- 전화번호 검색
 select * from phoneinfo_basic where fr_phonenumber like '%999%';
@@ -82,7 +53,73 @@ where idx = 1;
 
 
 -- delete
-delete from phoneinfo_basic where idx = 1;
+delete from phoneinfo_basic where idx = 1;                                                                     
+
+-------------------------------------------------------------------------------------------------
+
+create table phoneinfo_univ (
+    idx number(6),
+    fr_u_major VARCHAR2(20) default 'N' not null,
+    fr_u_year number(1) default 1  not null, --check (fr_u_year between 1 and 4),
+    fr_ref number(6) not null,
+    constraint pi_univ_idx_PK primary key (idx),
+    constraint chk check (fr_u_year between 1 and 4), -- 테이블 레벨에서 check  제약 설정 
+    constraint pi_univ_ref_FK FOREIGN KEY (fr_ref) REFERENCES phoneInfo_basic (idx)
+);
+
+-- select
+select * from phoneinfo_univ; -- 이 테이블의 데이터만으로는 의미가 없음
+
+-- 기본 정보만 입력된 데이터도 출력 : outer join
+select 
+    pb.fr_name, pb.fr_phonenumber, 
+    nvl (pu.fr_u_major, '입력정보없음') major, 
+    nvl (pu.fr_u_year, 0) year, 
+    to_char (pb.fr_regdate, 'YYYY.MM.DD HH24:mi')
+from phoneinfo_basic pb, phoneinfo_univ pu
+where pb.idx = pu.fr_ref(+);
+
+-- update
+update phoneinfo_univ
+set fr_u_major = '야구', fr_u_year = 4
+where idx = 1;
+
+-- delete (자식 테이블의 데이터를 먼저 삭제)
+delete from phoneinfo_univ where idx = 1;  --> 참조 무결성으로 인해 basic 3번행을 지우기 전에 univ 에서 참고하는 행을 먼저 지워야 한다.
+delete from phoneinfo_basic where idx = 3;  --> 단순히 투플을 삭제하는 개념이 아니라, 사용자가 사용하려 하는 기능 자체를 지우기 위해 둘다 지워야 한다.
+
+
+-------------------------------------------------------------------------------------------------------------------
+
+create table phoneinfo_com (
+    idx number(6) constraint pi_com_idx_PK primary key,
+    fr_c_company VARCHAR2(20) default 'N' not null,
+    fr_ref number(6) not null constraint pi_com_ref_FK REFERENCES phoneinfo_basic (idx)
+);
+
+-- select
+select pb.fr_name, pb.fr_phonenumber, pb.fr_email,
+    nvl(pc.fr_c_companym '입력 데이터 없음') company,
+    to_char(pb.fr_regdate, 'YYYY.MM.DD HH24:mi') regdate
+from phoneinfo_basic pb, phoneinfo_com pc
+where pb.idx = pc.fr_ref(+);
+
+-- update
+update phoneinfo_com
+set fr_c_company = '쿠팡'
+where idx = 1;
+
+-- delete
+delete from phoneinfo_basic where idx = 4;
+
+delete from phoneinfo_com where idx = 1;
+
+---------------------------------------------------------------------------------------------
+
+-- 전체 데이터리스트 출력 : 테이블 세개 join
+select pb.fr_name, pb.fr_phonenumber, pu.fr_u_major, pc.fr_c_company
+from phoneinfo_basic pb, phoneinfo_com pc, phoneinfo_univ pu
+where pb.idx = pc.fr_ref(+) and pb.idx = pu.ref(+);  -- pc의 외래키에는 pu의 정보가 없고, pu의 외래키에는 pc의 정보가 없으므로 outer join을 사용한다.
 
 
 
