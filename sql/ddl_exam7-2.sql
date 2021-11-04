@@ -16,7 +16,7 @@ CREATE table phoneInfo_basic (
 -- 1. 기본 정보 입력
 insert into phoneinfo_basic values (3, '황희찬', '010-0000-3333', 'son@gmail.com', 'LONDON', sysdate);
 -- 2. 학교 정보 입력
-insert into phoneinfo_univ  values(1, '축구', 1, 3);  -- > phoneinfo_univ의 idx는 phoneinfo_basic의 idx와 별개이다. 외래키 참조는 ref 의 number로 해야한다.
+insert into phoneinfo_univ  values(1, '축구', 1, 3);  --> phoneinfo_univ의 idx는 phoneinfo_basic의 idx와 별개이다. 외래키 참조는 ref 의 number로 해야한다.
                                                                        --> basic에 없는 idx 참조를 하게 되면 오류발생 'parent key is not found'
                                                                        --> 또한 원래 basic 테이블의 idx는 pk로 만들면 안된다.
                                                                        --> 일반적으로 기본키로 만들고 다른 변수로 외래키 참조를 해야한다.
@@ -24,7 +24,11 @@ insert into phoneinfo_univ  values(1, '축구', 1, 3);  -- > phoneinfo_univ의 i
 select * from phoneinfo_univ; -- 이 테이블의 데이터만으로는 의미가 없음
 
 -- 기본 정보만 입력된 데이터도 출력 : outer join
-select *
+select 
+    pb.fr_name, pb.fr_phonenumber, 
+    nvl (pu.fr_u_major, '입력정보없음') major, 
+    nvl (pu.fr_u_year, 0) year, 
+    to_char (pb.fr_regdate, 'YYYY.MM.DD HH24:mi')
 from phoneinfo_basic pb, phoneinfo_univ pu
 where pb.idx = pu.fr_ref(+);
 
