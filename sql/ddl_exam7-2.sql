@@ -48,14 +48,14 @@ select * from phoneinfo_basic where idx = 1;
 -- update
 -- 시스템 내부에서 변경 페이지를 이용한 데이터 수정
 update phoneinfo_basic
-set fr_name  = 'SON', fr_phonenumber = '010-2222-5555', fr_email = 'son@naver.com
+set fr_name  = 'SON', fr_phonenumber = '010-2222-5555', fr_email = 'son@naver.com'
 where idx = 1;
 
 
 -- delete
 delete from phoneinfo_basic where idx = 1;                                                                     
 
--------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------
 
 create table phoneinfo_univ (
     idx number(6),
@@ -119,7 +119,22 @@ delete from phoneinfo_com where idx = 1;
 -- 전체 데이터리스트 출력 : 테이블 세개 join
 select pb.fr_name, pb.fr_phonenumber, pu.fr_u_major, pc.fr_c_company
 from phoneinfo_basic pb, phoneinfo_com pc, phoneinfo_univ pu
-where pb.idx = pc.fr_ref(+) and pb.idx = pu.ref(+);  -- pc의 외래키에는 pu의 정보가 없고, pu의 외래키에는 pc의 정보가 없으므로 outer join을 사용한다.
+where pb.idx=pc.fr_ref(+) and pb.idx=pu.fr_ref(+) and pb.fr_name='손흥민'
+;
+-- pc의 외래키에는 pu의 정보가 없고, pu의 외래키에는 pc의 정보가 없으므로 outer join을 사용한다.
+
+select * from phoneinfo_view where fr_name='손흥민'  ;
+
+-- View를 생성해서 간단하게 표현하기
+create or replace view phoneinfo_view
+as
+select pb.fr_name, pb.fr_phonenumber, pu.fr_u_major, pc.fr_c_company
+from phoneinfo_basic pb, phoneinfo_com pc, phoneinfo_univ pu
+where pb.idx=pc.fr_ref(+) and pb.idx=pu.fr_ref(+);
+
+select * 
+from phoneinfo_view
+where fr_name = '손흥민';
 
 
 
