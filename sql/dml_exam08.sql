@@ -68,5 +68,9 @@ select u.id, name, major, company
 from phoneInfo_basic b, phoneInfo_univ u, phoneInfo_com c
 where u.id = c.id and b.id = c.id;
 
+------------------------------------------------------------------------
+
+-- RENEW
+
 
 
