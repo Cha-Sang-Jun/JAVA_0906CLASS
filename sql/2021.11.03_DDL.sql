@@ -226,6 +226,7 @@ create table dept01 (
 insert into dept01 (deptno, dname) values (10, 'test');
 insert into dept01 (deptno, dname, loc) values (10, 'test', 'NEWYORK');
 insert into dept01 (deptno, dname, loc, regdate) values (10, 'test', 'NEWYORK', null);
+insert into dept01 values (10, 'test2', 'LA', null);
 select * from dept01;
 
 ------------------------------------------------------------------

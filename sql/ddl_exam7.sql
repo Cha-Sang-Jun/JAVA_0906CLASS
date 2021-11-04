@@ -15,6 +15,8 @@ create table phoneInfo_basic (
 desc phoneInfo_basic;
 select * from phoneInfo_basic;
 
+insert into phoneInfo_basic (idx, fr_name, fr_phonenumber, fr_email, fr_address) values (200000, 'name2', '010-0000-2222', '22@gmail.com', 'ToT');
+
 ----------------------------------
 
 drop table phoneInfo_univ;
@@ -25,7 +27,9 @@ create table phoneInfo_univ (
     fr_ref number(7) constraint phoneInfo_univ_fr_ref references phoneInfo_basic(idx) not null
     );
 desc phoneInfo_univ;
-select * from phoneInfo_basic;
+select * from phoneInfo_univ;
+
+insert into phoneInfo_univ values (211112, 'MECHANIC', 4, 200000);
 
 -------------------------
 
@@ -37,3 +41,5 @@ create table phoneInfo_com (
     );
 desc phoneInfo_com;
 select * from phoneInfo_com;
+
+insert into phoneInfo_com values (100000, 'NAVER', 200000);
