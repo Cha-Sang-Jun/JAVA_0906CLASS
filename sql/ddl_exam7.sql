@@ -12,10 +12,9 @@ create table phoneInfo_basic (
     address varchar2(20),
     regdate date default sysdate
     );
+    
 desc phoneInfo_basic;
 select * from phoneInfo_basic;
-
-insert into phoneInfo_basic (idx, fr_name, fr_phonenumber, fr_email, fr_address) values (200000, 'name2', '010-0000-2222', '22@gmail.com', 'ToT');
 
 ------------------------------------------------------------------------------------
 
@@ -26,10 +25,9 @@ create table phoneInfo_univ (
     year number(1) default 1 constraint univ_year check (year between 1 and 4) not null,
     ref number(7) constraint univ_ref references phoneInfo_basic(id) not null
     );
+    
 desc phoneInfo_univ;
 select * from phoneInfo_univ;
-
-insert into phoneInfo_univ values (211112, 'MECHANIC', 4, 200000);
 
 ---------------------------------------------------------------------------
 
@@ -39,15 +37,16 @@ create table phoneInfo_com (
     company varchar2(20) default 'N' not null,
     ref number(6) constraint com_ref references phoneInfo_basic(id) not null
     );
+    
 desc phoneInfo_com;
 select * from phoneInfo_com;
-
-insert into phoneInfo_com values (100000, 'NAVER', 200000);
 
 ---------------------------------------------------------------------------
 
 -- RENEW
+
 drop table basicinfo;
+
 create table basicinfo (
     id number(6) constraint basicinfo_id primary key,
     name varchar2(20) not null,

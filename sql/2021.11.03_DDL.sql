@@ -235,6 +235,7 @@ select * from dept01;
 -- 컬럼 정의 후 제약조건 정의
 -- 컬럼 레벨에서 해야하는것 -> not null , default 에 관한 정의
 drop table emp07;
+
 create table emp07 (
     empno number(4), -- 기본 키
     ename varchar(20) not null, 
