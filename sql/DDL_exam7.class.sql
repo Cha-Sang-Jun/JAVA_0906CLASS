@@ -13,14 +13,17 @@ CREATE table phoneInfo_basic (
     fr_address varchar2(20),
     fr_regdate date default sysdate
 );
-                                                                       
+
+-- phoneinfo_basic 테이블 pk -> idx 에 입력할 일련번호                                                 
+-- 시퀀스 생성
+create sequence pib_idx_seq
+start with 1 increment by 1
+minvalue 1 maxvalue 999999;
+
 -- insert : CREATE
-
-desc phoneinfo_basic;
-
-insert into phoneinfo_basic values (1, '손흥민', '010-0000-0000', 'son@gmail.com', 'LONDON', sysdate);
+insert into phoneinfo_basic values (pib_idx_seq.nextval, '손흥민', '010-0000-0000', 'son@gmail.com', 'LONDON', sysdate);
 -- 데이터를 반복해서 입력할때 pk인 id는 중복되면 안된다.
-insert into phoneinfo_basic values (1, '이강인', '010-9999-0000', 'lee@gmail.com', 'LONDON', sysdate);
+insert into phoneinfo_basic values (pib_idx_seq.nextval, '이강인', '010-9999-0000', 'lee@gmail.com', 'LONDON', sysdate);
 
 -- select
 select * from phoneinfo_basic;
@@ -58,11 +61,16 @@ create table phoneinfo_univ (
     constraint pi_univ_ref_FK FOREIGN KEY (fr_ref) REFERENCES phoneInfo_basic (idx)
 );
 
+-- sequence
+create sequence piu_idx_seq
+maxvalue 999999;
+
 -- 친구 정보를 입력 : 기본 정보 + 학교 정보 --> 순서는 기본정보 입력 후 idx를 받아 학교정보 입력
 -- 1. 기본 정보 입력
-insert into phoneinfo_basic values (3, '황희찬', '010-0000-3333', 'son@gmail.com', 'LONDON', sysdate);
+insert into phoneinfo_basic values (pib_idx_seq.nextval, '황희찬', '010-0000-3333', 'son@gmail.com', 'LONDON', sysdate);
+select pib_idx_seq.currval from dual;
 -- 2. 학교 정보 입력
-insert into phoneinfo_univ  values(1, '축구', 1, 3);  --> phoneinfo_univ의 idx는 phoneinfo_basic의 idx와 별개이다. 외래키 참조는 ref 의 number로 해야한다.
+insert into phoneinfo_univ values(piu_idx_seq.nextval, '축구', 1, pib_idx_seq.currval);  --> phoneinfo_univ의 idx는 phoneinfo_basic의 idx와 별개이다. 외래키 참조는 ref 의 number로 해야한다.
                                                                        --> basic에 없는 idx 참조를 하게 되면 오류발생 'parent key is not found'
                                                                        --> 또한 원래 basic 테이블의 idx는 pk로 만들면 안된다.
                                                                        --> 일반적으로 기본키로 만들고 다른 변수로 외래키 참조를 해야한다.
@@ -98,16 +106,18 @@ create table phoneinfo_com (
     fr_ref number(6) not null constraint pi_com_ref_FK REFERENCES phoneinfo_basic (idx)
 );
 
+-- sequence
+create sequence pic_idx_seq maxvalue 999999;
+
 -- insert
 select idx from phoneinfo_basic;
 insert into phoneinfo_basic
-        values (4, '황의조', '010-2222-1111', 'h@gmail.com', 'SEOUL', sysdate);
+        values (pib_idx_seq.nextval, '황의조', '010-2222-1111', 'h@gmail.com', 'SEOUL', sysdate);
 desc phoneinfo_com;
 insert into phoneinfo_com
-        values (1, 'NAVER', 4);
+        values (pic_idx_seq.nextval, 'NAVER', pib_idx_seq.currval);
         
 -- 회사 친구 입력 : 기본 정복 입력 -> 회사정보 입력
-
 
 -- select
 select pb.fr_name, pb.fr_phonenumber, pb.fr_email,
@@ -135,9 +145,6 @@ where pb.idx=pc.fr_ref(+) and pb.idx=pu.fr_ref(+) and pb.fr_name='손흥민'
 ;
 -- pc의 외래키에는 pu의 정보가 없고, pu의 외래키에는 pc의 정보가 없으므로 outer join을 사용한다.
 
-
-
-select * from phoneinfo_view where fr_name='손흥민'  ;
 -- View를 생성해서 간단하게 표현하기
 create or replace view phoneinfo_view
 as
