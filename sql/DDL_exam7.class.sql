@@ -133,7 +133,6 @@ where idx = 1;
 
 -- delete
 delete from phoneinfo_basic where idx = 4;
-
 delete from phoneinfo_com where idx = 1;
 
 ---------------------------------------------------------------------------------------------
