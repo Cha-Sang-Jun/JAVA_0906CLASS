@@ -21,6 +21,9 @@ begin
     return myInterest;
 end;
 
+----------------------------------------------------------------------
+
+-- Test
 -- 함수 호출 후 출력
 select orderid, custid, bookid, saleprice, func_Interest(saleprice)
 from orders;
