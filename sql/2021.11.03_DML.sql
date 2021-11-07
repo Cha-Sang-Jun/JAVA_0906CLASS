@@ -20,7 +20,7 @@ select * from dept where 1=0
 
 desc dept01;
 
-insert into dept (dname, loc) values ('개발팀', '판교');
+insert into dept01 (dname, loc) values ('개발팀', '판교');
 
 insert into dept01 (deptno, dname) values (20, 'DEV', '서울');
 

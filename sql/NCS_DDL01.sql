@@ -90,9 +90,29 @@ select * from all_constraints;
 
 ---------------------------------------------------------------------------------
 
---#2 아래 요구사항에 맞도록 고급 SQL 문을 작성하시오.
---1. EMP 테이블의 ename 컬럼에 인덱스를 생성하는 SQL을 작성하시오. 인덱스의 이름은 emp_index
+-- #2 아래 요구사항에 맞도록 고급 SQL 문을 작성하시오.
+-- 1. EMP 테이블의 ename 컬럼에 인덱스를 생성하는 SQL을 작성하시오. 인덱스의 이름은 emp_index
+create index emp_index on emp(ename);
 
---2. EMP 테이블과 DEPT 테이블을 조인하는 SQL을 기반으로 view 객체를 생성하는 SQL을 작성하시오.
---view 의 이름은 emp_view 로 하시오. 
---3. EMP 테이블에서 모든 사원의 부서번호를 이름이 'SCOTT'인 사원의 부서번호로 변경하는 SQL을 작성하시오.
+-- 2. EMP 테이블과 DEPT 테이블을 조인하는 SQL을 기반으로 view 객체를 생성하는 SQL을 작성하시오.
+-- view 의 이름은 emp_view 로 하시오. 
+create or replace view emp_view
+as
+select empno, ename, deptno
+from emp
+where deptno = 30;
+
+select * from emp_view;
+
+-- 3. EMP 테이블에서 모든 사원의 부서번호를 이름이 'SCOTT'인 사원의 부서번호로 변경하는 SQL을 작성하시오.
+create table emp01
+as
+select * from emp;
+
+drop table emp01;
+
+select * from emp01;
+
+update emp01
+set deptno =  
+    (select deptno from emp where ename = 'SCOTT');
