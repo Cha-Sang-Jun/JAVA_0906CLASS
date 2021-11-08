@@ -16,7 +16,7 @@ public class JdbcPreparedStatementDMLTest {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 
-		// 1. 드라이버를 로드한다.
+		// 1. 드라이버를 로드 : 프로그램에서 한번만 실행해주면 된다.
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 
