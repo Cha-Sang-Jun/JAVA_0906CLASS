@@ -23,11 +23,9 @@ public class DeptMain {
 		try {
 			conn = ConnectionProvider.getConnection();
 			
-			// 트렌젝션 일의 단위
-			conn.setAutoCommit(false); // AutoCommit의 기본 값은 true // false => 트렌젝션의 컨트롤 하겠다
+			// 오토커밋 꺼두기
+			conn.setAutoCommit(false); // AutoCommit의 기본 값은 true
 			
-			
-
 			// 부서 리스트를 확인
 			list = deptDao.selectAllList(conn);
 
@@ -53,7 +51,7 @@ public class DeptMain {
 				System.out.println("입력실패!");
 			}
 
-			System.out.println("입력결과" + deptDao.selectByDeptno(conn, 50));
+			System.out.println("입력결과 :" + deptDao.selectByDeptno(conn, 50));
 
 			System.out.println("---------------------------------");
 
@@ -65,12 +63,13 @@ public class DeptMain {
 			} else {
 				System.out.println("수정 실패 또는 조건에 맞는 데이터가 존재하지 않습니다.");
 			}
-			System.out.println("수정 결과 : " + deptDao.selectByDeptno(conn, 50));
+			System.out.println("수정 결과 :" + deptDao.selectByDeptno(conn, 50));
 
 			System.out.println("-------------------------------------");
 			
 			// 부서 삭제 : deptno 기준으로 삭제
 			int delCnt = deptDao.deleteDept(conn, 50);
+			System.out.println("정보가 삭제되었습니다.");
 			System.out.println("삭제결과 : " + deptDao.selectByDeptno(conn, 50));
 
 		} catch (SQLException e) {

@@ -134,15 +134,15 @@ public class DeptDao {
 		int resultCnt = 0;
 
 		// Sql : update
-		String sql = "update dept set dname = ?, loc =?, where deptno = ?"; // 부서번호는 pk이므로 바꾸지 않는다.
+		String sql = "update dept set dname = ?, loc =? where deptno = ?"; // 부서번호는 pk이므로 바꾸지 않는다.
 
 		try {
 			pstmt = conn.prepareStatement(sql);
 
 			// sql 파라미터 설정
-			pstmt.setString(2, dept.getDname());
-			pstmt.setString(3, dept.getLoc());
-			pstmt.setInt(1, dept.getDeptno());
+			pstmt.setString(1, dept.getDname());
+			pstmt.setString(2, dept.getLoc());
+			pstmt.setInt(3, dept.getDeptno());
 
 			resultCnt = pstmt.executeUpdate();
 
