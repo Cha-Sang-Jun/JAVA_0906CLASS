@@ -16,12 +16,14 @@ public class Dept {
 	}
 
 	// 기본 생성자 : Beans 클래스 생성시 반드시 기본 생성자가 있어야 한다.
-	// Beans : 시스템에서 객체를 자동으로 만들어주는 클래스. 생성자가 있는 경우 자동으로 만들어주지 못하기 때문에 기본생성자를 만들어주어야한다.
+	// Beans : 시스템에서 객체를 자동으로 만들어주는 클래스. 생성자가 있을 경우 자동으로 만들어주지 못하기 때문에 기본생성자 생성 필요.
 	public Dept() {}
 	
-	// getter / setter 생성
+	
 	// VO : 읽기전용, getter 메소드만 존재 -> DB에서 값을 읽어와서 출력만 해줄때, 값이 변경되는걸 원치 않을때
-	// DTO : 읽고 쓰기 가능, getter / setter
+	// DTO : 읽고 쓰기 가능, getter / setter 메소드
+	// getter / setter 메소드 생성
+	
 	public int getDeptno() {
 		return deptno;
 	}

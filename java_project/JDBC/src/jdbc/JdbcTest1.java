@@ -19,7 +19,7 @@ public class JdbcTest1 {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 
 			// 2. 연결 (Connection 객체)
-			// String jdbcUrl = "jdbc:oracle:thing:@[ip주소]:[포트]:[데이터베이스]";
+			// String jdbcUrl = "jdbc:oracle:thin:@[ip주소]:[포트]:[데이터베이스]";
 			String jdbcUrl = "jdbc:oracle:thin:@localhost:1521:xe";
 			String user = "scott";
 			String pw = "tiger";
@@ -28,8 +28,6 @@ public class JdbcTest1 {
 			System.out.println("데이터베이스 연결  성공!");
 			
 			// 3. 작업(CRUD)
-			
-			
 			// 4. 연결종료(Close())
 
 		} catch (ClassNotFoundException e) { // 라이브러리 연결을 안했거나 클래스 이름에 오타가 났을 경우

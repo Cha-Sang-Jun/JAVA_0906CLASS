@@ -14,7 +14,7 @@ public class JdbcTestStatementSelect {
 
 		Connection conn = null;
 		Statement stmt = null;
-		ResultSet rs = null; // close를 마지막에 해주어야 하기 때문에 위쪽에서 선언해준다. ??
+		ResultSet rs = null; // 마지막에 close를 해주어야 하기 때문에 위쪽에서 선언해준다. ??
 
 		// Dept 저장을 위한 List<Dept>
 		List<Dept> list = new ArrayList<Dept>();
