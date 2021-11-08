@@ -28,6 +28,8 @@ public class JdbcTest1 {
 			System.out.println("데이터베이스 연결  성공!");
 			
 			// 3. 작업(CRUD)
+			
+			
 			// 4. 연결종료(Close())
 
 		} catch (ClassNotFoundException e) { // 라이브러리 연결을 안했거나 클래스 이름에 오타가 났을 경우
