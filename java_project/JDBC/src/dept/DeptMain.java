@@ -17,7 +17,7 @@ public class DeptMain {
 		// 대표적인 싱글톤 패턴
 		// Calendar c = Calendar.getInstance();
 		
-		Connection conn;
+		Connection conn = null;
 		List<Dept> list = null;
 
 		try {
@@ -76,7 +76,7 @@ public class DeptMain {
 		} catch (SQLException e) {
 			
 			try {
-				conn.rollback();
+				conn.rollback();	
 			} catch (SQLException e1) {
 				e1.printStackTrace();
 			}
