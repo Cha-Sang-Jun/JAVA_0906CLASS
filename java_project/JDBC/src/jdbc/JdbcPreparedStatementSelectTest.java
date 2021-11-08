@@ -2,18 +2,20 @@ package jdbc;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-public class JdbcTestStatementDML {
+public class JdbcPreparedStatementSelectTest {
 
 	public static void main(String[] args) {
 
 		Connection conn = null;
-		Statement stmt = null;
+		// Statement stmt = null;
+		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 
 		// Dept 저장을 위한 List<Dept>
@@ -32,21 +34,21 @@ public class JdbcTestStatementDML {
 			conn = DriverManager.getConnection(jdbcUrl, user, pw);
 			System.out.println("데이터베이스 연결  성공!");
 
-			// 3. 작업 : CRUD -> Statement 객체 생성
-			stmt = conn.createStatement();
-
-			// Sql : insert
-			String sql = "insert into dept (deptno, dname, loc) values (50, 'test', 'SEOUL')";
-
-			// 실행횟수 반환
-			int cnt = stmt.executeUpdate(sql);
-
-			if (cnt > 0) {
-				System.out.println("입력되었습니다.");
-			} else {
-				System.out.println("입력실패!");
+			// 3. 작업 : CRUD -> PreparedStatement 객체 생성
+			//    SQL을 등록해서 생성하기 때문에 Sql 먼저 작성
+			
+			// Sql : select
+			String sql = "select * from dept where deptno = ?"; // 이 '?' 안에 들어갈 값을 setting 해주어야한다.
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, 90);
+			
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				list.add(new Dept(rs.getInt(1), rs.getString(2), rs.getString(3)));
 			}
-
+			
 			// 4. 연결종료(Close())
 
 		} catch (ClassNotFoundException e) {
@@ -58,13 +60,20 @@ public class JdbcTestStatementDML {
 
 		} finally { // 닫아줄때는 역순으로
 
-			if (stmt != null) {
+			if (pstmt != null) {
 				try {
-					stmt.close();
+					pstmt.close();
 				} catch (SQLException e) {
 					e.printStackTrace();
 				}
 			}
+
+			if (rs != null)
+				try {
+					rs.close();
+				} catch (SQLException e1) {
+					e1.printStackTrace();
+				}
 
 			if (conn != null) {
 				try {
@@ -75,6 +84,14 @@ public class JdbcTestStatementDML {
 
 			}
 
+		}
+
+		System.out.println("부서리스트");
+		System.out.println("------------------------");
+		System.out.println("부서번호 \t 부서이름 \t 위치");
+		System.out.println("-----------------------");
+		for (Dept dept : list) { // Dept객체를 따로 생성하면 출력 or 다른곳에 정보만 보내주는 등 다양하게 활용할  수 있다.
+			System.out.println(dept);
 		}
 
 	}

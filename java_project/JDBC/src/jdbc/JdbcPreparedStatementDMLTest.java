@@ -2,22 +2,19 @@ package jdbc;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-public class JdbcTestStatementDML {
+public class JdbcPreparedStatementDMLTest {
 
 	public static void main(String[] args) {
 
 		Connection conn = null;
-		Statement stmt = null;
-		ResultSet rs = null;
-
-		// Dept 저장을 위한 List<Dept>
-		List<Dept> list = new ArrayList<Dept>();
+		PreparedStatement pstmt = null;
 
 		// 1. 드라이버를 로드한다.
 		try {
@@ -32,16 +29,18 @@ public class JdbcTestStatementDML {
 			conn = DriverManager.getConnection(jdbcUrl, user, pw);
 			System.out.println("데이터베이스 연결  성공!");
 
-			// 3. 작업 : CRUD -> Statement 객체 생성
-			stmt = conn.createStatement();
+			// 3. 작업 : CRUD -> PreparedStatement 객체 생성, 먼저 SQL 등록 후 사용
+			String sql = "insert into dept values (?, ?, ?)";
 
-			// Sql : insert
-			String sql = "insert into dept (deptno, dname, loc) values (50, 'test', 'SEOUL')";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, 80);
+			pstmt.setString(2, "DEV");
+			pstmt.setString(3, "PUSAN");
 
-			// 실행횟수 반환
-			int cnt = stmt.executeUpdate(sql);
+			// DML 실행
+			int resultCnt = pstmt.executeUpdate(); // 위에서 ?에 들어갈 sql을 다 정해놨기 때문에 sql이 들어가면 안되고 그냥 실행
 
-			if (cnt > 0) {
+			if (resultCnt > 0) {
 				System.out.println("입력되었습니다.");
 			} else {
 				System.out.println("입력실패!");
@@ -58,9 +57,9 @@ public class JdbcTestStatementDML {
 
 		} finally { // 닫아줄때는 역순으로
 
-			if (stmt != null) {
+			if (pstmt != null) {
 				try {
-					stmt.close();
+					pstmt.close();
 				} catch (SQLException e) {
 					e.printStackTrace();
 				}
