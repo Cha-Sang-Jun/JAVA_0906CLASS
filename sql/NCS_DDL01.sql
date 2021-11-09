@@ -80,13 +80,14 @@ delete from dept
 where deptno = (select deptno from dept where dname = 'RESEARCH' and deptno = 50);
 
 --5. 사용자가 보유한 테이블 목록을 확인하는 SQL문을 작성하시오.
-select * from tabs;
+select * from tab;
 
 --6. EMP 테이블의 구조를 확인하는 SQL을 작성하시오.
-select * from emp;
+desc emp;
 
 --7. 사용자가 정의한 제약조건들을 확인하는 SQL문을 작성하시오.
 select * from all_constraints;
+
 
 ---------------------------------------------------------------------------------
 
@@ -105,14 +106,6 @@ where deptno = 30;
 select * from emp_view;
 
 -- 3. EMP 테이블에서 모든 사원의 부서번호를 이름이 'SCOTT'인 사원의 부서번호로 변경하는 SQL을 작성하시오.
-create table emp01
-as
-select * from emp;
-
-drop table emp01;
-
-select * from emp01;
-
-update emp01
+update emp
 set deptno =  
     (select deptno from emp where ename = 'SCOTT');
