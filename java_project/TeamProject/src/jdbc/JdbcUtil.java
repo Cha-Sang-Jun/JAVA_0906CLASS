@@ -1,4 +1,4 @@
-package reservation;
+package jdbc;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -8,7 +8,6 @@ import java.sql.Statement;
 public class JdbcUtil {
 
 	public static void close(Connection conn) {
-
 		if (conn != null) {
 			try {
 				conn.close();
@@ -37,4 +36,5 @@ public class JdbcUtil {
 			}
 		}
 	}
+
 }
