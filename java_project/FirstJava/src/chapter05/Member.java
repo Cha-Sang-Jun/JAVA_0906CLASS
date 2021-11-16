@@ -8,13 +8,13 @@ public class Member {
 	String name;
 	String callNum;
 	String major;
-	String grade;
+	int grade;
 	String email;
 	String birth;
 	String adress;
 
 //	② 위에서 정의한 정보를 출력하는 메소드 정의
-	public void printData() {
+	public void showData() {
 		System.out.println("이름: " + name);
 		System.out.println("전화번호: " + callNum);
 		System.out.println("전공: " + major);
@@ -31,7 +31,7 @@ public class Member {
 	Member() {
 	}
 
-	Member(String name, String callNum, String major, String grade, String email) {
+	Member(String name, String callNum, String major, int grade, String email) {
 		this.name = name;
 		this.callNum = callNum;
 		this.major = major;
@@ -39,7 +39,7 @@ public class Member {
 		this.email = email;
 	}
 
-	Member(String name, String callNum, String major, String grade, String email, String birth, String adress) {
+	Member(String name, String callNum, String major, int grade, String email, String birth, String adress) {
 		this.name = name;
 		this.adress = adress;
 		this.birth = birth;
@@ -49,12 +49,12 @@ public class Member {
 		this.major = major;
 	}
 
-//	④ main() 메소드에서 두 가지 생성자를 이용해서 인스턴스 생성하고 출력 메소드를 통해 저장된 데이터 출력
-	public static void main(String[] args) {
-		Member member = new Member("차상준", "000-000", "신소재", "4", "없음", "2000-0000", "의왕");
-		member.printData();
-
-		Member member2 = new Member("손흥민", "1", "1", "1", "1");
-		member2.printData();
-	}
+////	④ main() 메소드에서 두 가지 생성자를 이용해서 인스턴스 생성하고 출력 메소드를 통해 저장된 데이터 출력
+//	public static void main(String[] args) {
+//		Member member = new Member("차상준", "000-000", "신소재", "4", "없음", "2000-0000", "의왕");
+//		member.printData();
+//
+//		Member member2 = new Member("손흥민", "1", "1", "1", "1");
+//		member2.printData();
+//	}
 }
