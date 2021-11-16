@@ -1,17 +1,14 @@
 package orders;
 
 public class FoodOrders extends Orders {
-	
-	
-	   // 클래스 내부에서 인스턴스를 생성!!!, 이 인스턴스를 직접 접근 안되도록!
-	   private static FoodOrders dao = new FoodOrders();
 
-	   // 내부에서 만들어진 인스턴스를 특정 메소드를 이용해서 받을 수 있도록 해주자!!! (싱글톤 패턴)
-	   static public FoodOrders getInstance() {
-	      return dao;
-	   }
-	   
-	   
+	// 클래스 내부에서 인스턴스를 생성!!!, 이 인스턴스를 직접 접근 안되도록!
+	private static FoodOrders dao = new FoodOrders();
+
+	// 내부에서 만들어진 인스턴스를 특정 메소드를 이용해서 받을 수 있도록 해주자!!! (싱글톤 패턴)
+	static public FoodOrders getInstance() {
+		return dao;
+	}
 
 	private String fname;
 	private int fprice;

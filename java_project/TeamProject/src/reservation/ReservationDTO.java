@@ -2,16 +2,17 @@ package reservation;
 
 public class ReservationDTO {
 
-	// 예약 테이블 변수
-	private int rid; // 예약번호(PK)
-	private String rname; // 예약자 이름
-	private String rphonenumber; // 예약자 연락처
-	private int rcount; // 예약인원
-	private String rdate; // 예약 날짜 및 시간
-	private int tid; // 예약 테이블 번호
+	private int rid;
+	private String rname;
+	private String rphonenumber;
+	private int rcount;
+	private String rdate;
+	private int tid;
 
-	// 모든 정보를 저장하는 생성자와 예약번호는 받지 않는 생성자를 정의
-	public ReservationDTO(int rid, String rdate, String rname, String rphonenumber, int rcount,int tid) {
+	public ReservationDTO() {
+	}
+
+	public ReservationDTO(int rid, String rdate, String rname, String rphonenumber, int rcount, int tid) {
 		this.rid = rid;
 		this.rname = rname;
 		this.rphonenumber = rphonenumber;
@@ -19,8 +20,9 @@ public class ReservationDTO {
 		this.rdate = rdate;
 		this.tid = tid;
 	}
-	
-	public ReservationDTO(String rdate, String rname, String rphonenumber, int rcount,int tid) {
+
+	public ReservationDTO(String rdate, String rname, String rphonenumber, int rcount, int tid) {
+
 		this.rname = rname;
 		this.rdate = rdate;
 		this.rphonenumber = rphonenumber;
@@ -28,9 +30,6 @@ public class ReservationDTO {
 		this.tid = tid;
 	}
 
-	public ReservationDTO() {
-	}
-	
 	public int getRid() {
 		return rid;
 	}
@@ -81,8 +80,8 @@ public class ReservationDTO {
 
 	@Override
 	public String toString() {
-		return "  " +rid + " \t" + rname + "\t" + rphonenumber + "\t"
-				+ "  " + rcount + "\t" + rdate + "\t" + "  " + tid;
+		return "  " + rid + " \t" + rname + "\t" + rphonenumber + "\t" + "  " + rcount + "\t" + rdate + "\t" + "  "
+				+ tid;
 	}
 
 	public boolean equals(Object o) {

@@ -17,15 +17,11 @@ import members.Members;
 public class OrdersDao {
 	MembersDao membersDao = MembersDao.getInstance();
 
-	// 인스턴스 하나만 만들어 사용하도록 하는 패턴
-	// 외부에서 인스턴스를 생성하지 못하도록 처리! -> 생성자의 접근제어자를 private
 	private OrdersDao() {
 	}
 
-	// 클래스 내부에서 인스턴스를 생성!!!, 이 인스턴스를 직접 접근 안되도록!
 	private static OrdersDao dao = new OrdersDao();
 
-	// 내부에서 만들어진 인스턴스를 특정 메소드를 이용해서 받을 수 있도록 해주자!!! (싱글톤 패턴)
 	static public OrdersDao getInstance() {
 		return dao;
 	}
@@ -56,7 +52,6 @@ public class OrdersDao {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
-			JdbcUtil.close(conn);
 			JdbcUtil.close(pstmt);
 		}
 		return result;
@@ -78,7 +73,6 @@ public class OrdersDao {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} finally {
-			JdbcUtil.close(conn);
 			JdbcUtil.close(pstmt);
 		}
 
@@ -115,33 +109,13 @@ public class OrdersDao {
 		return result;
 	}
 
-//	// 회원 여부 체크
-//	public void memberCheck() {
-//		Connection conn = null;
-//		Scanner sc = new Scanner(System.in);
-//
-//		System.out.println("회원이십니까? y/n");
-//		System.out.println(">");
-//		String yesNo = sc.nextLine();
-//		if (yesNo.equalsIgnoreCase("y")) {
-//			System.out.println("핸드폰 번호로 검색");
-//			System.out.println("---------------------");
-//			System.out.println(">");
-//			String searchPhone = sc.nextLine();
-//			Members m = membersDao.searchByPhone(conn, searchPhone);
-//			System.out.println(m);
-//			// 해당 회원 방문카운트+
-//			
-//		}
-//	}
-
-// 빈테이블 체크하기(총합 가격이 0인지 체크하기)
+	// 빈테이블 체크하기(총합 가격이 0인지 체크하기)
 
 	public int checkEmptyTables(Connection conn, int tid) {
 		int a = selectTotalPrice(conn, tid);
 		if (a == 0) {
 
-			System.out.println("빈 테이블 입니다.");
+			System.out.println("<빈 테이블 입니다.>");
 			return 0;
 
 		}
