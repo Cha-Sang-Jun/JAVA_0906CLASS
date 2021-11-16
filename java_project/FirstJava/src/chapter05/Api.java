@@ -9,9 +9,8 @@ public class Api {
 //	 그리고 이 문자열을 역순으로 다시 출력하는 프로그램을 작성.
 		String str = "ABCDEFGHIJKLMN";
 		char[] strArr = str.toCharArray();
-
 		// case1
-		for (int i = strArr.length - 1; i >= 0;) {
+		for (int i = strArr.length; i >= 0;) {
 			System.out.println(strArr[i]);
 		}
 		System.out.println("\n---------------------");
