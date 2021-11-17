@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>FORM TAG </title>
+</head>
+
+<!-- form 태그는 사용자에게 보여지지 않는다. 사용자들이 입력한 정보를 서버로 보내는 역할을 한다.  -->
+
+<body>
+    <form action="#" method="get">
+
+        이름 : <input type="text" name="username" value="cool"> <br>
+        <!-- 'username'이라는 파라미터에 사용자가 입력한 값을 action에 입력한 경로로 보낸다. -->
+        ID : <input name="userId"> <br>
+        PW : <input type="password" name="pw"> <br>
+        <!-- <input type="submit"> -->
+
+        <!-- <form action='#' method="post">
+        이름 : <input type="text" name="username"> <br>   => 'username'이라는 파라미터에 사용자가 입력한 값을 action에 입력한 경로로 보낸다. 
+        ID : <input name="userId"> <br>
+        PW : <input type="password" name="pw"> <br>
+    </form> -->
+
+        <hr> <!-- checkbox는 여러개 선택을 할 때 사용 -->
+
+        <input type="checkbox" name="lang" value="ko"> 한글 <br>
+        <input type="checkbox" name="lang" value="en"> 영어 <br>
+
+        <hr>
+
+        <input type="radio" name="program" value="java"> 자바 <br>
+        <input type="radio" name="program" value="html5"> HTML5 <br>
+        <input type="radio" name="program" value="css3"> CSS3 <br>
+        <input type="radio" name="program" values="javascript"> javascript <br>
+
+        <hr>
+        type = "color" <input type="color" name="color"> <br>
+
+        <hr>
+        <input type="date" name="date"> <br>
+        <input type="datetime" name="datetime"> datetime => 기능 소멸 <br>
+        <input type="datetime-local" name="datetime-local"> <br>
+        <input type="time" name="time"> <br>
+        <input type = "month" name = "month"> <br>
+        <input type = "week" name = "week"> <br>
+
+        <hr>
+        숫자 : <input type = "number" name = "number"> <br>
+        이메일 : <input type = "email" name = "email"> <br>
+        URL : <input type = "url" name = "url"> <br>
+        TEL : <input type = "tel" name = "tel"> <br>
+
+        <hr>
+        나이 <input type = "range" min = "0" max = "150" name = "age"> <br>
+
+        파일첨부 : <input type = "file" name = "file"> <br>
+
+        입력 폼이 보이지 않는 hidden : <input type = "hidden" name = "midx" value = "11"> <br>
+
+        <input type = "button" name = "button" value = "버튼"> <br>
+        <input type = "submit" value = "전송"> <br>
+        <input type = "reset"> <br>
+        <button> 전송 </button> <br>
+
+
+        <input type="submit">
+    </form>
+</body>
+
+</html>
