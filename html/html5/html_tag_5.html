@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Tag </title>
+</head>
+<style>
+    div {
+        background-color: bisque;
+    }
+
+    #div01 {
+        width: 400px;
+    }
+
+    #div02 {
+        background-color: blue;
+        width: 600px;
+    }
+
+    #divIn {
+        background-color: red;
+        width: 700px;
+        height: 400px;
+    }
+
+    span {
+        /* width : 800px; */
+        /* height : 500px; */
+        background-color: seagreen;
+    }
+</style>
+
+<!-- div : 표현하고자 하는 화면에 공간을 나눌 수 있는 TAG, 중첩가능 => 레이아웃 잡는 용도 -->
+<!-- div의 Id 를 설정해주면 각 div별로 선택가능 -->
+<!-- divIn의 부모는 div02, div03의 부모는 'body'이다. 부모가 가지는 100%의 폭을 가진다. -->
+<!-- 블록형식태그 : 말 그대로 사이즈를 block 형태로 지정하여 태그하는 형식, 폭과 길이를 원하는대로 조절가능 -->
+<!-- 인라인형식태그 : 라인 범위를 지정? or 문자열길이 만큼만 형태 자동 지정되어 태그하는 형식, 폭과 길이를 조절할 수 없다. -->
+<!-- 이미지 태그 : 인라인-블럭 형식, 이미지의 사이즈 만큼만 블럭 형태로 태그 형식을 가진다. -->
+
+<body>
+
+    <span> tester1234 </span>
+    <img src = "images/img1.jpg">
+    <span> tester5678 </span>
+
+    <hr>
+
+    <div id="div01"> DIV- 1
+        <h1> 이미지 태그 </h1>
+    </div>
+    <div id="div02">
+        <h1> DIV -2 </h1>
+        <div id="divIn">
+            <h2> inner DIV </h2>
+        </div>
+    </div>
+    <div>
+        DIV-3
+    </div>
+
+</body>
+
+</html>
