@@ -25,6 +25,7 @@ public class HighLowGame {
 			if (randomNum > input) {
 				System.out.println("입력하신 숫자보다 큰 숫자 입니다.");
 			} else if (randomNum < input) {
+				
 				System.out.println("입력하신 숫자보다 작은 숫자 입니다.");
 			} else if (randomNum == input) {
 				System.out.println("랜덤숫자 맞추기에 성공하셨습니다.");
