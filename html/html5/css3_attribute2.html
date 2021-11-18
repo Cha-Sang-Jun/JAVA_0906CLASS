@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> 박스(block) 속성 </title>
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+
+    #box1 {
+        background-color: white;
+        padding: 2cm;
+        padding-top: 3cm;
+        margin: 1cm;
+        width: 100px;
+        height: 100px;
+        text-align-last: center;
+
+        border-radius: 90px 40px;
+        border: 4px dashed #000;
+    }
+
+    #box2 {
+        width: 100px;
+        height: 100px;
+        background-color: yellow;
+
+        margin-left: 50px;
+        margin-top: 100px;
+
+        border-top: 5px dashed #000;
+        border-left-width: 10px;
+        border-left-color: red;
+        border-left-style: double;
+        border-right: 2px dotted green;
+    }
+
+    #box {
+        background-color: yellow;
+        width: 100px;
+        /* div 전체 사이즈를 가지지만 width와 height 설정 값 만큼만 표현하겠다 */
+        height: 100px;
+        display: inline-block;
+        /* none, block, inline, inline-block */
+    }
+
+    body{
+        background-image: url('images/img1.jpg');
+        background-size: 20% 50%;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-position : 400px 100px;
+        background-position : bottom right;
+    }
+</style>
+
+<body>
+
+    <span style="background-color: tomato;"> 더미 객체 </span>
+    <div id="box"> 대상 객체 </div>
+    <span style="background-color: tomato;"> 더미 객체 </span>
+
+    <hr>
+
+    <div id="box1">
+        <h1>box</h1>
+    </div>
+    <div id="box2">
+        <h2> box2 </h2>
+    </div>
+
+</html>
