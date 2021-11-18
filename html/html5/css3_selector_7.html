@@ -7,45 +7,84 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title> 구조 선택자 </title>
     <style>
+        /* 리스트 태그를 수평 방향으로 나열 */
+        ul {
+            overflow: hidden;
 
-        #photo{
-            width : 300px;
-            height : 300px;
-            border-radius: 50%;
-            border : 1px solid gray;
+            /* 리스트 스타일 */
+            list-style: upper-roman;
         }
 
+        li {
+            float: left;
+            padding: 10px 30px;
+        }
+
+        li:nth-child(2n) {
+            background-color: gold;
+            color: black;
+        }
+
+        li:nth-child(2n+1) {
+            background-color: aquamarine;
+            color: blue;
+        }
+
+        li:first-child {
+            background-color: deeppink;
+            color: floralwhite;
+
+            border-radius: 10px 0px 0px 40px;
+        }
+
+        li:last-child {
+            background-color: deeppink;
+            color: floralwhite;
+
+            border-radius: 0px 40px 10px 0px;
+        }
+    </style>
+    <style>
+        #photo {
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            border: 1px solid gray;
+        }
+
+        /* 링크 선택자 */
         a:link {
-            color : red;
+            color: red;
             text-decoration: none;
         }
 
-        a:visited{
-            color : red;
+        a:visited {
+            color: red;
         }
 
-        a:hover{
-            color:black;
+        a:hover {
+            color: black;
             text-decoration: underline;
         }
-        
-        a:active{
-            color:green;
+
+        a:active {
+            color: green;
         }
     </style>
 </head>
 
-<!-- 링크 선택자 -->
 <body>
-    
-    <a href = "https://www.naver.com"> 네이버 </a>
-    
-    <hr>
 
-    <img id = "photo" src = "images/img1.jpg" alt ="">
+    <!-- 링크선택자 -->
+    <a href="https://www.naver.com"> 네이버 </a>
 
     <hr>
 
+    <img id="photo" src="images/img1.jpg" alt="">
+
+    <hr>
+
+    <!-- 구조 선택자 -->
     <ul>
         <li>1</li>
         <li>2</li>
