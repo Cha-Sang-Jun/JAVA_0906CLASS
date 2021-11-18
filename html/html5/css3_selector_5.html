@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=
+    , initial-scale=1.0">
+    <title> 동위선택자 </title>
+    <style>
+        h1.title {
+            color: white;
+            font-weight: lighter;
+            text-decoration: underline;
+            background-color: black;
+        }
+
+        /* 범위 한정 선택 : 자손과 후손 */
+        #header h1 {
+            background-color: white;
+            color: red;
+        }
+
+        #section h1,
+        p {
+            color: skyblue;
+        }
+
+        #header>h1 {
+            color: blue;
+            font-weight: bold;
+        }
+
+        /* 동위 선택자 : +, ~ // +는 뒤에오는거 하나 찾기, ~는 뒤에오는 모든것 찾기 */
+
+        #head1+h1 {
+            color: blue;
+        }
+
+        #head1+h2 {
+            color: red;
+        }
+    </style>
+
+
+    <!-- 반응 선택자 -->
+
+    <style>
+        /* 마우스 커서가 특정 요소 위로 올라갔을 때 반응 */
+        h3:hover {
+            color: orangered;
+            background-color: slateblue;
+        }
+
+        /* 마우스 커서가 특정 요소를 클릭 했을 때 반응 */
+        h3:active {
+            color: blue;
+            background-color: chartreuse;
+        }
+    </style>
+
+</head>
+
+<!-- id를 쓰지 않고 2번째 줄의 id값이 없는 <h1> Header1 - 2 고르기 -->
+
+<body>
+
+    <h3> 반응 선택자 </h3>
+
+    <hr>
+
+    <div>
+        <h1 id="head1"> Header1 - 1 </h1>
+        <h1> Header1 - 2</h1>
+        <h2> Header2 - 1</h2>
+        <h2> Header2 - 2</h2>
+        <h2> Header2 - 3</h2>
+        <h2> Header2 - 4</h2>
+        <h2> Header2 - 5</h2>
+
+    </div>
+
+    <hr>
+
+    <div id="header">
+        <h1 class="title"> 제목입니다. </h1>
+        <div id="nav">
+            <h1> 네비게이션 </h1>
+        </div>
+        <p> 테스트입니다. </p> <!-- section의 <p>만 지정되는게 아니라 <div> 전체 <p>가 선택된다. -->
+    </div>
+
+    <div id="section">
+        <h1 class="title"> 제목2입니다. </h1>
+        <p> 내용이 표현됩니다. </p>
+    </div>
+
+
+
+</body>
+
+</html>

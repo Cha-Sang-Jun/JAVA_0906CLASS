@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=
+    , initial-scale=1.0">
+    <title> 후손선택자 </title>
+    <style>
+        h1.title {
+            color: white;
+            font-weight: lighter;
+            text-decoration: underline;
+            background-color: black;
+        }
+
+        /* 범위 한정 선택 : 자손과 후손 */
+        #header h1 {
+            background-color: white;
+            color: red;
+        }
+
+        #section h1, p {
+            color : skyblue;
+        }
+
+        #header>h1 {
+            color : blue;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<!-- header의 h1들만 선택해서 바꾸기 -->
+
+<body>
+
+    <div id="header">
+        <h1 class="title"> 제목입니다. </h1>
+        <div id="nav">
+            <h1> 네비게이션 </h1>
+        </div>
+        <p> 테스트입니다. </p>  <!-- section의 <p>만 지정되는게 아니라 <div> 전체 <p>가 선택된다. -->
+    </div>
+
+    <div id="section">
+        <h1 class="title"> 제목2입니다. </h1>
+        <p> 내용이 표현됩니다. </p>
+    </div>
+
+
+
+</body>
+
+</html>

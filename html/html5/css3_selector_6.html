@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> 상태 선택자 </title>
+    <style>
+
+        input:enabled {
+            border: 5px solid #aaaaaa;
+        }
+
+        input:disabled {
+            border: 2px solid #f12312;
+        }
+
+        input:focus {
+            background-color: darkorange;
+            border: 5px solid gold;
+        }
+
+        #article {
+            width : 500px;
+            height : 300px;
+
+            overflow : hidden;
+        }
+
+        input[type=checkbox]:checked+div#article {
+            height : 0px;
+        }
+
+        input[type = checkbox] {
+            display: none;
+        }
+    </style>
+
+</head>
+
+
+
+<body>
+
+    <label for = "btn"> 기사 가리기 </label><input id = "btn" type="checkbox">
+    <div id = "article">
+        <h1> 학비 4천만원 플렉스, 기러기엄마 박선주의 '솔로육아'가 가져온 위화감[SS톡]
+
+        </h1>
+        <p> 스포츠서울 | 박효실기자] 아프리카 속담에 ‘아이 하나 키우는데 온 마을이 필요하다’라는 말이 있다고 한다.
+
+            아이를 키워본 사람이라면, 혹은 그 과정을 지켜본 사람이라면 누구나 공감할 이야기다. 그저 ‘앙앙’ 우는 것으로 의사표현을 하던 작고 연약한 생명은 주변인들의 보살핌과 사랑으로 온전히 한 몫을
+            하는 사람으로 성장해 간다.
+
+        </p>    
+
+    </div>
+
+
+    <hr>
+
+    <input> <input disabled>
+
+</body>
+
+</html>
