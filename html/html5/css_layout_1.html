@@ -31,30 +31,45 @@
             background-color: red;
             left: 20px;
             top: 20px;
+            z-index : 100;
         }
 
         #box2 {
             background-color: green;
             right: 20px;
             top: 20px;
+            z-index : 10;
         }
 
         #box3 {
             background-color: blue;
             right: 20px;
             bottom : 20px;
+            z-index : 10;
         }
 
         #box4 {
             background-color: yellow;
             left: 20px;
             bottom: 20px;
+            z-index : 10;
+        }
+
+        #notice {
+            width : 80%;
+            height : 400px;
+            
+            background-color: violet;
+
+            position : absolute;
+            z-index : 99;
         }
     </style>
 </head>
 
 <body>
 
+    <div id = "notice"> </div>
     <div id="box1" class="box"> box1 </div>
     <div id="box2" class="box"> box2 </div>
     <div id="box3" class="box"> box3 </div>
