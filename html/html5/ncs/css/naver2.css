@@ -1,0 +1,161 @@
+
+* {
+    margin : 0;
+    padding : 0;
+    background-color: rgb(247, 247, 247);
+}
+
+#main_wrap {
+    /* border : 1px solid black; */
+
+    width : 550px;
+    height : 1250px;
+
+    margin-left : 38%;
+    margin-right : 37%;
+
+    padding-left : 30px;
+
+}
+
+#logo_wrap{
+    /* border : 1px solid black; */
+
+    width : 548px;
+    height : 60px;
+
+    text-align: center;
+
+    margin-top : 20px;
+    margin-right : 20px;
+}
+
+#div01{
+    /* border : 1px solid black; */
+
+    width : 548px;
+    height : 270px;
+
+    margin-top : 20px;
+
+    padding-left : 20px;
+
+    line-height: 230%;
+
+    font-size: 14px;
+    font-weight: bold;
+}
+
+#div01>input[type = text] {
+    width : 420px;
+    height : 47px;
+
+    text-align: right;
+}
+
+#div02{
+    /* border : 1px solid black; */
+    width : 548px;  
+    height : 340px;
+
+    margin-bottom : 10px;
+
+    padding-left : 20px;
+
+    line-height: 220%;
+
+    font-size : 14px;
+    font-weight: bold;
+}
+
+#div02>input[type = text] {
+    width : 420px;
+    height : 47px;
+}
+
+#div02>input[type=datetime-local]{
+    width : 420px;
+    height : 47px;
+}
+#div03{
+    /* border : 1px solid black; */
+    width : 548px;
+    height : 300px;
+
+    line-height: 220%;
+
+    font-size : 14px;
+    font-weight: bold;
+
+    margin-bottom : 5px;
+
+    padding-left : 20px;
+}
+
+#div03>input[type=text]{
+    width : 420px;
+    height : 47px;
+}
+
+#div04{
+    width : 442px;
+    /* border : 1px solid black; */
+    margin-top : 20px;
+
+}
+
+#div04>input[type=text] {
+    width : 308px;
+    height : 47px;
+}
+
+#div04>input[type=submit]{
+    width : 105px;
+    height : 47px;
+
+    background-color: #19CE60;
+    color : white;
+    font-size : 13px;
+
+    margin-left : 4px;
+
+    border : none;
+
+    cursor: pointer;
+}
+
+#div05{
+    margin-top : 10px;
+}
+
+#div05>input[type=text] {
+    width : 420px;
+    height : 47px;
+}
+
+#div05>input[type=button]{
+    margin-top : 30px;  
+    width : 420px;
+    height : 47px;
+
+    background-color: #19CE60;
+    color : white;
+    font-size : 18px;
+    font-weight: 700;
+
+    border : 1px solid #19CE60;
+
+    cursor : pointer;
+}
+
+#main_wrap>footer{
+    /* border : 1px solid black; */
+    width : 548px;
+    height : 50px;
+
+    padding-top : 50px; 
+
+    font-size : 13px;
+
+    position: absolute;
+}

@@ -63,9 +63,14 @@ body {
     padding-left : 5px;
 
     border : 1px solid #EEE;
-    border-radius: 6%;
+    border-radius: 5px;
 
     cursor : auto;  
+}
+
+#login_wrap>input[type = text]:focus {
+    outline : 1px solid white;
+    border : 2px solid #5598fc;
 }
 
 #login_wrap>input[type = submit] {
@@ -79,10 +84,14 @@ body {
     font-size: 20px;
     font-weight: bold;
 
-    border-radius: 6%;
+    border-radius: 5px;
     border : none;
 
     cursor : pointer;
+}
+
+#login_wrap>input[type = submit]:hover {
+    background-color: #156cdf;
 }
 
 #login_wrap2>input[type = button] {
@@ -97,12 +106,16 @@ body {
     font-size : 17px;
     font-weight: bold;
 
-    border-radius: 6%;
+    border-radius: 5px;
     border : none;
 
     cursor : pointer;
 
     margin-top : 12px;
+}
+
+#login_wrap2>input[type = button]:hover {
+    background-color: #32941e;  
 }
 
 #login_wrap2 {
@@ -122,15 +135,15 @@ body {
 footer {
     background-color: white;
 
-    width : 900px;
-    height : 100px;
+    width : 1300px;
+    height : 150px;
 
     text-align: left;
 
     line-height: 170%;
 
     margin-left : 400px;
-    margin-right : 300px;
+    margin-right : 800px;
 
     padding-top : 30px;
     padding-left : 20px;
@@ -143,7 +156,9 @@ footer {
 
 #footer_box {
     margin-top : 10px;
+    margin-right : 350px;
 }
+
 
 
 
