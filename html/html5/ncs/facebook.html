@@ -5,8 +5,29 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> NCS 과제 </title>
-    <link rel="stylesheet" href="facebook.css">
+    <title> NCS 과제01 </title>
+    <link rel="stylesheet" href="../ncs/css/facebook.css">
+    <style>
+        a {
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        #a2 {
+            color : black;
+            font-weight: 900;
+            font-size : 15px;
+        }
+
+        #a2:hover {
+            text-decoration: underline;
+        }
+
+    </style>
 </head>
 
 <body>
@@ -14,30 +35,43 @@
     <div id="main_wrap">
         <!-- 로고 영역 -->
         <div id="logo_wrap">
-            <header>
-                <img src="../images/img_facebookLogo.png">
-                <p> Facebook에서 전세계에 있는 친구, 가 <br> 족, 지인들과 함께 이야기를 나눠보세요. </p>
-            </header>
+            <img src="../images/img_facebookLogo.png">
+            <p> Facebook에서 전세계에 있는 친구, 가 <br> 족, 지인들과 함께 이야기를 나눠보세요. </p>
         </div>
 
         <!-- 로그인 영역 -->
         <div id="login_wrap">
             <input type="text" name="userId" required placeholder="이메일 또는 전화번호" autofocus> <br>
             <input type="text" name="password" required placeholder="비밀번호" autofocus> <br>
-            <input type="button" value="로그인"> <br>
-            비밀번호를 잊으셨나요?
+            <input type="submit" value="로그인"> <br>
+            <a href="#"> 비밀번호를 잊으셨나요? </a>
+            <div id="login_wrap3">
+                <hr>
+            </div>
+            <div id="login_wrap2">
+                <input type="button" value="새 계정 만들기"> <br>
+            </div>
+            <div id="div01">
+                유명인, 브랜드 또는 비즈니스를 위한 <a id = "a2" href="#"> 페이지 만들기. </a>
+            </div>
         </div>
 
-
+        <!-- 로그인 영역 밑 글씨
+        <div id="login2_wrap">
+            유명인, 브랜드 또는 비지니스를 위한 <a href="#"> 페이지 만들기 </a>
+        </div> -->
     </div>
-    
+
+
     <footer>
         한국어 English (US) Tiếng Việt Bahasa Indonesia ภาษาไทย Español 中文(简体) 日本語
-        Português (Brasil) Français (France) Deutsch <br>
-        <hr>
-        가입하기 로그인 Messenger Facebook LiteWatch 장소 게임 Marketplace Facebook Pay 채용 정보
-        Oculus Portal Instagram Bulletin 지역<br> 기부 캠페인 서비스 투표 정보 센터 그룹정보 광고 만들기 
-        페이지 만들기 개발자채용정보 개인정보처리방침 쿠키 AdChoices 이용약관<br> 고객센터
+        Português (Brasil) Français (France) Deutsch <input type="button" value="+"> <br>
+        <div id="footer_box">
+            <hr>
+            가입하기 로그인 Messenger Facebook LiteWatch 장소 게임 Marketplace Facebook Pay 채용 정보
+            Oculus Portal Instagram Bulletin 지역<br> 기부 캠페인 서비스 투표 정보 센터 그룹정보 광고 만들기
+            페이지 만들기 개발자채용정보 개인정보처리방침 쿠키 AdChoices 이용약관<br> 고객센터
+        </div>
     </footer>
 </body>
 

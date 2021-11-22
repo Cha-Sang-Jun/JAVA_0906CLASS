@@ -1,0 +1,149 @@
+
+/* 기본설정 */
+* {
+    margin : 0;
+    padding : 0;
+}
+
+body {
+    background-color: rgb(247, 247, 247);
+}
+
+/* main_wrap 설정 */
+#main_wrap {
+    margin-left : 300px;
+    margin-right : 300px;
+    width : 1100px;
+    height : 720px;
+    font-size: 27px;
+
+}
+
+#logo_wrap {
+    width : 488px;
+    float : left;    
+
+    padding-top: 200px;
+    padding-left: 130px;
+}
+
+#login_wrap {
+    background-color: white;
+
+    width : 398px;
+    height : 320px;
+
+    float : right;
+
+    margin-top : 160px;
+
+    text-align : center;
+
+    line-height : 40px;
+    font-size: 14px;
+    color : #5aa0fc;
+    font-weight: lighter;
+
+    border : 0.5px solid rgb(245, 239, 239);
+    border-radius : 7px;
+    box-shadow : 5px 5px 15px #CCC;
+}
+
+#div01 {
+    margin-top : 30px;
+    color : black;
+}
+
+#login_wrap>input[type = text] {
+    width : 340px;
+    height : 40px;
+
+    margin-top : 10px;
+    padding-top : 10px;
+    padding-left : 5px;
+
+    border : 1px solid #EEE;
+    border-radius: 6%;
+
+    cursor : auto;  
+}
+
+#login_wrap>input[type = submit] {
+    width : 340px;
+    height : 50px;
+    margin : 5px;
+
+    background-color: #1877F2;
+    color : white;
+
+    font-size: 20px;
+    font-weight: bold;
+
+    border-radius: 6%;
+    border : none;
+
+    cursor : pointer;
+}
+
+#login_wrap2>input[type = button] {
+    width : 137px;
+    height : 48px;
+    margin : 5px;
+
+    text-align: center;
+    background-color : #42B72A;
+    color : white;
+
+    font-size : 17px;
+    font-weight: bold;
+
+    border-radius: 6%;
+    border : none;
+
+    cursor : pointer;
+
+    margin-top : 12px;
+}
+
+#login_wrap2 {
+    margin-top : 10px;
+    margin-left : 20px;
+    margin-right: 20px;
+    margin-bottom : 10px;
+}
+
+#login_wrap3 {
+    margin-left : 20px;
+    margin-right : 20px;
+    font-weight: lighter;
+    color :rgb(209, 203, 203)
+}
+
+footer {
+    background-color: white;
+
+    width : 900px;
+    height : 100px;
+
+    text-align: left;
+
+    line-height: 170%;
+
+    margin-left : 400px;
+    margin-right : 300px;
+
+    padding-top : 30px;
+    padding-left : 20px;
+
+    font-size: 12px;
+    color : gray;
+
+    word-spacing: 8px;
+}
+
+#footer_box {
+    margin-top : 10px;
+}
+
+
+
