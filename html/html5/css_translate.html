@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> 요소의 변형 </title>
+    <!-- <style>
+        .border {
+            border : 1px solid #333;
+            width : 1000px;
+        }
+
+        .movex:hover {
+             transform: translateX(250px);
+        }
+
+        .movey:hover {
+            transform : translateY(150px);
+        }
+
+        .movexy:hover{
+            transform : translate(200px, 200px);
+        }
+    </style> -->
+    <!-- <style>
+        .border {
+            border : 1px solid #333;
+            width : 1000px;
+        }
+
+        .scalex:hover {
+            transform : scaleX(1.5);
+        }
+
+        .scaley:hover {
+            transform: scaleY(2);
+        }
+
+        .scalexy:hover{
+            transform : scale(2, 3);
+        }
+    </style> -->
+    <!-- <style>
+        .border {
+            border : 1px solid #333;
+            width : 1000px;
+        }
+
+        .rotate60:hover {
+            transform : rotate(60deg);
+        }
+
+        .rotate120:hover {
+            transform: rotate(120deg);
+        }
+
+        .rotate180:hover{
+            transform : scale(2,3) rotate(180deg);
+        }
+    </style> -->
+    <!-- <style>
+        /* rotate 시키는 기준점을 임의로 잡아줄 수 있다. */
+        .img {
+            transform : rotate(45deg);
+        }
+
+        .rotate60 .img {
+            transform-origin : left top;
+        }
+        
+        .rotate120 .img {
+            transform-origin : right top;
+        }
+
+        .rotate180 .img {
+            transform-origin : right bottom;
+        }
+
+        .rotate240 .img {
+            transform-origin : left bottom;
+        }
+    </style> -->
+    <style>
+        #tr1 {
+            width : 100px;
+            height : 100px;
+            
+            background-color: blue;
+
+            border : 1px solid #000;
+
+            transition-property: width, height;
+            transition-delay : 5s, 5s;
+            transition-duration: 1.5s, 1s;
+            transition-timing-function: linear;
+        }
+
+        #tr1:hover {
+            width : 200px;
+            height : 250px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- <div class="border">
+        <div class="movex"> <img src="images/img1.jpg">
+        </div>
+    </div>
+
+    <div class="border">
+        <div class="movey"> <img src="images/img1.jpg">
+        </div>
+    </div>
+
+    <div class="border">
+        <div class="movexy"> <img src="images/img1.jpg">
+        </div>
+    </div> -->
+
+<!-- --------------------------------------------------------------------------------------------------- -->
+
+    <!-- <div class="border">
+        <div class="scalex"> <img src="images/img1.jpg">
+        </div>
+    </div>
+
+    <div class="border">
+        <div class="scaley"> <img src="images/img1.jpg">
+        </div>
+    </div>
+
+    <div class="border">
+        <div class="scalexy"> <img src="images/img1.jpg">
+        </div>
+    </div> -->
+
+<!-- --------------------------------------------------------------------------------------------------- -->
+
+    <!-- <div class="border">
+        <div class="rotate60"> <img src="images/img1.jpg" class = "img">
+        </div>
+    </div>
+
+    <div class="border">
+        <div class="rotate120"> <img src="images/img1.jpg" class = "img">
+        </div>
+    </div>
+
+    <div class="border">
+        <div class="rotate180"> <img src="images/img1.jpg" class = "img">
+        </div>
+    </div>
+
+    <div class="border">
+        <div class="rotate240"> <img src="images/img1.jpg" class = "img">
+        </div>
+    </div> -->
+
+    <hr>
+
+    <div id = "tr1"> </div>
+
+</body>
+
+</html>

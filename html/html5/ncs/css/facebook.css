@@ -16,7 +16,6 @@ body {
     width : 1100px;
     height : 720px;
     font-size: 27px;
-
 }
 
 #logo_wrap {
@@ -68,8 +67,8 @@ body {
     cursor : auto;  
 
     font-size: 16px;
-    font-weight: lighter;
-    color: rgba(240, 238, 238, 0.623);
+    font-weight: 100;
+    color: rgba(240, 238, 238, 0.24);
 }
 
 #login_wrap>input[type = text]:focus {
@@ -140,29 +139,32 @@ body {
 footer {
     background-color: white;
 
-    width : 1300px;
-    height : 150px;
+    width : 2000px;
+    height : 400px;
 
     text-align: left;
 
     line-height: 170%;
 
-    margin-left : 400px;
+    /* margin-left : 400px; */
     margin-right : 800px;
-
-    padding-top : 30px;
-    padding-left : 20px;
+    margin-top : 20px;
+    padding-top : 10px;
+    padding-left : 420px;
 
     font-size: 12px;
     color : gray;
 
     word-spacing: 8px;
+
+    /* border: 1px solid black; */
 }
 
 #footer_box {
     margin-top : 10px;
     margin-right : 350px;
 }
+
 
 
 
