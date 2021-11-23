@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+        div {
+            width : 20%;
+            height : 100px;
+
+            background-color: red;
+        }
+
+        /* @media screen and (max-width : 1024px) {
+            
+            body {
+                background-color : cyan;
+            }
+
+            div {
+                width : 50%;
+                height : 200px;
+
+                background-color: blue;
+            }
+        } */
+
+        @media screen and (max-width : 768px) {
+            body {
+                background-color: yellow;
+            }
+
+            div{
+                width: 80%;
+                height : 400px;
+
+                background-color: green;
+            }
+        }
+        
+        @media screen and (max-width : 320px) {
+            body{
+                background-color: black;
+            }
+
+            div {
+                width : 100%;
+                height : 1000px;
+                background-color: white;
+            }
+        }
+
+        @media screen and (orientation : portrait) {
+            body {
+                background-color: violet;
+            }
+        }
+
+        @media screen and (orientation : landscape) {
+            body {
+                background-color: silver;
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+    <div>
+        devide
+    </div>
+    
+</body>
+</html>

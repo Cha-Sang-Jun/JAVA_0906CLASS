@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+
+        // 자바스크립트 변수 특징
+        // 호이스팅 -> 변수 선언과 동시에 초기화 하지 않는 경우 자동으로 undefined를 저장
+        // 데이터를 저장하는게 아니라 데이터를 저장하는 메모리 주소를 저장한다.
+
+        // 변수 선언 방법 => var 변수이름(식별자);
+        // var 생명주기 => 함수 단위로 생명주기가 발생
+        // => 함수 밖에서 선언하면 전역 변수가 된다.
+
+        // 변수에 저장하는 데이터 타입 : 숫자, 문자열, bool, 함수, 객체(배열...)
+
+        var num; // 전역 변수처럼 사용가능
+
+        console.log('num =>', num);
+
+        // 함수 호출 -> 위에서도 가능
+        fn();
+
+        // 함수 선언 --> 먼저 실행
+        function fn() {
+            num = 11;
+            var age = 10; // 함수 내에서만 존재하는 변수
+            console.log('age =>', age);
+            console.log('num =>', num);
+
+
+            // 상수를 만드는 const => 초기화 후 값을 대입하지 못한다!!!
+            const no = 7;
+            // no = 777;
+
+            // let : 생명주기가 블록( {} )을 기준으로 생성
+            for (let i = 0; i < 5; i++) {
+                console.log(i);
+            }
+        }
+
+        console.log('for문 밖에서 출력하는 i=>', i); // for문에 var i=0 으로 변수를 선언하면 함수 밖에서도 i를 계속 가지고있다. 불필요한 변수
+
+        alert(10 + 10); // 자동 연산
+        // alert(111);
+        // alert('<a href = "http://www.naver.com">');
+
+        if (false) {
+            console.log('if => true');
+        } else {
+            console.log('if => false');
+        }
+
+
+        // console.log('age =>', age);
+        console.log('num =>', num);
+
+        console.log(true);
+        console.log(false);
+        console.log('true<false=> ', true < false);
+        /* 
+            논리값 true / false 
+            비교연산 ( > < >= < == != )
+            논리연산 ( && || ! )
+        */
+
+        console.log(111 / 0);
+        console.log("test \n tester"); // 줄바꿈 개행
+        console.log('age: ', 11);
+        console.log('errorCode:', 404);
+        console.log(152.123);
+        // 숫자연산을 위한 산술연산이 가능하다.
+        // 숫자는 정수와 실수의 변수타입을 구분하지 않는다.
+
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>
