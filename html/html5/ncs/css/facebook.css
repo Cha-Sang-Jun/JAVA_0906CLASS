@@ -63,14 +63,19 @@ body {
     padding-left : 5px;
 
     border : 1px solid #EEE;
-    border-radius: 5px;
+    border-radius: 5px; 
 
     cursor : auto;  
+
+    font-size: 16px;
+    font-weight: lighter;
+    color: rgba(240, 238, 238, 0.623);
 }
 
 #login_wrap>input[type = text]:focus {
     outline : 1px solid white;
     border : 2px solid #5598fc;
+    color : rgba(255, 255, 255, 0.822);
 }
 
 #login_wrap>input[type = submit] {
