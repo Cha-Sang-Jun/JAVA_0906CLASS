@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+
+        // 사용자에게 숫자를 입력받아 양수, 음수, 0 / 홀수 , 짝수 구분하는 프로그램
+        var input = prompt('숫자를 하나 입력해주세요');
+        var numberInput = Number(input);
+
+        if (numberInput > 0) {
+            console.log('양수입니다.', numberInput);
+        } else if (numberInput < 0) {
+            console.log('음수입니다.', numberInput);
+        } else if (numberInput == 0) {
+            console.log('0입니다.', numberInput);
+        } else {
+            console.log('잘못된 입력입니다.', numberInput);
+        }
+
+        if (numberInput %2 == 0) {
+            console.log('짝수입니다.', numberInput);
+        } else if (numberInput %2 == 1) {
+            console.log('홀수입니다.', numberInput);
+        } else {
+            console.log('잘못된 입력입니다.', numberInput);
+        }
+
+        
+        // 삼항 연산자 : 
+        var msg = (numberInput>0) ? '양수' : (numberInput<0) ? '음수' : '0';
+        alert(msg);
+
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>
