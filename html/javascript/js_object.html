@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Javascript Object </title>
+    <script>
+
+        // 객체 생성 => {}
+
+        var obj = {}
+        console.log(typeof (obj));
+
+        // 속성이 있는 객체 정의
+        var person = {
+            // 속성 정의 => 속성 이름: 속성 값(데이터 = 자바스크립트에서 지원하는 타입의 데이터)
+            name: '손흥민', // 여러 개의 속성은, ,를 이용해서 추가
+            age: 30,
+            hello: function () {
+                alert('안녕하세요 저는 ' + this.name + ' 입니다. 나이는 ' + this.age + '입니다.');
+            },
+            like: ['축구', '게임', '음악']
+        };
+
+        // 객체의 속성 참조
+        console.log(person.name);
+        console.log(person.age);
+        // person.hello();
+        for (let i = 0; i < person.like.length; i++) {
+            console.log(person.like[i]);
+        }
+
+        console.log(person);
+
+        console.log('-------------------------------------------');
+
+        // 자바스크립트 객체의 특징 : 객체에 동적으로 속성을 추가 할 수 있다.
+        var player = {};
+        console.log(player);
+
+        // 속성 추가
+        player.name = '손흥민';
+        player.team = 'Tot';
+        player.number = 7;
+        player.play = function () {
+            console.log(this.team + '의 ' + this.name + '선수가 이번 경기에서 1골 1어시를 기록했습니다.');
+        }
+        player.play();
+
+        ////////////////////////////////////////////////////////////////////////////////
+        console.log('-------------------------------------------');
+
+        // 객체를 저장하는 배열
+
+        // 학생들의 과목 점수를 저장하는 배열
+        var students = [];
+
+        // 학생별 과목 점수들을 저장하는 객체를 생성 후 -> 배열에 추가
+        students.push({ name: 'aaa', kor: 100, eng: 100, math: 100 });
+        students.push({ name: 'bbb', kor: 99, eng: 99, math: 99 });
+        students.push({ name: 'ccc', kor: 98, eng: 98, math: 98 });
+        students.push({ name: 'ddd', kor: 97, eng: 97, math: 97 });
+        students.push({ name: 'eee', kor: 96, eng: 96, math: 96 });
+        students.push({ name: 'fff', kor: 95, eng: 95, math: 95 });
+        students.push({ name: 'ggg', kor: 94, eng: 94, math: 94 });
+        students.push({ name: 'hhh', kor: 93, eng: 93, math: 93 });
+        students.push({ name: 'iii', kor: 92, eng: 92, math: 92 });
+        students.push({ name: 'jjj', kor: 91, eng: 91, math: 91 });
+
+        console.log(students);
+
+        // 각 요소(students 객체)에 메소드를 동적 추가
+        for (let i = 0; i < students.length; i++) {
+            // 총점을 구해서 반환하는 메소드
+            students[i].getSum = function () {
+                return this.kor+this.eng+this.math;
+            };
+        }
+
+        // 평균점수를 구해서 반환하는 메소드
+        for (let i = 0; i < students.length; i++) {
+            students[i].getAverage = function () {
+                return this.getSum()/3;
+            };
+        }
+
+        window.onload = function () {
+
+            var newHtml = '';
+            newHtml += '<table border = "1">';
+            newHtml += ' <tr>';
+            newHtml += '    <th> 이름 </th>';
+            newHtml += '    <th> 국어 </th>';
+            newHtml += '    <th> 영어 </th>';
+            newHtml += '    <th> 수학 </th>';
+            newHtml += '    <th> 총점 </th>';
+            newHtml += '    <th> 평균 </th>';
+            newHtml += ' </tr>';
+
+            for (let i = 0; i < students.length; i++) {
+                newHtml += ' <tr>';
+                newHtml +=  ' <td>' + students[i].name + ' </td>';
+                newHtml +=  ' <td>' + students[i].kor + ' </td>';
+                newHtml +=  ' <td>' + students[i].eng + ' </td>';
+                newHtml +=  ' <td>' + students[i].math + ' </td>';
+                newHtml +=  ' <td>' + students[i].getSum() + ' </td>';
+                newHtml +=  ' <td>' + students[i].getAverage() + ' </td>';
+                newHtml += ' </tr>';
+            }
+
+            newHtml += '</table>';
+            document.body.innerHTML = newHtml;
+        }
+
+
+
+
+
+
+
+
+
+
+
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>
