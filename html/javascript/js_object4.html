@@ -30,6 +30,83 @@
         console.log('person', person);
         alert(person);  // --> 자바에서 toString 출력할때 쓰듯이 alert에서 출력가능
 
+        ///////////////////////////////////////////////////
+
+        // 숫자 정의하는 객체 : Number
+
+        var number = 123.123456789;
+
+        var objNumber = new Number(number);
+
+        console.log('----------------------------------------');
+        console.log(objNumber.toExponential());  // 숫자로 지수 표시로 나타낸 문자열 반환
+        console.log(objNumber.toFixed());  // 고정 소수점 표시로 나타낸 문자열 반환
+        console.log(objNumber.toFixed(1));
+        console.log(objNumber.toFixed(4));
+        console.log(objNumber.toPrecision());  // 길이에 따라 지수 표시 또는 고정 소수좀 표시로 나타낸 문자열 반환
+
+        ////////////////////////////////////////////////////
+        console.log('-----------------------------------------');
+
+        // 문자열을 다루는 객체 : String
+        var str = 'Hello';
+        var objectStr = new String(str);
+        console.log('type:', typeof (str));
+        console.log('type:', typeof (objectStr));
+
+        console.log(str.length);
+        console.log(objectStr.length);
+
+        ///////////////////////////////////////////////////
+        console.log('----------------------------------------------');
+
+        // 배열 : Array
+        var arr1 = [1, 2, 3, 4, 5];
+        var arr2 = new Array();
+        var arr3 = new Array(10);   // 저장 10개 할 수 있는 배열
+        var arr4 = new Array(9, 8, 7, 6, 5);  // 가변 매개변수
+
+        console.log(arr1);
+        console.log(arr2);
+        console.log(arr3);
+        console.log(arr4);
+
+        console.log(arr1.concat(6, 7, 8));
+        console.log(arr1.join());
+
+        console.log(arr1);
+
+        arr1.pop(); // 마지막 요소 제거
+        console.log(arr1);
+
+        console.log(arr1.reverse());
+        console.log(arr1.slice(1, 3));
+        console.log(arr1);
+
+        console.log(arr1.splice);
+        console.log(arr1);
+
+        var arr5 = [101, 77, 300, 23, 50];
+        console.log(arr5);
+
+        arr5.sort(function (left, right) {
+            return right - left;
+        })
+        console.log(arr5);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     </script>
 </head>
 
