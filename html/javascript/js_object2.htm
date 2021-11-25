@@ -100,12 +100,13 @@
             students.push(new Student('h', 10, 92, 82));
             students.push(new Student('i', 70, 95, 81));
 
-            // 순위를 위한 배열 정렬 (오름차순 : left - right, 내림차순 : right - left)
+            // 추) 순위를 위한 배열 정렬 (오름차순 : left - right, 내림차순 : right - left)
             students.sort(function (left, right) {
                 return right.getSum() - left.getSum();
             })
 
-            students = students.slice(0, 3); // 3개만 뽑힘
+            // 추) 순위 3개만 잘라서 출력
+            students = students.slice(0, 3);
 
             // 전체 리스트 출력
             var newHtml = '';
