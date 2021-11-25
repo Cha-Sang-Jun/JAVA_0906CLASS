@@ -23,12 +23,12 @@
         var person = {
             name: '손흥민',
             age: 30,
-            toString: function () {  // toString -> 오버라이딩의 목적?
+            toString: function () {  // -> 오버라이딩 목적
                 return this.name + ':' + this.age;
             }
         }
         console.log('person', person);
-        alert(person);  // --> 자바에서 toString 출력할때 쓰듯이 alert에서 출력가능
+        alert(person);  // --> toString 자바에서 출력할때 쓰듯이 alert에서 출력가능
 
         ///////////////////////////////////////////////////
 
@@ -63,8 +63,8 @@
         // 배열 : Array
         var arr1 = [1, 2, 3, 4, 5];
         var arr2 = new Array();
-        var arr3 = new Array(10);   // 저장 10개 할 수 있는 배열
-        var arr4 = new Array(9, 8, 7, 6, 5);  // 가변 매개변수
+        var arr3 = new Array(10);   // 10개 저장 할 수 있는 배열
+        var arr4 = new Array(9, 8, 7, 6, 5);  // 가변매개변수
 
         console.log(arr1);
         console.log(arr2);
@@ -75,6 +75,8 @@
         console.log(arr1.join());
 
         console.log(arr1);
+
+        console.log('---------------------------------------------------');
 
         arr1.pop(); // 마지막 요소 제거
         console.log(arr1);

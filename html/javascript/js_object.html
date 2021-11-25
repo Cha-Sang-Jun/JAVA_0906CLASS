@@ -16,7 +16,7 @@
         // 속성이 있는 객체 정의
         var person = {
             // 속성 정의 => 속성 이름: 속성 값(데이터 = 자바스크립트에서 지원하는 타입의 데이터)
-            name: '손흥민', // 여러 개의 속성은, ,를 이용해서 추가
+            name: '손흥민', // 여러 개의 속성은 ' , ' 를 이용해서 추가
             age: 30,
             hello: function () {
                 alert('안녕하세요 저는 ' + this.name + ' 입니다. 나이는 ' + this.age + '입니다.');
@@ -75,14 +75,14 @@
         for (let i = 0; i < students.length; i++) {
             // 총점을 구해서 반환하는 메소드
             students[i].getSum = function () {
-                return this.kor+this.eng+this.math;
+                return this.kor + this.eng + this.math;
             };
         }
 
         // 평균점수를 구해서 반환하는 메소드
         for (let i = 0; i < students.length; i++) {
             students[i].getAverage = function () {
-                return this.getSum()/3;
+                return this.getSum() / 3;
             };
         }
 
@@ -101,12 +101,12 @@
 
             for (let i = 0; i < students.length; i++) {
                 newHtml += ' <tr>';
-                newHtml +=  ' <td>' + students[i].name + ' </td>';
-                newHtml +=  ' <td>' + students[i].kor + ' </td>';
-                newHtml +=  ' <td>' + students[i].eng + ' </td>';
-                newHtml +=  ' <td>' + students[i].math + ' </td>';
-                newHtml +=  ' <td>' + students[i].getSum() + ' </td>';
-                newHtml +=  ' <td>' + students[i].getAverage() + ' </td>';
+                newHtml += ' <td>' + students[i].name + ' </td>';
+                newHtml += ' <td>' + students[i].kor + ' </td>';
+                newHtml += ' <td>' + students[i].eng + ' </td>';
+                newHtml += ' <td>' + students[i].math + ' </td>';
+                newHtml += ' <td>' + students[i].getSum() + ' </td>';
+                newHtml += ' <td>' + students[i].getAverage() + ' </td>';
                 newHtml += ' </tr>';
             }
 
