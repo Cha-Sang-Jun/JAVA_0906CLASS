@@ -113,44 +113,45 @@
             }
         }
 
-
     </script>
 </head>
 
 <body>
 
-    <div onclick="alert('outer Div');"
-        style="border: 1px solid black; background-color: gold; width : 75%; padding : 10px">
+    <div onclick="alert('outer Div');" style="border: 1px solid #000; background-color:black; padding: 10px">
 
         <div onclick="alert('inner Div');"
-            style="border: 1px solid blue; background-color: yellow; width : 75%; padding : 10px">
+            style="border: 1px solid #00f; background-color:chocolate; width: 75%; padding: 10px">
 
             <h1 onclick="alert('H1');"
-                style="border: 1px solid #0f0; background-color: violet; width : 75%; padding : 10px">
+                style="border: 1px solid #0f0; background-color:blueviolet; width: 75%; padding: 10px">
 
                 <p id="p1" onclick="alert('P');"
-                    style="border: 1px solid #f00; background-color: aqua; width : 75%; padding : 10px"> Click
+                    style="border: 1px solid #f00; background-color: aqua; width: 75%; padding: 10px">click</p>
 
-                </p>
             </h1>
+
         </div>
     </div>
 
+    <hr>
+
     <form id="form" onsubmit="return submitProc()">
 
-        아이디 <input type="text" id="uid" name="id" value="tester"> <br>
-        비밀번호 <input type="password" name="passowrd" id="pw"> <br>
-
+        아이디 <input type="text" id="uid" name="uid" value="tester"> <br>
+        비밀번호 <input type="password" id="pw" name="password">
+        <br>
         <input type="submit">
 
     </form>
 
     <hr>
 
-    <h1 id="btn1"> Click </h1>
-    <h2 id="btn2"> Click </h2>
-    <h1 style="border:5px solid #f00" onclick="var num=10;alert('인라인 이벤트 정의-' +num)"> Click </h1>
-    <h1 onclick="inlineClick();"> Click </h1>
-</body>
+    <h1 id="btn1">Click</h1>
+    <h2 id="btn2">Click</h2>
 
+    <h1 style="border:5px solid #f00" onclick="var num=13;alert('인라인 이벤트 정의-'+num);">Click</h1>
+    <h1 onclick="inlineClick();">Click</h1>
+
+</body>
 </html>
