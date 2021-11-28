@@ -86,6 +86,32 @@
             // 기본 이벤트를 제거
             // return false;
             //}
+
+            // 원치 않는 버블링 막기
+            document.getElementById('p1').onclick = function (e) {
+                // 이벤트 객체 받기 : null 일 때 window.event 객체로 할당
+                var event = e || window.event;
+                console.log(typeof (event));
+
+                alert('P click');
+
+                // 이벤트 버블링 종료
+                // IE일 때
+                event.cancelBubble = true;
+
+                // 그 외 브라우저 일 때
+                if (event.stopPropagation) {
+                    event.stopPropagation();
+                }
+            }
+            
+            /////////////////////////////////////////////////////////////////////////////////
+
+            // 이벤트 연결 표준 방식
+            var btn = document.getElementById('btn');
+            btn.addEventListener('click', function() {
+                this.innerHTML += '+';
+            })
         }
 
         // 인라인에서 함수를 호출하는 방법
@@ -118,6 +144,8 @@
 
 <body>
 
+    <h1 id = "btn"> </h1>
+
     <div onclick="alert('outer Div');" style="border: 1px solid #000; background-color:black; padding: 10px">
 
         <div onclick="alert('inner Div');"
@@ -126,8 +154,7 @@
             <h1 onclick="alert('H1');"
                 style="border: 1px solid #0f0; background-color:blueviolet; width: 75%; padding: 10px">
 
-                <p id="p1" onclick="alert('P');"
-                    style="border: 1px solid #f00; background-color: aqua; width: 75%; padding: 10px">click</p>
+                <p id="p1" style="border: 1px solid #f00; background-color: aqua; width: 75%; padding: 10px">click</p>
 
             </h1>
 
@@ -154,4 +181,5 @@
     <h1 onclick="inlineClick();">Click</h1>
 
 </body>
+
 </html>

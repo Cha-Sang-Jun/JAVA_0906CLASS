@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> localStorage </title>
+    <script>
+
+        // 'id'가 없으면 새로 저장
+        if(!localStorage.getItem('id')) {
+            localStorage.setItem('id', 'newID');
+        }
+        
+        // 데이터 저장
+        // localStorage.setItem('uid', 'cool'); 
+        localStorage.setItem('uid', 'hot');  // 같은 이름으로 데이터가 들어가면 덮어 씌워진다.
+        console.log('uid 저장');
+
+        // 데이터 불러오기
+        console.log('localStorage 의 데이터 가져오기', localStorage.getItem('uid'));
+        console.log('localStorage 의 데이터 가져오기', localStorage.getItem('id'));
+
+        // 데이터 삭제
+        // localStorage.removeItem('id');
+        // console.log('localStorage 의 데이터 가져오기', localStorage.getItem('id'));
+
+        // 전체 데이터 삭제
+        localStorage.clear();
+        console.log('localStorage 의 데이터 가져오기', localStorage.getItem('uid'));
+        console.log('localStorage 의 데이터 가져오기', localStorage.getItem('id'));
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
