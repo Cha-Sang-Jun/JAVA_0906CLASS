@@ -34,7 +34,7 @@
     <script>
 
         window.onload = function () {
-            // 이벤트 적용 : 캐스팅 후 이벤트 속성에 이벤트 핸드러를 할당한다.
+            // 이벤트 적용 : 캐스팅 후 이벤트 속성에 이벤트 핸들러를 할당한다.
 
             // <h1> 캐스팅
             var btn1 = document.getElementById('btn1');
@@ -104,12 +104,12 @@
                     event.stopPropagation();
                 }
             }
-            
+
             /////////////////////////////////////////////////////////////////////////////////
 
             // 이벤트 연결 표준 방식
             var btn = document.getElementById('btn');
-            btn.addEventListener('click', function() {
+            btn.addEventListener('click', function () {
                 this.innerHTML += '+';
             })
         }
@@ -144,7 +144,7 @@
 
 <body>
 
-    <h1 id = "btn"> </h1>
+    <h1 id="btn"> </h1>
 
     <div onclick="alert('outer Div');" style="border: 1px solid #000; background-color:black; padding: 10px">
 
