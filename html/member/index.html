@@ -64,32 +64,67 @@
 
     <!-- 회원 정보 리스트 시작 -->
     <div id="memberList">
-        <h2 class="subtitle"> 회원 리스트 </h2>
+        <h2 class="subtitle">회원 리스트</h2>
         <table>
-            <tr>
-                <tbody>
-                    <!-- <tr>
-                        <th> 순번(index) </th>
-                        <th> 아이디 </th>
-                        <th> 비밀번호 </th>
-                        <th> 이름 </th>
-                        <th> 관리 </th>
-                    </tr>
+            <tbody>
+                <tr>
+                    <th>순번(index)</th>
+                    <th>아이디</th>
+                    <th>비밀번호</th>
+                    <th>이름</th>
+                    <th>관리</th>
+                </tr>
 
-                    <tr>
-                        <td> 0 </td>
-                        <td> cool </td>
-                        <td> 1111 </td>
-                        <td> COOL </td>
-                        <td> <a href="#"> 수정 </a> | <a href="#"> 삭제 </a> </td>
-                    </tr> -->
+                <tr>
+                    <td>0</td>
+                    <td>cool</td>
+                    <td>1111</td>
+                    <td>COOL</td>
+                    <td><a href="#">수정</a> | <a href="#">삭제</a></td>
+                </tr>
 
-                </tbody>
-            </tr>
+            </tbody>
         </table>
     </div>
     <!-- 회원 정보 리스트 끝 -->
 
+    <!-- 회원 정보 수정 폼 시작 -->
+    <div id="editFormArea">
+        <div id="wrapHeader">
+            <h2 class="subtitle">회원 정보 수정</h2>
+            <a href="javascript:editFormClose();">닫기</a>
+        </div>
+        <form id="editForm">
+            <table>
+                <tr>
+                    <td>아이디</td>
+                    <td>
+                        <input type="text" id="eid" readonly>
+                        <input type="hidden" id="index">
+                    </td>
+                </tr>
+                <tr>
+                    <td>비밀번호</td>
+                    <td><input type="password" id="epw"></td>
+                </tr>
+                <tr>
+                    <td>비밀번호 확인</td>
+                    <td><input type="password" id="erepw"></td>
+                </tr>
+                <tr>
+                    <td>이름</td>
+                    <td><input type="text" id="ename"></td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <input type="submit" value="수정">
+                        <input type="button" id="resetBtn" value="초기화">
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </div>
+    <!-- 회원 정보 수정 폼 끝 -->
 </body>
 
 </html>
