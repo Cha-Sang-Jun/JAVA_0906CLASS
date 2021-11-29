@@ -2,8 +2,6 @@
 // 회원 정보를 저장할 배열 생성
 var members = [];
 
-
-
 window.onload = function () {
 
     // 회원 리스트 갱신
@@ -21,9 +19,6 @@ window.onload = function () {
 
     setMemberList();
 
-
-    // setMemberList();
-
     // regForm 캐스팅 => onsubmit 이벤트 설정
     // 데이터 캐스팅 -> 객체 -> 배열에 저장
 
@@ -40,27 +35,21 @@ window.onload = function () {
     // 이벤트 설정 (이벤트 핸들러)
     regForm.onsubmit = function () {
 
-        // alert('onsubmit!!');
-        // 데이터 받아서 개체 생성
-
+        // 데이터 받아서 객체 생성
 
         // 사용자 입력 값의 유효성 검사
-        // 아이디 검사 : 공백, 문자열의 갯수 3~8, 서버통신(비동기통신) 아이디 중복 여부
+        // 아이디 검사 : 공백, 글자수, 서버통신(비동기통신) 아이디 중복 여부
         if (userId.value.trim().length == 0) {
             // msgid 캐스팅 => 문자열 추가
             document.querySelector('#msgId').innerHTML = '아이디는 필수항목 입니다.';
-            // 포커스 이동
-            // userId.focus();
-            // 문제가 발생했기 때문에 객체 생성을 하면 안된다.
+            // 문제가 발생했을 경우 객체 생성하면 안됨.
             return false;
-
         } else if (!(userId.value.trim().length > 2 && userId.value.trim().length < 9)) {
             document.querySelector('#msgId').innerHTML = '아이디는 3~8자리까지 가능';
             return false;
         }
 
-
-        // 비밀번호 검사 : 공백, 4~10자
+        // 비밀번호 검사 : 공백, 글자수
         if (pw.value.trim().length == 0) {
             document.querySelector('#msgPw').innerHTML = '비밀번호는 필수항목 입니다.';
             return false;
@@ -78,7 +67,7 @@ window.onload = function () {
             return false;
         }
 
-        // 이름 검사 : 공백, 2자 이상
+        // 이름 검사 : 공백, 글자수
         if (userName.value.trim().length == 0) {
             document.querySelector('msgName').innerHTML = '이름 입력은 필수입니다.';
             return false;
