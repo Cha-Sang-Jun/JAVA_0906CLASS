@@ -60,3 +60,25 @@ div.msg {
   height: 20px;
   color: red;
 }
+
+/* -------------------------------------------- */
+/* 회원 리스트 영역 설정 */
+#memberList {
+  padding: 10px 40px;
+  border-bottom: 1px solid #aaa;
+}
+
+#memberList > table {
+  margin: 15px 0;
+
+  width: 1000px;
+
+  border-collapse: collapse; /* border 끼리 겹치지 않고 한줄로 나오게 해줌 */
+}
+
+#memberList > table td,
+#memberList > table th {
+  border: 1px solid #aaa;
+  padding: 10px;
+  text-align: center;
+}
