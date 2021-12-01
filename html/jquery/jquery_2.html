@@ -28,7 +28,7 @@
     <script>
 
         $(document).ready(function () {
-            $('div').removeClass('title');   // 클래스 속성을 지움
+            $('div').removeClass('title');  // 클래스 속성을 지움
             $('div').addClass('subtitle').addClass('color_blue');
             $('h3').addClass('title');
 
@@ -40,24 +40,41 @@
             var aHref = aTag.attr('href');
             aTag.html(aHref);
 
+            var daumTag = $('#daum');
+            var daumHref = daumTag.attr('href');
+            daumTag.html(daumHref);
+
+
             ///////////////////////////////////////////////////////////////////
 
             // attr() : setter(속성부여)
             // $('#img1').attr('src', '../html5/images/img1.jpg').attr('width', '300');
-            $('#img1').attr({
-                src: '../html5/images/img1.jpg',
-                width: 400,
-                height: function () {
+            // $('#img1').attr({
+            //     src: '../html5/images/img1.jpg',
+            //     width: 400,
+            //     height: function () {
 
+            //     }
+            // });
+
+
+            // $('img').attr('height', function (index) {
+            //     return 200 + (index * 200);
+            // });
+
+            $('#img1').attr('src', '../html5/images/img1.jpg');
+
+            $('img').attr({
+                // height: function (index) {
+                //     return 200 + (index * 100);
+                // },
+                width: function (index) {
+                    return 400 + (index * 50);
                 }
             });
 
-            $('img').attr('height', function (index) {
-                return 200 + (index * 200);
-            });
-
             // 특정 속성 삭제
-            $('img').removeAttr('width');
+            // $('img').removeAttr('width');
 
             ///////////////////////////////////////////////////
             // css('속성이름') : 해당 속성의 값을 반환
@@ -101,7 +118,7 @@
 
 <body>
 
-    <div id = "hello">
+    <div id="hello">
         <h2>안녕하세요 </h2>
         <p> 인사를 합시다. </p>
     </div>
@@ -119,7 +136,9 @@
 
     <a href="https://www.naver.com"> </a>
 
-    <img id="img" src="../html5/images/img02.png" width="300">
+    <a href="https://www.daum.net" id='daum'> </a>
+
+    <img src="../html5/images/img02.png">
 
     <hr>
 
