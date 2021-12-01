@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> 이벤트 </title>
+
+    <style>
+        h1 {
+            border: 1px solid #aaa;
+        }
+
+        h1:hover {
+            cursor: pointer;
+        }
+
+        .mover {
+            background-color: orange;
+            color: blue;
+        }
+    </style>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"> </script>
+    <script>
+
+        $(document).ready(function () {
+
+            // 이벤트 적용 : 특정 엘리먼트 캐스팅 -> 이벤트를 연결
+            // $('h1').on('click', function () {
+            // this : 클릭 이벤트가 발생한 객체를 가르킨다.
+            // $(this).html(function (index, html) {
+            // return (html형식의 문자열)
+            //   return html + '+';
+            // });
+            // });
+
+            $('h1').click(function () {
+                $(this).html(function (index, html) {   // index를 쓰지 않아도 불러온다. 약속되어있음???
+                    return html + '+';
+                });
+            });
+
+
+            // mouseenter : 마우스 커서가 들어갔을 때, mouseleave : 마우스 커서가 벗어났을 때
+            // $('h1').on({
+            //     mouseenter: function () {
+            //         $(this).addClass('mover');
+            //     },
+            //     mouseleave: function () {
+            //         $(this).removeClass('mover');
+            //     }
+            // });
+
+            $('h1').hover(function () {
+                $(this).addClass('mover');
+            }, function () {
+                $(this).removeClass('mover');
+            });
+
+            // 이벤트 연결 메소드 (중요!) : click, submit, ready, keyup, change, focus, focusin
+
+        });
+    </script>
+</head>
+
+<body>
+
+    <h1> Click - 0 </h1>
+    <h1> Click - 1 </h1>
+    <h1> Click - 2 </h1>
+
+</body>
+
+</html>

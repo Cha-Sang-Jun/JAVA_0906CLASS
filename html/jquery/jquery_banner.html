@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> IMG BANNER </title>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"> </script>
+
+    <style>
+        img {
+            width: 300px;
+            height: 200px;
+        }
+
+        #box {
+            width: 300px;
+            height: 200px;
+
+            border: 1px solid #aaa;
+            overflow: hidden;
+        }
+    </style>
+
+    <script>
+
+        $(document).ready(function () {
+
+            setInterval(function () {
+                $('#box>img').first().appendTo('#box');
+
+            }, 3000);
+
+        });
+    </script>
+</head>
+
+<body>
+
+    <div id='box'>
+        <img src="../html5/images/img1.jpg">
+        <img src="../html5/images/img02.png">
+        <img src="../html5/images/img_facebookLogo.png">
+        <img src="../html5/images/img_naverLogo.png">
+    </div>
+
+
+</body>
+
+</html>
