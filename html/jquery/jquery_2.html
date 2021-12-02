@@ -65,9 +65,9 @@
             $('#img1').attr('src', '../html5/images/img1.jpg');
 
             $('img').attr({
-                // height: function (index) {
-                //     return 200 + (index * 100);
-                // },
+                height: function (index) {
+                    return 200 + (index * 100);
+                },
                 width: function (index) {
                     return 400 + (index * 50);
                 }
@@ -85,7 +85,7 @@
             // css('속성이름', 값)
             // $('h1').css('background-color', 'blue').css('color', 'magenta');
 
-            // css({}); 여러 속성을 한번에 정의
+            // css({}); 여러 속성을 한번에 정의 -> css속성 부여
 
             // $('h1').css({
             //     backgroundColor: 'brown',
@@ -117,7 +117,6 @@
 </head>
 
 <body>
-
     <div id="hello">
         <h2>안녕하세요 </h2>
         <p> 인사를 합시다. </p>
