@@ -35,7 +35,10 @@ public class SignupServlet extends HttpServlet {
 
 		PrintWriter out = response.getWriter();
 		out.println("<html>");
-		out.println(" <head> <title> 회원 가입 정보 받기 </title> <head>");
+		out.println("<head>");
+		out.println("		<meta charset=\"utf-8\">");
+		out.println("<title> 회원가입 파라미터 받기 </title>");
+		out.println("</head>");
 		out.println("  <body>");
 		out.println("  <h1> ");
 		out.println("   userid : " + uid + "<br>");
