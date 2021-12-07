@@ -65,7 +65,7 @@ nav {
 	overflow: hidden;
 }
 
-nav>ul {
+#main_wrap>nav>ul {
 	float: left;
 	list-style: none;
 }
@@ -140,7 +140,7 @@ nav input[type=button] {
 	padding-left: 10px;
 }
 
-/* Footer 영역 설정 */
+/* Footer 영역 설정 */`
 footer {
 	height: 50px;
 	text-align: center;
