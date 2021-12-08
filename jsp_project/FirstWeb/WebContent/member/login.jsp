@@ -35,6 +35,9 @@
 		// session 객체 속성에 로그인 정보 저장 : id 만 저장
 		session.setAttribute("id", uid);
 
+		request.setAttribute("num1", 1);
+		application.setAttribute("num2", 2);
+
 		// mypage.jsp 로 이동
 		response.sendRedirect("mypage.jsp");
 
