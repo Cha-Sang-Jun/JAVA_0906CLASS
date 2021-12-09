@@ -1,3 +1,4 @@
+<%@page import="util.CookieBox"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%
@@ -5,13 +6,16 @@
 	// 1. 쿠키 객체 생성
 	// 2. response.addCookie() 로 전달
 
-	Cookie cookie1 = new Cookie("userName", "SON");
+	Cookie cookie1 = new Cookie("eName", "SON");
 	cookie1.setMaxAge(10);
 
 	Cookie c = new Cookie("kName", "손흥민");
 
 	response.addCookie(cookie1);
 	response.addCookie(c);
+	
+	response.addCookie(CookieBox.createCookie("uid", "cool"));
+	response.addCookie(CookieBox.createCookie("chk", "0", 20));
 %>
 <!DOCTYPE html>
 <html lang="ko">
