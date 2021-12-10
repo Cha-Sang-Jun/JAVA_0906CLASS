@@ -31,7 +31,7 @@
     	request.setAttribute("player", map);
     	
     	Member member = new Member("이강인", 20);
-  		request.setAttribute("member", member);
+  		request.setAttribute("member", member); // 속성에 추가
     	
     %>
 <!DOCTYPE html>
