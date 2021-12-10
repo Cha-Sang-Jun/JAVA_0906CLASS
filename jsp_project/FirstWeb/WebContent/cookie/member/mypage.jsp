@@ -22,7 +22,7 @@
 	<h3> ID : <%= cookieBox.getValue("ID") %></h3>
 	<h3> 
 	
-		<a href = "/first/cookie/member/logout.jsp"> 로그아웃 </a>
+		<a href = "<%=request.getContextPath()%>/cookie/member/logout.jsp"> 로그아웃 </a>
 	
 	</h3>
 
