@@ -7,14 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-	
-	<h1> greeting.jsp 에서 view가 생성됨! </h1>
-	<hr>
-	
-	<h1> 
-		<%-- ${result} --%>
-	</h1>
-
-
+	<h1> 서버 시스템 점검 중입니다 . 잠시후 12시 이후에 재접속 해주세요</h1>
 </body>
 </html>
