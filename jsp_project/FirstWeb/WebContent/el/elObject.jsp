@@ -42,6 +42,10 @@
 </head>
 <body>
 
+	<!-- ${속성이름.이름} =>
+                     속성이름 : 데이터 객체 
+                     두번째 이름 : 변수호출이 아니라 메소드 호출  -->
+
 	만나이 = ${member.age -1} <br>
 	성인 여부 판단 : ${member.age-1 > 18 } / ${member.age gt 19} <br>
 	${memeber.name == '이강인'} / ${member.name eq "손흥민"} <br>
