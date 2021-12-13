@@ -8,7 +8,7 @@
 </head>
 <body>
 	
-	<h1> simpleview.jsp에서 view가 생성됨! </h1>
+	<h1> date.jsp 에서 view 가 생성됨! </h1>
 	<hr>
 	
 	<h1> 

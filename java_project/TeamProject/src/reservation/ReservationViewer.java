@@ -27,7 +27,7 @@ public class ReservationViewer {
 	String formatedNow = now.format(formatter);
 	String replaceTime = formatedNow.replace("/", "");
 	String sysDate = replaceTime.replace(" ", ""); // 현재시간 String 값으로 변환 -> parseInt로 나중에 변환
-3
+
 	public ReservationViewer(Scanner scanner, BadInputController inputC) {
 		this.scanner = scanner;
 		this.inputC = inputC;

@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-public class SimpleController extends HttpServlet {
+public class FrontController extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -27,26 +27,37 @@ public class SimpleController extends HttpServlet {
 
 	private void doProcess(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		// 2. 사용자의 요청을 분석 : 파라미터값을 이용해서 분석
-		String type = request.getParameter("type");
-
+		// 2. 사용자의 요청을 분석 : URI를 이용한 사용자 요청 분석
+		String commandURI = request.getRequestURI();
+		
+		// http://localhost:8080/mvc/simple : commandURI => /mvc/simple
+		// http://localhost:8080/mvc/simple?type=greeting : commandURI => /mvc/greeting
+		// http://localhost:8080/mvc/date.do : commandURI => /mvc/date.do
+		
+		// (request.getContextPath() => /mvc
+		if(commandURI.startsWith(request.getContextPath())) {   // /mvc 4글자는 getContextPath의 길이
+			commandURI = commandURI.substring(request.getContextPath().length());
+			
+		}
+		
+		
 		// 3. 사용자 요청에 맞는 데이터 처리 : 요청에 따른 분기
 		// 결과 데이터를 생성 (요청에 맞는 결과 데이터를 만든다)
 
 		// 응답 결과 객체
-		Object result = null; // view 페이지에서 toString()으로 출력
+		Object result = null;
 		// view page 경로 
 		String viewPage = "/WEB-INF/views/simpleview.jsp";
 
-		if (type == null || type.equals("greeting")) {
-			result = "안녕하세요"; // object 타입의 참조변수에 String 타입의 객체를 넣는다(다형성)
+		if (commandURI.equals("/greeting.do")) {
+			result = "안녕하세요"; 
 			viewPage = "/WEB-INF/views/greeting.jsp";
 			
-		} else if (type.equals("date")) {
-			result = new Date(); // object 타입에 Date 타입의 객체를 넣는다.
+		} else if (commandURI.equals("/date.do")) {
+			result = new Date();
 			viewPage = "/WEB-INF/views/date.jsp";
 			
-		} else {	
+		} else {  // /*.do
 			result = "Invalid Request";
 		}
 		
