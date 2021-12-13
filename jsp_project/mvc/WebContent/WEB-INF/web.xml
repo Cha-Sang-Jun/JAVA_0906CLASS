@@ -17,19 +17,15 @@
 	<!-- <servlet-mapping> <servlet-name>SimpleController</servlet-name> <url-pattern>/simple</url-pattern> 
 		</servlet-mapping> -->
 
-	<!-- <servlet> <servlet-name>FrontController</servlet-name> <servlet-class>controller.FrontController</servlet-class> 
-		</servlet> <servlet-mapping> <servlet-name>FrontController</servlet-name> 
-		<url-pattern>*.do</url-pattern> </servlet-mapping> -->
-
 	<servlet>
-		<servlet-name>LoginFrontController</servlet-name>
-		<servlet-class>controller.LoginFrontController</servlet-class>
+		<servlet-name>FrontController</servlet-name>
+		<servlet-class>controller.FrontController</servlet-class>
 	</servlet>
-
+	
 	<servlet-mapping>
-		<servlet-name>LoginFrontController</servlet-name>
+		<servlet-name>FrontController</servlet-name>
 		<url-pattern>*.do</url-pattern>
 	</servlet-mapping>
-	
-	
+
+
 </web-app> 	
