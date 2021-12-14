@@ -6,9 +6,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 public class DateCommandImpl implements Command {
-	
+
 	@Override
 	public String getPage(HttpServletRequest request, HttpServletResponse response) {
+		
 		
 		System.out.println("DateCommandImpl 진입");
 		
@@ -22,6 +23,7 @@ public class DateCommandImpl implements Command {
 		// View 지정
 		String viewPage = "/WEB-INF/views/date.jsp";
 		
-		return viewPage; // viewPage 경로를 반환
+		return viewPage; // viewPage 결로를 반환
 	}
+
 }

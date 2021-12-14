@@ -4,7 +4,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 public class GreetingCommandImpl implements Command {
-	
+
 	@Override
 	public String getPage(HttpServletRequest request, HttpServletResponse response) {
 		
@@ -20,6 +20,7 @@ public class GreetingCommandImpl implements Command {
 		// View 지정
 		String viewPage = "/WEB-INF/views/greeting.jsp";
 		
-		return viewPage; // viewPage 경로를 반환
+		return viewPage; // viewPage 결로를 반환
 	}
+
 }
