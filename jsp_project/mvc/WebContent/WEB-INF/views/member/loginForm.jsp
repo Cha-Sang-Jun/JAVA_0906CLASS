@@ -1,10 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel = "stylesheet" href = "${pageConext.request.contextPath}/css/default.css">
 </head>
 <body>
 
@@ -12,23 +13,22 @@
 	<hr>
 	<!-- http://localhost:8080/mvc/member/loginform.do -->
 	<!-- http://localhost:8080/mvc/member/login.do -->
-	<!-- 위와 같은 경로에 있는 파일이다. -->
 	<form action="login.do" method="post">
 		<table>
 			<tr>
 				<td>아이디</td>
-				<td></td>
+				<td><input type="text" name="uid"></td>
 			</tr>
 			<tr>
 				<td>비밀번호</td>
-				<td></td>
+				<td><input type="password" name="pw"> </td>
 			</tr>
 			<tr>
 				<td></td>
-				
-				<td></td>
+				<td><input type="submit" value="로그인"> </td>			
 			</tr>
-		</table>
+		</table>	
 	</form>
+
 </body>
 </html>
