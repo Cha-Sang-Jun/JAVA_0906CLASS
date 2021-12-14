@@ -20,6 +20,13 @@
 	<servlet>
 		<servlet-name>FrontController</servlet-name>
 		<servlet-class>controller.FrontController</servlet-class>
+		
+		<init-param>
+			<param-name>configPath</param-name>
+			<param-value>/WEB-INF/command.properties</param-value>
+		</init-param>
+		
+		<load-on-startup>1</load-on-startup> <!-- 서블릿이 시작할 때 한번 실행 -->
 	</servlet>
 	
 	<servlet-mapping>

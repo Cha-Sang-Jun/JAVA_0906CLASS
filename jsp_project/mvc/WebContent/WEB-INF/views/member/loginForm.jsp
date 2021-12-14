@@ -8,11 +8,9 @@
 </head>
 <body>
 
-	<ul>
-		<li> Id : ${customer.id} </li>
-		<li> Name : ${customer.name} </li>
-		<li> email : ${customer.email} </li>
-	</ul>
+	<h1> 로그인 </h1>
+	<hr>
+	로그인 페이지 입니다.
 
 </body>
 </html>

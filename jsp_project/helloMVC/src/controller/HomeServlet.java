@@ -11,28 +11,33 @@ import javax.servlet.http.HttpServletResponse;
 public class HomeServlet extends HttpServlet {
 
 	@Override
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String action = request.getParameter("action");
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		String action = request.getRequestURI();
 		String page = null;
 	}
 
 	@Override
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String action = request.getParameter("action");
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		String action = request.getRequestURI();
 		String page = null;
-		
-		if(action.equals("login")) {
+
+		if (action.startsWith(request.getContextPath())) {
+			action = action.substring(request.getContextPath().length());
+		}
+
+		if (action.equals("/home?action=login")) {
 			page = "/member/loginform.jsp";
-		
-		} else if(action.contentEquals("help")) {
+
+		} else if (action.contentEquals("help")) {
 			page = "/member/help.jsp";
 		} else {
 			page = "/member/error.jsp";
 		}
-		
+
 		RequestDispatcher dispatcher = request.getRequestDispatcher(page);
 		dispatcher.forward(request, response);
 	}
-	
 
 }
