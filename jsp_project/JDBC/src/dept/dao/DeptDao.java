@@ -4,9 +4,11 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.List;
 
 import dept.domain.Dept;
+import jdbc.util.JdbcUtil;
 
 public class DeptDao {
 	
@@ -20,7 +22,7 @@ public class DeptDao {
 	
 	private static DeptDao dao = new DeptDao();
 	
-	public DeptDao getInstance() {
+	public static DeptDao getInstance() {
 		return dao;
 	}
 	
@@ -38,6 +40,7 @@ public class DeptDao {
 			stmt = conn.createStatement();
 		
 			rs = stmt.executeQuery(sql);
+			list = new ArrayList<Dept>();
 			// 결과를 객체에 담는다!
 			while(rs.next()) {
 				// int deptno = rs.getInt("deptno");
@@ -51,6 +54,10 @@ public class DeptDao {
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
+		} finally {
+			JdbcUtil.close(rs);
+			JdbcUtil.close(stmt);
+			JdbcUtil.close(conn);
 		}
 		
 		
