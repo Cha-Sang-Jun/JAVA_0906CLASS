@@ -11,6 +11,8 @@ import java.util.List;
 import dept.domain.Dept;
 import jdbc.util.JdbcUtil;
 
+// DAO(Data Access Object) : 데이터베이스에 접근하는 객체, 연산들에 대한 인터페이스를 미리 정의 해놓음으로써 데이터에 대한 처리를 간단하게 할 수 있도록 하는 역할
+
 public class DeptDao {
 	
 	// 기능만 있는 클래스 -> 여러개의 인스턴스 생성이 필요 없다! -> 인스턴스 생성을 제한!
@@ -42,8 +44,10 @@ public class DeptDao {
 		
 			rs = stmt.executeQuery(sql);
 			list = new ArrayList<Dept>();
+			
 			// 결과를 객체에 담는다!
-			while(rs.next()) {
+			while(rs.next()) {    // rs.next() : rs에 결과값이 있다면 다음 결과값을 넣는다.
+				
 				// int deptno = rs.getInt("deptno");
 				// String dname = rs.getString("dname");
 				// String loc = rs.getString("loc");
@@ -56,12 +60,10 @@ public class DeptDao {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
-			JdbcUtil.close(rs);   // 가장 나중에 담는거부터 먼저 닫는다.
+			JdbcUtil.close(rs);   // 가장 나중에 담은것부터 먼저 닫는다.
 			JdbcUtil.close(stmt);
 			JdbcUtil.close(conn);
 		}
-		
-		
 		return list;
 	}
 
