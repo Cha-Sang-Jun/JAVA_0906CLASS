@@ -24,11 +24,13 @@ public class FrontController extends HttpServlet  {
 
 	@Override
 	public void init(ServletConfig config) throws ServletException {
-			
+		// 서블릿의 기능이나 역할에 따라 서블릿 객체가 생성되는 시점에 필요한 행동들이 있으며, 그에 대한 내용을 원하는 init메소드를 오버라이딩하여 구현한다.
+			 
 		System.out.println("서블릿이 생성될때 한번 실행합니다 -> 초기화 처리 합니다!!!");
 		
-		// 설정 파일에 init-param 설정된 경로 가져오기
-		String configFile = config.getInitParameter("configPath");
+		// 설정 파일에 init-param 설정된 경로 가져오기 
+		String configFile = config.getInitParameter("configPath");  // => getInitParameter : 매개변수로 web.xml에서 지정했던 param-name을 넘겨주면 그에 해당하는 값을 가져옴
+
 		// 시스템 경로 실제 경로
 		String configPath = config.getServletContext().getRealPath(configFile);
 		

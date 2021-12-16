@@ -25,7 +25,7 @@
 		width : 700px;
 	}
 	
-	#content>table td, #cotent>table th {
+	#content>table td, #content>table th {
 		border : 1px solid #aaa;
 		text-align : center;
 	}

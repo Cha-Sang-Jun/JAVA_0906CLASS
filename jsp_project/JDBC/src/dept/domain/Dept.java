@@ -1,6 +1,8 @@
 package dept.domain;
 
 // DB - dept 테이블의 행 데이터를 표현하는 클래스
+// Beans : JSP빈즈는 JSP와 연동하려고 만들어진 컴포넌트 클래스이다. 빈즈는 컨테이너에 위치하며,
+//         JSP에 데이터베이스 연동 등 프로그램적 요소를 모듈화 할 수 있도록 도와주는 역할을 한다.
 public class Dept {
 	
 	private int deptno;    // 부서번호
@@ -12,6 +14,9 @@ public class Dept {
 		this.dname = dname;
 		this.loc = loc;
 	}
+	
+	// 디폴트 생성자
+	public Dept() {}
 
 	public int getDeptno() {
 		return deptno;
