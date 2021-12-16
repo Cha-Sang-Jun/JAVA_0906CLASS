@@ -31,6 +31,22 @@
 	}
 	
 </style>
+
+<script>
+
+	function deleteDept(deptno){
+		
+		if(confirm('삭제하시겠습니까?')){
+		// 삭제 처리할 수 있는 URL로 이동
+		// http://localhost:8080/JDBC/dept/delete.do?deptno=?
+		alert(deptno + "삭제");
+		location.href = '${pageContext.request.contextPath}/dept/delete.do?deptno='+deptno;
+		
+	 }
+ }
+
+</script>
+
 </head>
 <body>
 
@@ -58,7 +74,10 @@
 				<td>${dept.deptno}</td>
 				<td>${dept.dname}</td>
 				<td>${dept.loc}</td>
-				<td>수정 | 삭제</td>
+				<td>
+					<a href = "${pageContext.request.contextPath}/dept/edit.do?deptno=${dept.deptno}"> 수정 </a> 
+						| 
+					<a href = "javascript:deleteDept(${dept.deptno})"> 삭제 </a> </td>
 			</tr>
 			</c:forEach>
 			</c:if>

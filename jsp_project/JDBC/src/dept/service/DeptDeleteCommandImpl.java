@@ -2,34 +2,29 @@ package dept.service;
 
 import java.sql.Connection;
 import java.sql.SQLException;
-import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import dept.dao.DeptDao;
-import dept.domain.Dept;
 import jdbc.ConnectionProvider;
 import jdbc.util.JdbcUtil;
 
-public class DeptListCommandImpl implements Command {
+public class DeptDeleteCommandImpl implements Command {
 
 	@Override
 	public String getPage(HttpServletRequest request, HttpServletResponse response) {
 		
-		// 화면에 출력할 LIST를 구해서 view 로 전달 : List<Dept>
-		List<Dept> list = null;
-		DeptDao dao = null;
+		// 삭제 할 deptno 받고 
+		String deptno = request.getParameter("deptno");
+		
+		// Dao 삭제
 		Connection conn = null;
+		int cnt = 0;
 		
 		try {
-			//Connection 객체 생성
 			conn = ConnectionProvider.getConnection();
-			
-			//Dao 객체
-			dao = DeptDao.getInstance();
-			
-			list = dao.selectAll(conn);
+			cnt = DeptDao.getInstance().deleteDept(conn, deptno);
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -37,10 +32,10 @@ public class DeptListCommandImpl implements Command {
 			JdbcUtil.close(conn);
 		}
 		
-		// 결과를 request 속성에 저장
-		request.setAttribute("deptList", list);
+		// 결과 message => request 속성에 저장
+		request.setAttribute("result", cnt>0? "삭제되었습니다." : "잘못된 요청입니다.");
 		
-		return "/WEB-INF/views/dept/list.jsp";
+		return "/WEB-INF/views/dept/delete.jsp";
 	}
 
 }

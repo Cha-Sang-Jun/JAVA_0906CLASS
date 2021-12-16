@@ -56,7 +56,7 @@ public class DeptDao {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
-			JdbcUtil.close(rs);
+			JdbcUtil.close(rs);   // 가장 나중에 담는거부터 먼저 닫는다.
 			JdbcUtil.close(stmt);
 			JdbcUtil.close(conn);
 		}
@@ -69,7 +69,7 @@ public class DeptDao {
 		
 		int resultCnt = 0;
 		PreparedStatement pstmt = null;
-		String sql = "INSERT INTO dept (deptno,dname,loc) VALUES (?, ?, ?);";
+		String sql = "INSERT INTO dept (deptno,dname,loc) VALUES (?, ?, ?)";
 		
 		try {
 			pstmt = conn.prepareStatement(sql);
@@ -84,6 +84,84 @@ public class DeptDao {
 		} finally {
 			JdbcUtil.close(pstmt);
 		}
+		
+		return resultCnt;
+	}
+
+	public Dept selectByDeptno(Connection conn, String deptno) {
+		
+		Dept dept = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		String sql = "select * from project.dept where deptno = ?";
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, Integer.parseInt(deptno));
+			
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				dept = new Dept(rs.getInt(1), rs.getString(2), rs.getString(3));
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JdbcUtil.close(rs);
+			JdbcUtil.close(pstmt);
+		}
+		
+		
+		return dept;
+	}
+
+	public int editDept(Connection conn, Dept dept) {
+		
+		int resultCnt = 0;
+		PreparedStatement pstmt = null;
+		
+		String sql = "UPDATE dept SET  dname = ?, loc =? where deptno = ?";
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, dept.getDname());
+			pstmt.setString(2, dept.getLoc());
+			pstmt.setInt(3, dept.getDeptno());
+			
+			resultCnt = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JdbcUtil.close(pstmt);
+		}
+		
+		return resultCnt;
+	}
+
+	public int deleteDept(Connection conn, String deptno) {
+		
+		int resultCnt = 0;
+		
+		PreparedStatement pstmt = null;
+		
+		String sql = "Delete from project.dept where deptno =?";
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, Integer.parseInt(deptno));
+			
+			resultCnt = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JdbcUtil.close(pstmt);
+		}
+		
 		
 		return resultCnt;
 	}

@@ -31,7 +31,7 @@
 		<h3> 부서 정보 등록</h3>
 		<hr>
 		
-		<form action = "reg.do" method = "post">
+		<form method = "post"> <!-- action이 없다 -> /dept/reg.do 경로로 post 방식으로 보낸다 -->
 			<table>
 				<tr>
 					<td> 부서번호 </td>

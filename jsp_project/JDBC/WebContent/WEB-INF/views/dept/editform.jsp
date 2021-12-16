@@ -1,6 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix = "c" uri="http://java.sun.com/jsp/jstl/core" %>
+<c:if test = "${empty dept}">
+	<script>
+		alert('잘못된 요청입니다. 이전 페이지로 되돌아갑니다.');
+		history.go(-1);
+	</script>
+</c:if>
+
+<c:if test = "${not empty dept}">
 <!DOCTYPE html>
 <html lang = "ko">
 <head>
@@ -28,31 +36,30 @@
 	
 	<div id = "content">
 	
-	<c:if test = "${result>0}">
-		<h3> 부서 정보 등록 성공 </h3>
+		<h3> 부서 정보 등록 </h3>
 		<hr>
 		
+		<form method = "post">
 			<table>
 				<tr>
 					<td> 부서번호 </td>
-					<td> ${dept.deptno} </td>  <!-- EL => 이것은 속성값을 부르는게 아닌 메소드 호출이다. -->
+					<td><input type = "text" name = "deptno" value = "${dept.deptno}" readonly></td>
 				</tr>
 				<tr>
 					<td> 부서이름 </td>
-					<td> ${dept.dname}</td>
+					<td><input type = "text" name = "dname" value = "${dept.dname}"></td>
 				</tr>
 				<tr>
 					<td> 부서위치 </td>
-					<td> ${dept.loc}</td>
+					<td><input type = "text" name = "loc" value = "${dept.loc}" ></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td><input type = "submit" value= "수정"> <input type = "reset"></td>
 				</tr>
 			</table>
-	</c:if>
+		</form>
 	
-	<c:if test ="${result eq 0}">
-		<h3> 등록 실패 </h3>
-		<hr>
-		<p> 시스템 문제로 정보 등록에 실패하였습니다. 다시 시도해주세요. </p>
-			
-	</c:if>
 </body>
 </html>
+</c:if>
