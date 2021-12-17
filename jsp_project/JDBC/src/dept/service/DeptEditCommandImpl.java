@@ -44,12 +44,12 @@ public class DeptEditCommandImpl implements Command {
 			
 		} else if (request.getMethod().equals("POST")) {
 			
-			try {
-				request.setCharacterEncoding("utf-8");
-			} catch (UnsupportedEncodingException e) {
-				e.printStackTrace();
-			}
-			
+//			try {
+//				request.setCharacterEncoding("utf-8");
+//			} catch (UnsupportedEncodingException e) {
+//				e.printStackTrace();
+//			}
+		
 			// 수정하고자 하는 데이터를 받는다.
 			String dname = request.getParameter("dname");
 			String loc = request.getParameter("loc");

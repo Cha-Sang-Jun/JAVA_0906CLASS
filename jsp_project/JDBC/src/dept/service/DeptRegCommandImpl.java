@@ -30,12 +30,12 @@ public class DeptRegCommandImpl implements Command {
 			System.out.println(request.getMethod());
 
 			// post 방식에서의 한글 처리
-			try {
-				request.setCharacterEncoding("utf-8"); // 오버라이드 시 원래 메소드가 가지고 있던 예외처리 부분만 가지고 있어야 하고 더 많아지면 안된다. ->
-														// throws 불가
-			} catch (UnsupportedEncodingException e) {
-				e.printStackTrace();
-			}
+//			try {
+//				request.setCharacterEncoding("utf-8"); // 오버라이드 시 원래 메소드가 가지고 있던 예외처리 부분만 가지고 있어야 하고 더 많아지면 안된다. ->
+//														// throws 불가
+//			} catch (UnsupportedEncodingException e) {
+//				e.printStackTrace();
+//			}
 
 			// 1. 사용자가 입력한 데이터를 받고
 			String deptno = request.getParameter("deptno");
