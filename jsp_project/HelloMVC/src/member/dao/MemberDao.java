@@ -58,6 +58,19 @@ public class MemberDao {
 		
 		int resultCnt = 0;
 		PreparedStatement pstmt = null;
-		String sql = "INSERT INTO member ("
+		
+		String sql = "INSERT INTO member (userId, password, name, signdate) VALUES(?, ?, ?)";
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, member.getUserId());
+			pstmt.setString(2, member.getPassword());
+			pstmt.setString(3, member.getName());
+		} catch (SQLException e) {
+			
+			e.printStackTrace();
+		}
+		
+	
 	}
 }
