@@ -20,7 +20,7 @@
 	<!-- 네비게이션 끝 -->
 	
 	<!-- content 시작 -->
-	<div>
+	<div id = "content">
 		<h3> /member/index : 회원관리 프로그램 </h3>
 		<hr>
 		회원 관리의 메인 페이지 입니다.

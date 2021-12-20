@@ -7,6 +7,16 @@
 <title>회원 가입</title>
 
 <%@ include file="/WEB-INF/views/frame/pageset.jsp"%>
+<style>
+
+#content>form>table td {
+	padding : 5px;
+}
+
+#content>form input {
+	padding : 5px;
+}
+</style>
 
 </head>
 <body>
@@ -20,7 +30,7 @@
 	<!-- 네비게이션 끝 -->
 
 	<!-- content 시작 -->
-	<div>
+	<div id = "content">
 		<h3>회원가입</h3>
 		<hr>
 		<!-- form 경로와 처리 경로가 동일 -> method로 구분 -->
@@ -33,7 +43,7 @@
 				</tr>
 				<tr>
 					<td>비밀번호 :</td>
-					<td><input type="password"></td>
+					<td><input type="password" name = "password"></td>
 				</tr>
 				<tr>
 					<td>비밀번호 확인 :</td>
@@ -44,8 +54,8 @@
 					<td><input type="text" name="username"></td>
 				</tr>
 				<tr>
-					<td colspan=2></td>
-					<td><input type ="submit" values = "회원가입하기"> <input type ="reset"> </td>
+					<td></td>
+					<td><input type ="submit" value = "회원가입"> <input type ="reset"> </td>
 				</tr>
 			</table>
 		</form>
