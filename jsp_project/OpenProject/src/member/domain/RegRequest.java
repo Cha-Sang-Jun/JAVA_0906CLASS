@@ -45,7 +45,7 @@ public class RegRequest {
 
 	// RegRequest -> Member
 	public Member getMember() {
-		return new Member(0, this.userid, this.password, this.username, null);
+		return new Member(0, this.userid, this.password, this.username, null, null);
 	}
 	
 	

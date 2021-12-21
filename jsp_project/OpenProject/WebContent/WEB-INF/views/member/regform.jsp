@@ -35,7 +35,7 @@
 		<hr>
 		<!-- form 경로와 처리 경로가 동일 -> method로 구분 -->
 		<!-- action - "reg.do" 생략 가능  => 생략해도 자기 자신으로 가는  것이기 때문에 properties 에서 .do로 처리하였으므로 상관없다. -->
-		<form action ="reg.do" method="post">
+		<form action ="reg.do" method="post" enctype = "multipart/form-data">
 			<table>
 				<tr>
 					<td>아이디 :</td>
@@ -52,6 +52,10 @@
 				<tr>
 					<td>이름:</td>
 					<td><input type="text" name="username"></td>
+				</tr>
+				<tr>
+					<td>사진 :</td>
+					<td><input type="file" name="photo"></td>
 				</tr>
 				<tr>
 					<td></td>
