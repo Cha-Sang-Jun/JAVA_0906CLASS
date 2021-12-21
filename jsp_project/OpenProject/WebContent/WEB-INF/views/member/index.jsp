@@ -29,7 +29,7 @@
 	<!-- content 끝 -->
 
 	<!-- Javascript 추가 -->
-	<%@ include file = "/WEB-INF/views/frame/footerset.jsp" %>
+	<%-- <%@ include file = "/WEB-INF/views/frame/footerset.jsp" %> --%>
 	
 </body>
 </html>

@@ -1,6 +1,6 @@
 package member.service;
 
-import java.sql.Connection;
+import java.sql.Connection; 
 import java.sql.SQLException;
 
 import javax.servlet.http.HttpServletRequest;
@@ -33,7 +33,7 @@ public class MemberRegServiceOld {
 		String pw = request.getParameter("password");
 		String userName = request.getParameter("username");
 
-		RegRequest regRequest = new RegRequest(userId, pw, userName);
+		// RegRequest regRequest = new RegRequest(userId, pw, userName);
 
 //		Member member = null;
 //		member = regRequest.getMember();
@@ -46,7 +46,7 @@ public class MemberRegServiceOld {
 			conn = ConnectionProvider.getConnection();
 
 			// resultCnt = MemberDao.getInstance().insertMember(conn, member);
-			resultCnt = MemberDao.getInstance().insertMember(conn, regRequest.getMember());
+			// resultCnt = MemberDao.getInstance().insertMember(conn, regRequest.getMember());
 
 		} catch (SQLException e) {
 			resultCnt = -1;
