@@ -2,9 +2,8 @@
     pageEncoding="UTF-8"%>
 <!-- meta -->
 
+<!-- CSS -->
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/default.css">
 
-<!-- CSS --> <!-- 절대경로로 들어가게 -->
-<link rel = "stylesheet" href = "${pageContext.request.contextPath}/css/default.css">
- 
-<!-- JS -->	
-<script src = "${pageContext.request.contextPath}/js/index.js"> </script>
+<!-- JS -->
+<%-- <script src="${pageContext.request.contextPath}/js/index.js"></script> --%>

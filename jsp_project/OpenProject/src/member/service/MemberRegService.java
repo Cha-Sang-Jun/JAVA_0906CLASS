@@ -84,7 +84,7 @@ public class MemberRegService {
 						
 						if(paramName.contentEquals("userid")) {
 							userId = item.getString("utf-8");
-						} else if (paramName.equals("password")) {
+						} else if (paramName.equals("pw")) {
 							pw = item.getString("utf-8");
 						} else if (paramName.equals("username")) {
 							userName = item.getString("utf-8");

@@ -3,15 +3,15 @@ package member.domain;
 public class RegRequest {
 	
 	private String userid;
-	private String password;
+	private String pw;
 	private String username;
 	private String fileName;
 	
 	public RegRequest() {}
 	
-	public RegRequest(String userid, String password, String username, String fileName) {
+	public RegRequest(String userid, String pw, String username, String fileName) {
 		this.userid = userid;
-		this.password = password;
+		this.pw = pw;
 		this.username = username;
 		this.fileName = fileName;
 	}
@@ -24,12 +24,12 @@ public class RegRequest {
 		this.userid = userid;
 	}
 
-	public String getPassword() {
-		return password;
+	public String getPw() {
+		return pw;
 	}
 
-	public void setPassword(String password) {
-		this.password = password;
+	public void setPw(String pw) {
+		this.pw = pw;
 	}
 
 	public String getUsername() {
@@ -51,13 +51,13 @@ public class RegRequest {
 
 	@Override
 	public String toString() {
-		return "RegRequest [userid=" + userid + ", password=" + password + ", username=" + username + ", fileName="
+		return "RegRequest [userid=" + userid + ", pw=" + pw + ", username=" + username + ", fileName="
 				+ fileName + "]";
 	}
 
 	// RegRequest -> Member
 	public Member getMember() {
-		return new Member(0, this.userid, this.password, this.username, null, null);
+		return new Member(0, this.userid, this.pw, this.username, null, null);
 	}
 	
 	

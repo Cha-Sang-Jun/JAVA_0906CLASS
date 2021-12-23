@@ -11,7 +11,7 @@ public class Member {
 	
 	private int idx;
 	private String userid;
-	private String password;
+	private String pw;
 	private String username;
 	// private Timestamp regdate;  java.sql.TimeStamp -> java.util.Date
 	// 받을 때 날짜 계산을 하지 않을거라면 String 으로 받아도 된다. 
@@ -20,10 +20,10 @@ public class Member {
 	
 	public Member() {}
 	
-	public Member(int idx, String userid, String password, String username, String regdate, String photo) {
+	public Member(int idx, String userid, String pw, String username, String regdate, String photo) {
 		this.idx = idx;
 		this.userid = userid;
-		this.password = password;
+		this.pw = pw;
 		this.username = username;
 		this.regdate = regdate;
 		this.photo = photo;
@@ -45,12 +45,12 @@ public class Member {
 		this.userid = userid;
 	}
 
-	public String getPassword() {
-		return password;
+	public String getPw() {
+		return pw;
 	}
 
-	public void setPassword(String password) {
-		this.password = password;
+	public void setPw(String pw) {
+		this.pw = pw;
 	}
 
 	public String getUsername() {
@@ -79,7 +79,7 @@ public class Member {
 
 	@Override
 	public String toString() {
-		return "Member [idx=" + idx + ", userid=" + userid + ", password=" + password + ", username=" + username
+		return "Member [idx=" + idx + ", userid=" + userid + ", pw=" + pw + ", username=" + username
 				+ ", regdate=" + regdate + ", photo=" + photo + "]";
 	}
 	

@@ -26,8 +26,8 @@ public class EncodingFilter implements Filter {
 		request.setCharacterEncoding(encoding);
 		
 		// response에 대한 처리
-		chain.doFilter(request, response);
-		
+		chain.doFilter(request, response);  // 다음 필터로 넘어가서 처리 -> 필터 처리가 끝난 후에는 사용자가 요청한 Servlet으로
+
 	}
 
 	@Override

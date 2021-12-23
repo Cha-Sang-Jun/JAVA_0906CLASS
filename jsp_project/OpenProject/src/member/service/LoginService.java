@@ -32,7 +32,7 @@ public class LoginService {
 		
 		// 데이터 받기
 		String userId = request.getParameter("userid");
-		String pw = request.getParameter("password");
+		String pw = request.getParameter("pw");
 		String saveId = request.getParameter("saveid");
 		
 		// dao.selectByidPw
