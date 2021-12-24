@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import jdbc.util.JdbcUtil;
+import member.domain.EditRequest;
 import member.domain.Member;
 import member.domain.RegRequest;
 
@@ -177,6 +178,7 @@ public class MemberDao {
 			if (rs.next()) {
 				totalCount = rs.getInt(1);
 			}
+
 		} finally {
 			JdbcUtil.close(rs);
 			JdbcUtil.close(stmt);
@@ -209,5 +211,56 @@ public class MemberDao {
 		}
 
 		return member;
+	}
+
+	/////////////////////////////////////////////////////////////////////
+	
+	public int updateMember(Connection conn, EditRequest editRequest) throws SQLException {
+
+		int resultCnt = 0;
+
+		PreparedStatement pstmt = null;
+
+		String sql = "update member set password = ?, username = ?, photo = ? where idx = ?";
+
+		try {
+
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, editRequest.getPw());
+			pstmt.setString(2, editRequest.getUsername());
+			pstmt.setString(3, editRequest.getFileName());
+			pstmt.setInt(4, editRequest.getIdx());
+
+			resultCnt = pstmt.executeUpdate();
+
+		} finally {
+			JdbcUtil.close(pstmt);
+		}
+		
+		return resultCnt;
+	}
+
+	/////////////////////////////////////////////////////////////////
+	
+	public int deleteMemberByIdx(Connection conn, int idx) throws SQLException {
+		
+		int resultCnt = 0;
+		
+		PreparedStatement pstmt = null;
+		
+		String sql = "delete from member where idx = ?";
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, idx);
+			
+			resultCnt = pstmt.executeUpdate();
+			
+		} finally {
+			JdbcUtil.close(pstmt);
+		}
+		
+		
+		return resultCnt;
 	}
 }

@@ -1,6 +1,6 @@
 package member.command;
 
-import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletRequest; 
 import javax.servlet.http.HttpServletResponse;
 
 import member.service.MemberEditService;
@@ -23,6 +23,8 @@ public class MemberEditCommandImpl implements Command {
 			view = "/WEB-INF/views/member/manager/editform.jsp";
 			
 		} else if (request.getMethod().equals("POST")) {
+			
+			request.setAttribute("result", MemberEditService.getInstance().editMember(request, response));
 			
 			view = "/WEB-INF/views/member/manager/edit.jsp";
 		}

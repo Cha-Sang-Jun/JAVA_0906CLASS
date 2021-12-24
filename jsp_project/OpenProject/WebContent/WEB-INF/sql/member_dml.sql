@@ -14,6 +14,15 @@ select count(*) from project.member;
 
 select count(*) from member;
 
-select * from project.member where idx = 8;
-select * from member where idx = ?
+select * from project.member where idx = 11;
+select * from member where idx = ?;
 
+-- update
+update project.member set password ='999', username = '손흥민', photo ='img02.png' where idx = 11;
+update project.member set userid = 'cool3@gmail.com' where idx = 11;
+
+update member set password = ?, username = ?, photo = ? where idx = ?;
+
+-- delete
+delete from project.member where idx = 8;
+delete from member where idx = ?;
