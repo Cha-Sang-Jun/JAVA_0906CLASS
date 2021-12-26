@@ -15,8 +15,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import command.Command;
 import member.command.BadRequestCommandImpl;
-import member.command.Command;
 
 public class FrontController extends HttpServlet  {
 	
@@ -112,7 +112,6 @@ public class FrontController extends HttpServlet  {
 		if(commandURI.startsWith(request.getContextPath())) {
 			commandURI = commandURI.substring(request.getContextPath().length());
 		}
-
 		
 		
 		// 3. 사용자 요청에 맞는 데이터 처리 : 요청에 따른 분기
