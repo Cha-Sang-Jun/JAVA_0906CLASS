@@ -26,3 +26,7 @@ update member set password = ?, username = ?, photo = ? where idx = ?;
 -- delete
 delete from project.member where idx = 8;
 delete from member where idx = ?;
+
+-- 아이디 중복 체크
+select count(*) from project.member where userid = 'cool1@gmail.com';
+select count(*) from emeber where userid = ?

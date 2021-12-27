@@ -1,6 +1,6 @@
 package member.dao;
 
-import java.sql.Connection; 
+import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -214,7 +214,7 @@ public class MemberDao {
 	}
 
 	/////////////////////////////////////////////////////////////////////
-	
+
 	public int updateMember(Connection conn, EditRequest editRequest) throws SQLException {
 
 		int resultCnt = 0;
@@ -236,31 +236,57 @@ public class MemberDao {
 		} finally {
 			JdbcUtil.close(pstmt);
 		}
-		
+
 		return resultCnt;
 	}
 
 	/////////////////////////////////////////////////////////////////
-	
+
 	public int deleteMemberByIdx(Connection conn, int idx) throws SQLException {
-		
+
 		int resultCnt = 0;
-		
+
 		PreparedStatement pstmt = null;
-		
+
 		String sql = "delete from member where idx = ?";
-		
+
 		try {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, idx);
-			
+
 			resultCnt = pstmt.executeUpdate();
-			
+
 		} finally {
 			JdbcUtil.close(pstmt);
 		}
-		
-		
+
+		return resultCnt;
+	}
+	
+	///////////////////////////////////////////////////////////////////////
+
+	public int selectByIdCount(Connection conn, String userId) throws SQLException {
+
+		int resultCnt = 0;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+
+		String sql = "select count(*) from member where userid = ?";
+
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, userId);
+			rs = pstmt.executeQuery();
+
+			if (rs.next()) {
+				resultCnt = rs.getInt(1);
+			}
+			
+		} finally {
+			JdbcUtil.close(rs);
+			JdbcUtil.close(pstmt);
+		}
+
 		return resultCnt;
 	}
 }
