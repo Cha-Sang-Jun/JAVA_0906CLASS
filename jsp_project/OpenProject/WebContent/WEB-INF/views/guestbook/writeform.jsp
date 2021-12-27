@@ -37,6 +37,7 @@
 		<hr>
 		
 		<form method="post">
+		<input type="hidden" name="memberidx" value="${loginInfo.idx}">
 			<table>
 				<tr>
 					<td>제목</td>
@@ -44,7 +45,11 @@
 				</tr>
 				<tr>
 					<td>내용</td>
-					<td><input type="text" name="content" value = "${write.content}"></td>
+					<td><input type="text" name="content" rowspan = "5" colspan = "10" value = "${write.content}"></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td><input type = "submit" value = "등록"><input type = "reset"></td>
 				</tr>
 			</table>
 		

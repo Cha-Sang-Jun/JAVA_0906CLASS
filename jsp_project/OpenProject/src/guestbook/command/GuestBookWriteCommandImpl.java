@@ -4,6 +4,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import command.Command;
+import guestbook.service.GuestBookWriteService;
 
 public class GuestBookWriteCommandImpl implements Command {
 
@@ -18,6 +19,7 @@ public class GuestBookWriteCommandImpl implements Command {
 			
 		} else if (request.getMethod().equals("POST")) {
 			
+			request.setAttribute("result", GuestBookWriteService.getInstance().Write(request, response));
 			
 			view = "/WEB-INF/views/guestbook/write.jsp";
 		}

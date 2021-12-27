@@ -4,19 +4,23 @@
 <html lang="ko">
 <head>
 <meta charset="UTF-8">
-<title>ajax-3</title>
+<title>ajax-5</title>
 <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 <script>
 
 	$(document).ready(function() {
 
-/* 		$.get('data.html', function(data) {
-			$('#list').html(data);
-		}) */
+		$.getJSON('data.json', function(data){
+			// data는 Json 문자열이 아니라 javascript의 객체로 변환된 데이터이다.
+			// $.each(data, function(){});
+			// $('h1').each(function(){});
+			
+			$.each(data, function(index, value){
+				var html = '제품명 :' + value.name + ', 가격 ' + value.price + '원 <br>';
+				$('#list').append(html);
+			});
+		});
 		
-		$.post('data.html', function(data) {
-			$('#list').html(data);
-		})
 	});
 	
 </script>
@@ -31,7 +35,10 @@
 	<input type="submit" id='btn'>
 
 	<hr>
-	<h3 id="list"></h3>
+	<h3 id="list">
+	
+	
+	</h3>
 
 
 
