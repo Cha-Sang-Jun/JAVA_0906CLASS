@@ -5,7 +5,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import command.Command;
 
-public class MemberIndexCommandImpl implements Command{
+public class MemberIndexCommandImpl implements Command {
 
 	@Override
 	public String getPage(HttpServletRequest request, HttpServletResponse response) {

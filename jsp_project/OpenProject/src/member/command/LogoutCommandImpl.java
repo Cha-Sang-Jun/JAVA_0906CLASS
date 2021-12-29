@@ -13,10 +13,6 @@ public class LogoutCommandImpl implements Command {
 		request.getSession().invalidate();
 		
 		return "/WEB-INF/views/member/logout.jsp";
-		
-		
 	}
-	
-	
 
 }

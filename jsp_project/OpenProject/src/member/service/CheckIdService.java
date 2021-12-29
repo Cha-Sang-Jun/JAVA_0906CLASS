@@ -9,17 +9,17 @@ import jdbc.ConnectionProvider;
 import member.dao.MemberDao;
 
 public class CheckIdService {
-
+	
 	private CheckIdService() {}
 	private static CheckIdService service = new CheckIdService();
 	public static CheckIdService getInstance() {
 		return service;
 	}
 	
-	// 해당 아이디로 select => count 개수를 반환
+	// 해당 아이디로  select => count 개수를 반환
 	public int getMemberCount(HttpServletRequest request) {
 		
-		int resultCnt = 0;
+		int resultCnt =  0;
 		
 		String userId = request.getParameter("userid");
 		
@@ -32,11 +32,12 @@ public class CheckIdService {
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
-			// 정상적인 체크가 안되었을 때 사용하지 못하도록 처리한다.
-			resultCnt = 1;
+			// 정상적인 체크가 안되었기 때문에 사요하지 못하도록 처리
+			resultCnt = 1; 
 		}
 		
-		return resultCnt;
 		
+		return resultCnt;
 	}
+
 }

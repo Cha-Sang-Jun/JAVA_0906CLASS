@@ -17,12 +17,13 @@ public class GuestBookWriteCommandImpl implements Command {
 			
 			view = "/WEB-INF/views/guestbook/writeform.jsp";
 			
-		} else if (request.getMethod().equals("POST")) {
+		} else if(request.getMethod().equals("POST")) {
 			
-			request.setAttribute("result", GuestBookWriteService.getInstance().Write(request, response));
+			request.setAttribute("result", GuestBookWriteService.getInstance().writeArticle(request, response));
 			
 			view = "/WEB-INF/views/guestbook/write.jsp";
 		}
+		
 		
 		return view;
 	}

@@ -1,17 +1,21 @@
 package member.domain;
 
 public class LoginInfo {
-	
+
+	private int idx;
 	private String userId;
 	private String userName;
 	private String photo;
-	
-	public LoginInfo() {}
-	
-	public LoginInfo(String userId, String userName, String photo) {
+
+	public LoginInfo(int idx, String userId, String userName, String photo) {
+		this.idx = idx;
 		this.userId = userId;
 		this.userName = userName;
 		this.photo = photo;
+	}
+
+	public int getIdx() {
+		return idx;
 	}
 
 	public String getUserId() {
@@ -25,6 +29,10 @@ public class LoginInfo {
 	public String getPhoto() {
 		return photo;
 	}
-	
-	
+
+	@Override
+	public String toString() {
+		return "LoginInfo [idx=" + idx + ", userId=" + userId + ", userName=" + userName + ", photo=" + photo + "]";
+	}
+
 }

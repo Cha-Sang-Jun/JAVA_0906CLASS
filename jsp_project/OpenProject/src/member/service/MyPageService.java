@@ -11,7 +11,7 @@ import member.domain.LoginInfo;
 import member.domain.Member;
 
 public class MyPageService {
-	
+
 	private MyPageService() {}
 	private static MyPageService service = new MyPageService();
 	public static MyPageService getInstance() {
@@ -20,13 +20,13 @@ public class MyPageService {
 	
 	public Member myPageInfo(HttpServletRequest request) {
 		
-		LoginInfo loginInfo = (LoginInfo)request.getSession().getAttribute("loginInfo");
-		loginInfo.getUserId();
+		LoginInfo loginInfo = (LoginInfo) request.getSession().getAttribute("loginInfo");
 		
 		Connection conn = null;
 		Member member = null;
 		
 		try {
+			
 			conn = ConnectionProvider.getConnection();
 			
 			member = MemberDao.getInstance().selectById(conn, loginInfo.getUserId());
@@ -36,5 +36,16 @@ public class MyPageService {
 		}
 		
 		return member;
+		
 	}
+	
 }
+
+
+
+
+
+
+
+
+

@@ -17,7 +17,6 @@
 	padding: 5px;
 }
 
-<!-- 2021.12.27 userid에 msg div 설정 -->
 #msg {
 	display: none;
 }
@@ -25,13 +24,13 @@
 .text_red {
 	color : red;
 }
-
 .text_blue {
-	color : blue;
+	color: blue;
 }
 
 </style>
 <script>
+	
 	$(document).ready(function(){
 		
 		$('#userid').focusin(function(){
@@ -42,36 +41,57 @@
 		});
 		
 		$('#userid').focusout(function(){
+			
 			$.ajax({
 				url : 'checkid.do',
-				type :'get',
+				type : 'get',
 				data : {
 					userid : $('#userid').val()
 				},
-				
 				success : function(data){
 					// Y | N
-					if(data == 'Y'){
+					if(data == 'Y') {
 						// 사용 가능한 아이디
-						$('#msg').css('display','block');
-						$('#msg').text('사용 가능 아이디');
+						$('#msg').css('display', 'block');
+						$('#msg').text('멋진 아이디 입니다!');
 						$('#msg').addClass('text_blue');
 						
 					} else {
 						// 사용 불가능한 아이디
-						$('#msg').css('display','block');
-						$('#msg').text('사용 불가능햔 아이디');
-						$('#msg').addClass('text_red');				
+						$('#msg').css('display', 'block');
+						$('#msg').text('사용중이거나 탈퇴한 아이디 입니다!');
+						$('#msg').addClass('text_red');
 					}
 				},
-				error : function(){
+				error : function() {
 					console.log('비동기 통신 오류');
 				}
 			});
+			
 		});
+		
+		$('#ajaxBtn').click(function(){
+			
+			// 비동기 통신을 이용해서 파일을 업로드 하는 경우
+			// formData 객체를 이용
+			// 파라미터 이름과 전송할 데이터를 설정
+			var photoFile = $('#photo');
+			var file = photoFile[0].files[0];
+			
+			var formData = new FormData();
+			formData.append('userid', $('#userid').val());
+			formData.append('pw', $('#pw').val());
+			formData.append('username', $('#username').val());
+			formData.append('photo', file);
+			
+		});
+		
 	});
-
+	
+	
 </script>
+
+
 </head>
 <body>
 
@@ -93,16 +113,19 @@
 			<table>
 				<tr>
 					<td>아이디</td>
-					<td>
-					 <!--  http://localhost:8080/op/member/checkid.do?id=cool@gmail.com 
-							응답 : 1 | 0  또는 Y | N -->
-					<input type="text" name="userid" id = "userid">
-					<div id = "msg"> </div>
+					<td>  
+					<!-- 
+					http://localhost:8080/op/member/checkid.do?id=coo@gmail.com
+					1 | 0, Y | N
+					 -->
+					<input type="text" name="userid" id="userid">
+					<div id="msg"></div>
+					
 					</td>
 				</tr>
 				<tr>
 					<td>비밀번호</td>
-					<td><input type="password" name="pw"></td>
+					<td><input type="password" name="pw" id = "pw"></td>
 				</tr>
 				<tr>
 					<td>비밀번호 확인</td>
@@ -110,15 +133,19 @@
 				</tr>
 				<tr>
 					<td>이름</td>
-					<td><input type="text" name="username"></td>
+					<td><input type="text" name="username" id = "username"></td>
 				</tr>
 				<tr>
 					<td>사진</td>
-					<td><input type="file" name="photo"></td>
+					<td><input type="file" name="photo" id = "photo"></td>
 				</tr>
 				<tr>
 					<td></td>
-					<td> <input type="submit" value="회원가입"> <input type="reset"> </td>
+					<td> 
+						<input type="submit" value="회원가입"> 
+						<input type="reset"> 
+						<input type="button" value ="ajax로 회원가입" id="ajaxBtn">
+					</td>
 				</tr>			
 			</table>
 		

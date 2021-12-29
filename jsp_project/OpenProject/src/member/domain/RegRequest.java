@@ -1,14 +1,16 @@
 package member.domain;
 
 public class RegRequest {
-	
+
 	private String userid;
 	private String pw;
 	private String username;
 	private String fileName;
-	
-	public RegRequest() {}
-	
+
+	public RegRequest() {
+
+	}
+
 	public RegRequest(String userid, String pw, String username, String fileName) {
 		this.userid = userid;
 		this.pw = pw;
@@ -39,29 +41,24 @@ public class RegRequest {
 	public void setUsername(String username) {
 		this.username = username;
 	}
-	
+
 	public String getFileName() {
 		return fileName;
 	}
-	
+
 	public void setFileName(String fileName) {
 		this.fileName = fileName;
 	}
 
-
 	@Override
 	public String toString() {
-		return "RegRequest [userid=" + userid + ", pw=" + pw + ", username=" + username + ", fileName="
-				+ fileName + "]";
+		return "RegRequest [userid=" + userid + ", pw=" + pw + ", username=" + username + ", fileName=" + fileName
+				+ "]";
 	}
 
 	// RegRequest -> Member
 	public Member getMember() {
 		return new Member(0, this.userid, this.pw, this.username, null, null);
 	}
-	
-	
-	
-	
 
 }

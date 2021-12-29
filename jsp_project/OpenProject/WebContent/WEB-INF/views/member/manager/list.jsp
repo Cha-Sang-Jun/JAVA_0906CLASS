@@ -115,7 +115,9 @@
 				</td>
 			</tr>
 			</c:forEach>
+			
 			</c:if>
+			
 			
 		</table>
 		<div id="paging">
@@ -127,22 +129,35 @@
 			
 			</c:if>
 		</div>
+		
+		
 	
 	</div>
 	<!-- content 끝 -->
 
+
 	<!-- Javascript 추가 -->
 	<%@ include file="/WEB-INF/views/frame/footerset.jsp" %>
-	
+
 <script>
-	
+
 function delMember(idx){
+	
 	if(confirm("해당 회원 정보를 삭제하시겠습니까?")){
-		location.href = 'delete.do?idx=' + idx;
+		location.href = 'delete.do?idx='+99;
 	}
+	
 }
-	
+
 </script>
-	
+
 </body>
 </html>
+
+
+
+
+
+
+
+

@@ -1,58 +1,44 @@
 package guestbook.domain;
 
-public class WriteInfo {
-	
+public class WriteRequest {
+
+	private int memberIdx;
 	private String subject;
 	private String content;
-	private int memberidx;
 
-	
-	public WriteInfo() {}
-	
-	
-	public WriteInfo(String subject, String content, int memberidx) {
+	public WriteRequest(int memberIdx, String subject, String content) {
+		this.memberIdx = memberIdx;
 		this.subject = subject;
 		this.content = content;
-		this.memberidx = memberidx;
 	}
 
+	public int getMemberIdx() {
+		return memberIdx;
+	}
+
+	public void setMemberIdx(int memberIdx) {
+		this.memberIdx = memberIdx;
+	}
 
 	public String getSubject() {
 		return subject;
 	}
 
-
 	public void setSubject(String subject) {
 		this.subject = subject;
 	}
-
 
 	public String getContent() {
 		return content;
 	}
 
-
 	public void setContent(String content) {
 		this.content = content;
 	}
 
-
-	public int getMemberidx() {
-		return memberidx;
-	}
-
-
-	public void setMemberidx(int memberidx) {
-		this.memberidx = memberidx;
-	}
-
-
 	@Override
 	public String toString() {
-		return "Write [subject=" + subject + ", content=" + content + ", memberidx=" + memberidx + "]";
+		return "WriteRequest [memberIdx=" + memberIdx + ", subject=" + subject + ", content=" + content + "]";
 	}
-	
-	
-	
-	
+
 }

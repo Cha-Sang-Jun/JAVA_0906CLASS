@@ -1,32 +1,53 @@
 -- select
 select * from project.member;
-select * from member where userid = ? and password = ?;
-select * from project.member where userid = '1234' and password = '1234';
+select * from member where userid=? and password=?
+;
+select * from project.member where userid='test@gmail.com' and password='12341';
 
 -- limit index, count
-select * from project.member limit 0, 3; -- 1page
-select * from project.member limit 2, 2; -- 2page
+select * from project.member limit 0, 2; -- 1p
+select * from project.member limit 2, 2; -- 2p
 
 select * from member order by regdate desc limit ?, ?;
--- index : (page-1) * count
+
+-- index : (page-1)*count
+
 
 select count(*) from project.member;
 
 select count(*) from member;
 
-select * from project.member where idx = 11;
-select * from member where idx = ?;
+select * from project.member where idx=1;
+select * from member where idx=?
+;
+
+
+-- insert
+INSERT INTO member ( userid, password, username ) VALUES (?,?,?)
+;
+
 
 -- update
-update project.member set password ='999', username = '손흥민', photo ='img02.png' where idx = 11;
-update project.member set userid = 'cool3@gmail.com' where idx = 11;
+update project.member
+set password='999', username='손흥민', photo='min1.jpg'
+where idx=11
+;
 
-update member set password = ?, username = ?, photo = ? where idx = ?;
+update member set password=?, username=?, photo=? where idx=?
+;
 
 -- delete
-delete from project.member where idx = 8;
-delete from member where idx = ?;
+DELETE FROM `project`.`member` WHERE idx=7;
+DELETE FROM member WHERE idx=?;
 
--- 아이디 중복 체크
-select count(*) from project.member where userid = 'cool1@gmail.com';
-select count(*) from emeber where userid = ?
+
+
+
+-- update
+update project.guestbook 
+set regdate=CURRENT_TIMESTAMP, CONTENT=? WHERE IDX=2;
+
+
+
+select * from project.guestbook;
+select * from project.member;

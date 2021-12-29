@@ -88,6 +88,15 @@ public class FrontController extends HttpServlet  {
 			
 		}
 		
+		
+		
+		
+		
+		
+		// Command 설정
+		//commands.put("/date.do", new DateCommandImpl());
+		//commands.put("/greeting.do", new GreetingCommandImpl());
+		
 		System.out.println("초기화된 요청 : " + commands.size());
 	}
 
@@ -108,15 +117,25 @@ public class FrontController extends HttpServlet  {
 		// 2. 사용자의 요청을 분석 : URI를 이용한 사용자 요청 분석
 		
 		String commandURI = request.getRequestURI();
-
+		// http://localhost:8080/mvc/date.do : commandURI => /mvc/date.do
+		// http://localhost:8080/mvc/greeting.do : commandURI => /mvc/greeting.do
+		
+		// request.getContextPath() => /mvc
 		if(commandURI.startsWith(request.getContextPath())) {
 			commandURI = commandURI.substring(request.getContextPath().length());
 		}
+		// http://localhost:8080/mvc/date.do : commandURI => /date.do
+		// http://localhost:8080/mvc/greeting.do : commandURI => /greeting.do
+				
+		
 		
 		
 		// 3. 사용자 요청에 맞는 데이터 처리 : 요청에 따른 분기
+		// 결과 데이터를 생성
+		
 		// 응답 결과 객체
-
+		//Object result = null;  // view 페이지에서 toString()으로 출력
+		// view page 경로
 		
 		Command command = commands.get(commandURI);
 		if(command == null) {
@@ -124,11 +143,23 @@ public class FrontController extends HttpServlet  {
 		}
 		
 		
+//		if(commandURI.equals("/greeting.do")) {
+//			command = new GreetingCommandImpl();
+//		} else if(commandURI.equals("/date.do")) {
+//			command = new DateCommandImpl();
+//		} else { // /*.do
+//			command = new BadRequestCommandImpl();
+//		}
+		
 		String viewPage = command.getPage(request, response);
 		
 		// 5.  view 페이지를 지정(선택) -> 포워딩
 		RequestDispatcher dispatcher = request.getRequestDispatcher(viewPage);
 		dispatcher.forward(request, response);
+		
+		
+		
+		
 		
 		
 		
