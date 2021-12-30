@@ -179,7 +179,7 @@ div.reply>div.close>div {
 				<form id="replyWriteForm">
 					<!-- http://localhost:8080/op/guestbook/reply.do -->
 
-					<textarea name="message" rows="5" cols="30"></textarea>
+					<textarea name="message" id="message" rows="5" cols="30"></textarea>
 					<input type="hidden" name="memberIdx" value="${loginInfo.idx}">
 					<input type="hidden" name="guestbookIdx" value="${pageView.idx}">
 					<br> <input type="submit" value="작성">
@@ -189,10 +189,10 @@ div.reply>div.close>div {
 		</div>
 
 		<div class="viewpagemenu">
-			<a href="">목록</a>
+			<a href="list.do">목록</a>
 			<c:if test="${loginInfo.idx eq pageView.memberidx}">
-				<a href="">수정</a>
-				<a href="">삭제</a>
+				<a href="edit.do?idx=${pageView.idx}">수정</a>
+				<a href="javascript:deleteMessage(${pageView.idx})">삭제</a>
 			</c:if>
 		</div>
 
@@ -208,7 +208,7 @@ div.reply>div.close>div {
 
 			$('#replyWriteForm').submit(function() {
 				
-				$('#message').html('');
+				
 
 				$.ajax({
 					url : 'reply/write3.do',
@@ -217,49 +217,50 @@ div.reply>div.close>div {
 					success : function(data) {
 						console.log(data);
 						
-						$('#replyList').html('');  // list안의 html 요소들 지워주고
+						$('#replyList').html('');
 						
-						// 현재 data -> javascript의 객체이다
+						// 현재 data -> 자바스크립트의 객체
 						$.each(data, function(index, item){
 							
 							var html = '';
-							html += '';
-							
 							html += '<div id="reply'+item.idx+'" class="reply">';
 							html += '<div class="img">';
-							html +=	'<img src="/op/uploadfile/'+item.photo+'">';
+							html += '	<img src="/op/uploadfile/'+item.photo+'">';
 							html += '</div>';
 							html += '<div class="content">';
-							html +=	'<h4>'+item.uesrName+'</h4>';
-							html +=	'<div>';
-							html +=	'<pre>'+item.content+'</pre>';
-							html += '	</div> ';
-							html +=	' <div>'+item.regdate+'</div>';
+							html += '	<h4>'+item.userName+'</h4>';
+							html += '	<div>';
+							html += '		<pre>'+item.content+'</pre>';
+							html += '	</div>';
+							html += '	<div>'+item.regdate+'</div>';
 							html += '</div>';
 							html += '<div class="close">';
-							html +=	'<div onclick="deleteReply('+item.idx+')">X</div>';
+							html += '	<div onclick="deleteReply('+item.idx+')">X</div>';
 							html += '</div>';
 							html += '</div>';
 							
 							$('#replyList').append(html);
- 							
+							
+							$('#message').val('');
+							
 						});
 						
 						
-						// 응답이 html 일때 처리
-						// $('#replyList').html();
 						
-						// 입력처리 여부만 판단  => view.do
+						
+						// 응답이 html 일때 처리
+						//$('#replyList').html(data);
 
+						// 입력처리 여부만 판단 -> view.do
 /* 						if (data == '1') {
 							alert('등록 성공');
-							location.href = 'view.do?idx=${pageView.idx}';
-						    // 1. 화면에 출력할 html 응답
-						    // 2. 화면에 출력할 데이터 JSON을 받고 파싱(원하는 html 구조로 변경)
+							//location.href = 'view.do?idx=${pageView.idx}';
+							// 1. 화면에 출력할 html 응답
+							// 2. 화면에 출력할 데이터 JSON 받고 파싱
 						} else {
 							alert('등록 실패');
-						} */
-
+						}
+ */
 					},
 					error : function() {
 						console.log('통신에러 !!!!!');
@@ -291,12 +292,14 @@ div.reply>div.close>div {
 						}
 					}
 				});
-				
-				
-				
 			}
+		}
+		
+		function deleteMessage(idx) {
 			
-			
+			if(confirm('삭제하시겠습니까?')){
+				location.href = 'delete.do?idx='+idx;
+			}
 		}
 		
 	</script>

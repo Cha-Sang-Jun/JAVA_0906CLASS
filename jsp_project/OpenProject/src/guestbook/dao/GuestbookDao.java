@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import guestbook.domain.Article;
+import guestbook.domain.EditRequest;
 import guestbook.domain.Message;
 import guestbook.domain.PageView;
 import guestbook.domain.WriteRequest;
@@ -54,7 +55,7 @@ public class GuestBookDao {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 
-		String sql = "select g.idx as idx , g.subject as subject, g.content as content, g.regdate as regdate, m.username as username, m.photo as photo from project.guestbook g join project.member m on g.memberidx=m.idx order by regdate desc limit ?, ?";
+		String sql = "select g.idx as idx , g.subject as subject, g.content as content, g.regdate as regdate, m.username as username, m.photo as photo from guestbook g join member m on g.memberidx=m.idx order by idx desc limit ?, ?";
 
 		try {
 			pstmt = conn.prepareStatement(sql);
@@ -169,4 +170,53 @@ public class GuestBookDao {
 		return message;
 	}
 
+	public int updateMessage(Connection conn, EditRequest editRequest) throws SQLException {
+		
+		int resultCnt = 0;
+		
+		PreparedStatement pstmt = null;
+		
+		String sql = "UPDATE guestbook "
+					+ " SET subject=?, content=? "
+					+ " WHERE idx=? and memberidx=?";
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, editRequest.getSubject());
+			pstmt.setString(2, editRequest.getContent());
+			pstmt.setInt(3, editRequest.getGuestbookIdx());
+			pstmt.setInt(4, editRequest.getMemberIdx());
+			
+			resultCnt = pstmt.executeUpdate();
+		} finally {
+			JdbcUtil.close(pstmt);
+		}
+		
+		return resultCnt;
+	}
+
+	
+	public int deleteMessage(Connection conn, int idx, int memberIdx) throws SQLException {
+		
+		int resultCnt = 0;
+		PreparedStatement pstmt = null;
+		String sql = "delete from guestbook where idx=? and memberidx=?";
+		
+		try {
+		pstmt = conn.prepareStatement(sql);
+		pstmt.setInt(1, idx);
+		pstmt.setInt(2, memberIdx);
+		
+		resultCnt = pstmt.executeUpdate();
+		} finally {
+			JdbcUtil.close(pstmt);
+		}
+		return resultCnt;
+	}
+
 }
+
+
+
+
+

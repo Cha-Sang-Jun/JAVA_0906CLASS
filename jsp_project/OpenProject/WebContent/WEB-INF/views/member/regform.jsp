@@ -70,11 +70,13 @@
 			
 		});
 		
+		
 		$('#ajaxBtn').click(function(){
 			
 			// 비동기 통신을 이용해서 파일을 업로드 하는 경우
-			// formData 객체를 이용
+			// FormData 를 이용
 			// 파라미터 이름과 전송할 데이터를 설정
+			
 			var photoFile = $('#photo');
 			var file = photoFile[0].files[0];
 			
@@ -83,6 +85,28 @@
 			formData.append('pw', $('#pw').val());
 			formData.append('username', $('#username').val());
 			formData.append('photo', file);
+			
+			$.ajax({
+				url : 'reg2.do',
+				type : 'POST',
+				data : formData,
+				enctype : 'multipart/form-data',
+				processData : false,
+				contentType : false,
+				cash : false,
+				success : function(data){
+					if(data == '1'){
+						alert('회원가입 성공!');
+						location.href = 'login.do';
+					} else {
+						alert('회원가입 실패!');
+						history.go(-1);
+					}
+				},
+				error : function(req){
+					console.log(req);
+				}
+			});
 			
 		});
 		
@@ -125,7 +149,7 @@
 				</tr>
 				<tr>
 					<td>비밀번호</td>
-					<td><input type="password" name="pw" id = "pw"></td>
+					<td><input type="password" name="pw" id="pw"></td>
 				</tr>
 				<tr>
 					<td>비밀번호 확인</td>
@@ -133,18 +157,18 @@
 				</tr>
 				<tr>
 					<td>이름</td>
-					<td><input type="text" name="username" id = "username"></td>
+					<td><input type="text" name="username" id="username"></td>
 				</tr>
 				<tr>
 					<td>사진</td>
-					<td><input type="file" name="photo" id = "photo"></td>
+					<td><input type="file" name="photo" id="photo"></td>
 				</tr>
 				<tr>
 					<td></td>
 					<td> 
 						<input type="submit" value="회원가입"> 
-						<input type="reset"> 
-						<input type="button" value ="ajax로 회원가입" id="ajaxBtn">
+						<input type="reset">
+						<input type="button" value="ajax로 회원가입" id="ajaxBtn"> 
 					</td>
 				</tr>			
 			</table>

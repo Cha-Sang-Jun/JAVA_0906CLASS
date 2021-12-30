@@ -90,10 +90,12 @@
 					console.log(data);
 					
 					
+					
 					if(data == '1'){
 						alert('게시글이 등록되었습니다.');
-					    location.href = 'list.do';
-					    
+						location.href = 'list.do';
+						
+						
 					} else  {
 						alert('게시물 등록이 실패했습니다.\n다시 등록해주세요.');
 					}

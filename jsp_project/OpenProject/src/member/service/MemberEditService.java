@@ -1,6 +1,6 @@
 package member.service;
 
-import java.io.File; 
+import java.io.File;
 import java.io.UnsupportedEncodingException;
 import java.sql.Connection;
 import java.sql.SQLException;

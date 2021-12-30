@@ -83,3 +83,18 @@ delete from project.reply where idx=3;
 delete from reply where idx=?
 ;
 
+
+# GuestBook Edit
+
+UPDATE project.guestbook
+SET
+subject = '수정된 제목',
+content = '내용이 수정되었습니다.'
+WHERE idx = 12 and memberidx=14;
+
+UPDATE guestbook SET subject=?, content=? WHERE idx=? and memberidx=?
+;
+
+# GuestBook Delete
+delete from project.guestbook where idx=11 and memberidx=11;
+
