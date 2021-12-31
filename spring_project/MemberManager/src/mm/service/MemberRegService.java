@@ -32,6 +32,6 @@ public class MemberRegService {
 		}
 		
 		dao.insert(request.toMember());
-		System.out.println("[System message : 등록완료]");
+		System.out.println("[System Message : 등록완료]");
 	}
 }

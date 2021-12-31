@@ -18,7 +18,8 @@ public class Assembler {
 		public Assembler() {
 			dao = new MemberDao();
 			regService = new MemberRegService();  // default 생성자 들어간 후 ->
-			regService.setDao(dao);               // 필요한 메소드 주입? 하는 것이 assembler의 역할이다
+			// regService.setDao(dao);               // 필요한 메소드 주입 하는 것이 assembler의 역할이다
+			regService.setDao(new MemberDao()); 
 			passwordService = new ChangePasswordService(dao);
 		}
 		
