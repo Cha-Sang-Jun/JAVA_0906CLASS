@@ -1,28 +1,27 @@
 package mm.service;
 
+import javax.annotation.Resource;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Component;
+
 import mm.dao.Dao;
 import mm.dao.MemberDao;
 import mm.domain.Member;
 import mm.domain.RegRequest;
 import mm.exception.DuplicateMemberException;
 
-public class MemberRegService {
+@Component("regService")
+public class MemberRegService2 {
+	
+	// @Autowired // (required = false) // (required = false) 를 붙이면 bean이 없어도 pass 처리
+	// @Qualifier("guestDao")
+	@Resource
+	private Dao dao;   // Dao 타입의 bean을 자동 주입
+	
+	public MemberRegService2() {}
 
-	// MemberDao dao = new MemberDao();  --> 의존상태이다
-	
-	private Dao dao;  // Dao 타입의 객체를 주입 받는 방법 : 생성자, setter 메소드
-	
-	public MemberRegService() {}
-	
-	public MemberRegService(Dao dao) {
-		this.dao = dao;
-	}
-	
-
-	public void setDao(Dao dao) {    // setter 메소드로 받으려면 default 생성자가 있어야 한다.
-		this.dao = dao;
-	}  
-	
 	public void regMember(RegRequest request) throws DuplicateMemberException {
 		
 		// 이메일 중복체크
