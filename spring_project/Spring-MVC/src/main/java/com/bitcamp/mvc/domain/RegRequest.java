@@ -1,9 +1,12 @@
 package com.bitcamp.mvc.domain;
 
-public class LoginRequest {
+public class RegRequest {
 
 	private String uid;
 	private String pw;
+	private String uname;
+	
+	public RegRequest() {}
 
 	public String getUid() {
 		return uid;
@@ -21,11 +24,17 @@ public class LoginRequest {
 		this.pw = pw;
 	}
 
+	public String getUname() {
+		return uname;
+	}
+
+	public void setUname(String uname) {
+		this.uname = uname;
+	}
+
 	@Override
 	public String toString() {
-		return "LoginRequest [uid=" + uid + ", pw=" + pw + "]";
+		return "RegRequest [uid=" + uid + ", pw=" + pw + ", uname=" + uname + "]";
 	}
-	
-	
 
 }

@@ -8,14 +8,14 @@
 </head>
 <body>
 
-	<h1>로그인</h1>
-	<h3>${title}</h3>
+	<h1>login Form</h1>
+	<hr>
 	<form method="post">
-		아이디 <input type="text" name="uid">
-		비밀번호 <input type="password" name="pw">
+		<input type="hidden" name="url" value="${url}">
+		아이디 <input type="text" name="uid"> <br>
+		비밀번호 <input type="password" name="pw"> <br>
 		<input type="submit">
 	</form>
-
 
 </body>
 </html>

@@ -8,14 +8,8 @@
 </head>
 <body>
 
-	<h1>로그인</h1>
-	<h3>${title}</h3>
-	<form method="post">
-		아이디 <input type="text" name="uid">
-		비밀번호 <input type="password" name="pw">
-		<input type="submit">
-	</form>
-
-
+	<h1> 쿠키 생성 </h1>
+	<a href="view"> 쿠키 정보 보기</a>
+	<!-- /mvc/cookie/view -->
 </body>
 </html>

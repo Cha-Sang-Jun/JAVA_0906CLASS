@@ -8,14 +8,15 @@
 </head>
 <body>
 
-	<h1> 로그인 정보 </h1>
+	<h1>로그인 정보</h1>
 	
-		아이디 <input type = "text" name = "uid" value = "${uid}">
-		비밀번호 <input type = "text" name = "pw" value = "${pw}">
+		아이디 <input type="text" name="uid" value="${uid}">
+		비밀번호 <input type="text" name="pw" value="${pw}">
 		
-		<hr> 
+		<hr>
 		${loginRequest}
 		<br>
 		${loginParam}
+
 </body>
 </html>

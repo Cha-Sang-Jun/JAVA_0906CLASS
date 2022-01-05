@@ -8,14 +8,12 @@
 </head>
 <body>
 
-	<h1>로그인</h1>
-	<h3>${title}</h3>
-	<form method="post">
-		아이디 <input type="text" name="uid">
-		비밀번호 <input type="password" name="pw">
-		<input type="submit">
-	</form>
-
+	<h1>Header 값 확인</h1>
+	<hr>
+	referer : ${url} <br>
+	referer1 : ${url1} <br>
+	referer2 : ${url2} <br>
+	referer3 : ${url3} <br>
 
 </body>
 </html>
