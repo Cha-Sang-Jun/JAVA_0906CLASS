@@ -59,7 +59,14 @@ public class MemberRegService {
 			// conn = ConnectionProvider.getConnection();
 			
 			// resultCnt = dao.insertMember(conn, regRequest);
-			resultCnt = dao.insertMember(regRequest);
+			
+			System.out.println("idx => " + regRequest.getIdx());
+			
+			// resultCnt = dao.insertMember(regRequest);
+			resultCnt = dao.insert(regRequest);
+			
+			System.out.println("idx => " + regRequest.getIdx());
+			// 하위 테이블의 외래키로 사용해서 insert가 가능하다.
 			
 		} catch (Exception e) {
 			// 파일이 저장된 후 DB관련 예외가 발생했을 때 : 저장했던 파일을 삭제
