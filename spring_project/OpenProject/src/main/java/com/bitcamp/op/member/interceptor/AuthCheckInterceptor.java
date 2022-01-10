@@ -17,7 +17,7 @@ public class AuthCheckInterceptor extends HandlerInterceptorAdapter {
 		HttpSession session = request.getSession(false);
 		
 		// 세션 확인 하고 -> 속성에 loginInfo가 존재하면 true 반환
-		if(session != null && session.getAttribute("loiginInfo") != null) {
+		if(session != null && session.getAttribute("loginInfo") != null) {
 			return true;
 		}
 		
@@ -26,7 +26,7 @@ public class AuthCheckInterceptor extends HandlerInterceptorAdapter {
 		String url = request.getRequestURL().toString();
 		
 		response.sendRedirect(request.getContextPath() + "/member/login?referer=" 
-				+ request.getRequestURI().toString());
+				+ request.getRequestURL().toString());
 		
 		return false;
 	}

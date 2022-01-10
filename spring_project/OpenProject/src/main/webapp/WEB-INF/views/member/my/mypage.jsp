@@ -43,7 +43,7 @@
 				</tr>
 				<tr>
 					<td>비밀번호</td>
-					<td> ${member.pw}</td>
+					<td> ${member.password}</td>
 				</tr>
 				<tr>
 					<td>이름</td>

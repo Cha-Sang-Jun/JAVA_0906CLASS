@@ -7,6 +7,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.bitcamp.op.dao.JdbcTemplateMemberDao;
 import com.bitcamp.op.dao.MemberDao;
 import com.bitcamp.op.jdbc.ConnectionProvider;
 import com.bitcamp.op.jdbc.JdbcUtil;
@@ -16,35 +17,40 @@ import com.bitcamp.op.member.domain.Member;
 @Service
 public class MemberListService {
 
+	// @Autowired
+	// private MemberDao dao;
+
 	@Autowired
-	private MemberDao dao;
-	
+	private JdbcTemplateMemberDao dao;
+
 	// 페이지 당 표현할 회원의 수
 	private final int COUNT_PER_PAGE = 3;
 
 	public ListPageView getPageView(int pageNum) throws SQLException {
 
 		ListPageView view = null;
-		Connection conn = null;
+		// Connection conn = null;
 
-		try {
+		// try {
 
-			conn = ConnectionProvider.getConnection();
-			
-			// 전체 회원의 수
-			int totalCount = dao.selectTotalCount(conn);
-			
-			// 현재 페이지 번호
-			// int currentPage = pageNum; -> pageNum으로 쓰면 되기 때문에 굳이 변수 생성 하지 않는다.
-			
-			int index = (pageNum - 1) * COUNT_PER_PAGE;
-			List<Member> list = dao.selectList(conn, index, COUNT_PER_PAGE);
-			
-			view = new ListPageView(totalCount, pageNum, COUNT_PER_PAGE, list);
+		// conn = ConnectionProvider.getConnection();
 
-		} finally {
-			JdbcUtil.close(conn);
-		}
+		// 전체 회원의 수
+		// int totalCount = dao.selectTotalCount(conn);
+		int totalCount = dao.selectTotalCount();
+
+		// 현재 페이지 번호
+		// int currentPage = pageNum; -> pageNum으로 쓰면 되기 때문에 굳이 변수 생성 하지 않는다.
+
+		int index = (pageNum - 1) * COUNT_PER_PAGE;
+		// List<Member> list = dao.selectList(conn, index, COUNT_PER_PAGE);
+		List<Member> list = dao.selectList(index, COUNT_PER_PAGE);
+
+		view = new ListPageView(totalCount, pageNum, COUNT_PER_PAGE, list);
+
+		// } finally {
+		// JdbcUtil.close(conn);
+		// }
 
 		return view;
 	}

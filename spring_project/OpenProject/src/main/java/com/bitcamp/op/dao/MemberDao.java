@@ -97,6 +97,7 @@ public class MemberDao {
 		return list;
 	}
 
+	// RS가 들어오면 Member 객체 생성해서 반환하는 메소드
 	private Member getMember(ResultSet rs) throws SQLException {
 		return new Member(rs.getInt("idx"), rs.getString("userid"), rs.getString("password"), rs.getString("username"),
 				rs.getString("photo"), rs.getString("regdate"));

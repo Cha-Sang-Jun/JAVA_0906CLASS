@@ -14,10 +14,6 @@
 
 	<!-- Handles HTTP GET requests for /resources/** by efficiently serving up static resources in the ${webappRoot}/resources directory -->
 	<resources mapping="/resources/**" location="/resources/" />
-	<!-- http://localhost:8080/op/css/default.css -->
-	<resources mapping="/css/**" location="/css/" />
-	<resources mapping="/uploadfile/**" location="/uploadfile/" />
-	<resources mapping="/images/**" location="/images/" />
 
 	<!-- Resolves views selected for rendering by @Controllers to .jsp resources in the /WEB-INF/views directory -->
 	<beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
@@ -25,28 +21,7 @@
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
 	
-	<!-- 파일 업로드를 위한 multipartReslover 등록 -->
-	<beans:bean id="multipartResolver"
-				class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
-		<beans:property name="defaultEncoding" >
-			<beans:value>utf-8</beans:value>
-		</beans:property>
-	</beans:bean>
-	
-	<beans:bean id = "authCheckInterceptor" class = "com.bitcamp.op.member.interceptor.AuthCheckInterceptor" />
-	
-	<!-- 로그인 여부 확인을 위한 인터셉터 등록 -->
-	<interceptors>
-		<interceptor>
-			<mapping path = "/member/my/**"/>
-			<mapping path = "/member/manager/**" />
-	<!-- <mapping path = "/guestbook/**" /> -->
-			<beans:ref bean = "authCheckInterceptor"/>
-			
-		</interceptor>
-	</interceptors>
-	
-	<context:component-scan base-package="com.bitcamp.op" />
+	<context:component-scan base-package="com.bitcamp.cal" />
 	
 	
 	
