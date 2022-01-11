@@ -2,18 +2,15 @@ package com.bitcamp.op.member.service;
 
 import java.io.File;
 import java.io.IOException;
-import java.sql.Connection;
 import java.sql.SQLException;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.bitcamp.op.jdbc.ConnectionProvider;
-import com.bitcamp.op.member.dao.JdbcTemplateMemberDao;
 import com.bitcamp.op.member.dao.MemberDao;
-import com.bitcamp.op.member.dao.MybatisMemberDao;
 import com.bitcamp.op.member.domain.MemberRegRequest;
 
 @Service
@@ -25,12 +22,19 @@ public class MemberRegService {
 	// @Autowired
 	// private JdbcTemplateMemberDao dao;
 	
+	// @Autowired
+	// private MybatisMemberDao dao;
+	
+	private MemberDao dao;
+	
 	@Autowired
-	private MybatisMemberDao dao;
+	private SqlSessionTemplate template;
 	
 	public int insertMember(MemberRegRequest regRequest, HttpServletRequest request) throws IllegalStateException, IOException, SQLException {
 		
 		int resultCnt = 0;
+		
+		dao = template.getMapper(MemberDao.class);
 		
 		// 파일이 없을경우 대비해서 default 설정
 		regRequest.setFileName("img1.jpg");
@@ -67,7 +71,8 @@ public class MemberRegService {
 			System.out.println("idx => " + regRequest.getIdx());
 			
 			// resultCnt = dao.insertMember(regRequest);
-			resultCnt = dao.insert(regRequest);
+			// resultCnt = dao.insert(regRequest);
+			resultCnt = dao.insertMember(regRequest);
 			
 			System.out.println("idx => " + regRequest.getIdx());
 			// 하위 테이블의 외래키로 사용해서 insert가 가능하다.

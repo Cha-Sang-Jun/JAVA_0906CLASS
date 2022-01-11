@@ -33,7 +33,7 @@ public class MybatisMemberDao {
 	
 	public int insert(MemberRegRequest regRequest) {
 		return session.update(NAME_SPACE + ".insertMember", regRequest);
-	}
+	}   
 	
 	public Member selectByIdx(int idx) {
 		return session.selectOne(NAME_SPACE + ".selectByIdx", idx);
