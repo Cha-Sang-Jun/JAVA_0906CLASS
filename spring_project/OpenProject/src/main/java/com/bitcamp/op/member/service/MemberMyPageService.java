@@ -7,7 +7,8 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.bitcamp.op.dao.JdbcTemplateMemberDao;
+import com.bitcamp.op.member.dao.JdbcTemplateMemberDao;
+import com.bitcamp.op.member.dao.MybatisMemberDao;
 import com.bitcamp.op.member.domain.LoginInfo;
 import com.bitcamp.op.member.domain.Member;
 
@@ -17,8 +18,11 @@ public class MemberMyPageService {
 	// @Autowired
 	// private MemberDao dao;
 
+	// @Autowired
+	// private JdbcTemplateMemberDao dao;
+	
 	@Autowired
-	private JdbcTemplateMemberDao dao;
+	private MybatisMemberDao dao;
 
 	public Member getMember(HttpSession session) throws SQLException {
 
