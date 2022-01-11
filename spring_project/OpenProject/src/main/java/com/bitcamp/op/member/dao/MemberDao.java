@@ -2,11 +2,10 @@ package com.bitcamp.op.member.dao;
 
 import java.util.List;
 
-import com.bitcamp.op.member.domain.LoginParams;
 import com.bitcamp.op.member.domain.Member;
 import com.bitcamp.op.member.domain.Member2;
+import com.bitcamp.op.member.domain.MemberEditRequest;
 import com.bitcamp.op.member.domain.MemberRegRequest;
-import com.bitcamp.op.member.domain.SearchParams;
 
 public interface MemberDao {
 
@@ -24,4 +23,7 @@ public interface MemberDao {
 	public Member selectByIdx(int idx);
 	
 	public Member2 selectByIdx2(int idx);
+	
+	public int updateMember(MemberEditRequest editRequest);
+	
 }

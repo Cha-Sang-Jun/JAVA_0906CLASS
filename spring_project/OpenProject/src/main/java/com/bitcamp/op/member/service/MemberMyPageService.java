@@ -20,7 +20,7 @@ public class MemberMyPageService {
 
 	// @Autowired
 	// private JdbcTemplateMemberDao dao;
-	
+		
 	// @Autowired
 	// private MybatisMemberDao dao;
 	

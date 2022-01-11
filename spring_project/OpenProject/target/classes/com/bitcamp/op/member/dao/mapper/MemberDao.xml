@@ -52,8 +52,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select * from member where idx = #{no}
 	</select>
 	
-		<select id = "selectByIdx2"
+	<select id = "selectByIdx2"
 			resultMap = "memberResult" >
 		select * from member where idx = #{no}
 	</select>
+	
+	<update id = "updateMember"
+			parameterType = "com.bitcamp.op.member.domain.MemberEditRequest">
+	    update member set password=#{pw}, username=#{username}, photo=#{fileName} where idx=#{idx}
+	</update>
 </mapper>
