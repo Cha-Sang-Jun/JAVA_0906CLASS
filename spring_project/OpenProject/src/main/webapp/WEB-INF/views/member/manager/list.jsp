@@ -80,6 +80,19 @@
 	<div id="content">
 		<h3>회원 리스트</h3>
 		<hr>
+		
+		<div id = "searchBox"> 
+			<form>
+				<select name = "searchType"> 
+					<option value = "uid" ${param.searchType eq 'uid' ? selected : ''} >아이디</option>
+					<option value = "uname" ${param.searchType eq 'uname' ? selected : ''} >이름</option>
+					<option value = "both" ${param.searchType eq 'both' ? selected : ''} >아이디+이름</option>
+				</select>
+				<input type = "text" name ="keyword" value=${param.keyword}>
+				<input type = "submit" value = "검색">
+			</form>		
+		</div>
+		
 		<div id="listInfo">
 			전체 회원 수: ${listView.totalCount}명 , 현재 페이지: ${listView.currentPage}/${listView.pageTotalCount} 
 		</div>
@@ -94,7 +107,7 @@
 				<th>manage</th>
 			</tr>
 			
-			<c:if test="${empty listView.list}">\
+			<c:if test="${empty listView.list}">
 			<tr>
 				<td colspan="7">등록된 회원 데이터가 없습니다.</td>
 			</tr>
@@ -110,31 +123,26 @@
 				<td>${member.photo}</td>
 				<td>${member.regdate}</td>
 				<td>
-					<a href="edit.do?idx=${member.idx}">수정</a>					
+					<a href="edit?idx=${member.idx}">수정</a>					
 					<a href="javascript:delMember(${member.idx})">삭제</a>
 				</td>
 			</tr>
 			</c:forEach>
-			
-			</c:if>
-			
+e			</c:if>
 			
 		</table>
 		<div id="paging">
 			<c:if test="${listView.pageTotalCount > 0}">
 			
 			<c:forEach begin="1" end="${listView.pageTotalCount}" var="pnum">
-				<a href="list.do?p=${pnum}" class="${listView.currentPage eq pnum ? 'curpage': ''}">${pnum}</a>  
+				<a href = "list?p=${pnum}&searchType=${param.searchType}&keyword=${param.keyword}" 
+				   class="${listView.currentPage eq pnum ? 'curpage': ''}">${pnum} </a>  
 			</c:forEach>
-			
 			</c:if>
 		</div>
-		
-		
 	
 	</div>
 	<!-- content 끝 -->
-
 
 	<!-- Javascript 추가 -->
 	<%@ include file="/WEB-INF/views/frame/footerset.jsp" %>
@@ -144,7 +152,8 @@
 function delMember(idx){
 	
 	if(confirm("해당 회원 정보를 삭제하시겠습니까?")){
-		location.href = 'delete.do?idx='+99;
+		location.href = 'delete?idx='+idx;
+		// http://localhost:8080/op/member/list -> 에서 delete로 상대경로 
 	}
 	
 }

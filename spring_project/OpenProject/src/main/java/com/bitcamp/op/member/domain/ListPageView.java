@@ -22,7 +22,7 @@ public class ListPageView {
 	// 전체 페이지의 수를 구해준다
 	private void calTotalCount() {
 		pageTotalCount = totalCount / countPerPage;
-		pageTotalCount = totalCount % countPerPage > 0 ? pageTotalCount++ : pageTotalCount;
+		pageTotalCount = totalCount % countPerPage > 0 ? ++pageTotalCount : pageTotalCount;
 	}
 	
 	public int getTotalCount() {

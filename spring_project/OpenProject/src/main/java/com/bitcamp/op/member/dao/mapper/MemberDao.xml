@@ -26,18 +26,64 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select * from member where userid = #{param1} and password = #{param2}
 	</select>
 	
+	<sql id = "searchId">
+		or userid like concat('%', #{keyword}, '%')
+	</sql>
+	
+	<sql id = "searchName">
+		or username like concat('%', #{keyword}, '%')
+	</sql>
+	
 	<select id = "selectTotalCount"
+			parameterType = "hashMap"
 			resultType = "int">
 		select count(*) from member
+		
+		<where>
+			<if test = "searchType != null"> 
+				<if test = "searchType == 'uid'">
+					<include refid = "searchId" />
+				</if>
+			
+				<if test = "searchType == 'uname'">
+					<include refid = "searchName" />
+				</if>
+			
+				<if test = "searchType == 'both'">
+					<include refid = "searchId" />
+					<include refid = "searchName" />
+				</if>
+			</if>
+		</where>
 	</select>
 	
-<!-- 	<select id = "selectList" -->
-<!-- 			parameterType = "com.bitcamp.op.member.domain.SearchParams" -->
-<!-- 			resultType = "com.bitcamp.op.member.domain.Member"> -->
-	
 	<select id = "selectList"
+			parameterType = "com.bitcamp.op.member.domain.SearchParams"
 			resultType = "com.bitcamp.op.member.domain.Member">
-		select * from member order by idx desc limit #{param2}, #{param1}
+<!-- 	<select id = "selectList" -->
+<!-- 			resultType = "com.bitcamp.op.member.domain.Member"> -->
+
+		select * from member
+		<where>
+			<if test = "searchType != null">
+			
+				<if test = "searchType == 'uid'">
+					<include refid = "searchId" />
+				</if>
+				
+				<if test = "searchType == 'uname'">
+					<include refid = "searchName" />
+				</if>
+				
+				<if test = "searchType == 'both'">
+					<include refid = "searchId" />
+					<include refid = "searchName" />
+				</if>
+			</if>
+		</where> 
+		
+		order by idx desc limit #{index}, #{count}
+		
 	</select>
 	
 	<insert id = "insertMember"
@@ -49,7 +95,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<select id = "selectByIdx"
 			resultType = "com.bitcamp.op.member.domain.Member">
-		select * from member where idx = #{no}
+		select * from member where idx = #{idx}
 	</select>
 	
 	<select id = "selectByIdx2"
@@ -57,8 +103,21 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select * from member where idx = #{no}
 	</select>
 	
-	<update id = "updateMember"
-			parameterType = "com.bitcamp.op.member.domain.MemberEditRequest">
-	    update member set password=#{pw}, username=#{username}, photo=#{fileName} where idx=#{idx}
+	<update id = "editMember"
+			parameterType = "com.bitcamp.op.member.domain.EditRequest">
+	    update member 
+	    <set>
+	    username = #{username},
+	    password = #{pw}
+	    
+	   		<if test = "fileName != null">
+	   		 	, photo = #{fileName}
+	    	</if>
+	    </set>
+	    where idx = #{idx}
 	</update>
+	
+	<delete id = "deleteByIdx">
+		delete from member where idx = #{idx}
+	</delete>
 </mapper>

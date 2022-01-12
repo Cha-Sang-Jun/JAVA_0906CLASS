@@ -54,11 +54,11 @@
 				</tr>
 				<tr>
 					<td>비밀번호</td>
-					<td><input type="password" name="pw" value="${member.pw}"></td>
+					<td><input type="password" name="pw" value="${member.password}"></td>
 				</tr>
 				<tr>
 					<td>비밀번호 확인</td>
-					<td><input type="password" value="${member.pw}"></td>
+					<td><input type="password" value="${member.password}"></td>
 				</tr>
 				<tr>
 					<td>이름</td>
