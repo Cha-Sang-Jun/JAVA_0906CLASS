@@ -7,17 +7,9 @@
 <title>로그인</title>
 
 <%@ include file="/WEB-INF/views/frame/pageset.jsp"%>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/signin.css">
 
-<style>
 
-#content>form>table td {
-	padding: 5px;
-}
-#content>form input {
-	padding: 5px;
-}
-
-</style>
 
 
 </head>
@@ -31,35 +23,36 @@
 	<%@ include file="/WEB-INF/views/frame/nav.jsp"%>
 	<!-- 네비게이션 끝 -->
 
+
+
+
+
+
+<form class="form-signin" method="post">
+  <input type="hidden" name="url" value="${param.referer}">
+  <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+  
+  <label for="inputEmail" class="sr-only">Email address</label>
+  <input type="email" id="inputEmail"  name="userid" value="${cookie.saveId != null ? cookie.saveId.value : ''}"
+  class="form-control" placeholder="Email address" required autofocus>
+  
+  <label for="inputPassword" class="sr-only">Password</label>
+  <input type="password" id="inputPassword" name="pw" class="form-control" placeholder="Password" required>
+  <div class="checkbox mb-3">
+    <label>
+      <input type="checkbox"  name="saveid" value="on" ${cookie.saveId != null ? 'checked' : ''}> Remember EMAIL
+    </label>
+  </div>
+  <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+  
+</form>
+
+
+
+
+
 	<!-- content 시작 -->
-	<div id="content">
-		<h3>로그인</h3>
-		<hr>
-		<!-- form 경로와 처리 경로가 동일 -> method 로 구분 -->
-		<form method="post">
-			<input type = "hidden" name = "url" value = "${param.referer}">
-			<table>
-				<tr>
-					<td>아이디</td>
-					<td><input type="text" name="userid" value="${cookie.saveId != null ? cookie.saveId.value : ''}"></td>
-				</tr>
-				<tr>
-					<td>비밀번호</td>
-					<td><input type="password" name="pw"></td>
-				</tr>
-				<tr>
-					<td></td>
-					<td> <input type="checkbox" name="saveid" value="on" ${cookie.saveId != null ? 'checked' : ''}> 아이디 저장하기</td>
-				</tr>				
-				<tr>
-					<td></td>
-					<td> <input type="submit" value="로그인"> <input type="reset"> </td>
-				</tr>			
-			</table>
-		
-		</form>
 	
-	</div>
 	<!-- content 끝 -->
 
 
