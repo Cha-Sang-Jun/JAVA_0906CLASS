@@ -55,15 +55,15 @@ public class Member {
 		this.regdate = regdate;
 	}
 	
-	@Override
-	public String toString() {
-		return "Member [idx=" + idx + ", userid=" + userid + ", password=" + password + ", username=" + username
-				+ ", photo=" + photo + ", regdate=" + regdate + "]";
-	}
 	
 	public LoginInfo getLoginInfo() {
 		return new LoginInfo(idx, userid, username, photo);
 	}
 	
+	@Override
+	public String toString() {
+		return "Member [idx=" + idx + ", userid=" + userid + ", password=" + password + ", username=" + username
+				+ ", photo=" + photo + ", regdate=" + regdate + "]";
+	}
 	
 }
