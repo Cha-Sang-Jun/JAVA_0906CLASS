@@ -11,6 +11,13 @@ public class MemberRegRequest {
 	private MultipartFile photo;
 	private String fileName;
 	
+	public MemberRegRequest(String userid, String pw, String username, String fileName) {
+		this.userid = userid;
+		this.pw = pw;
+		this.username = username;
+		this.fileName = fileName;
+	}
+	
 	public int getIdx() {
 		return idx;
 	}

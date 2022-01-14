@@ -86,6 +86,7 @@ public class MemberRegService {
 			throw e; // 예외는 Controller에서 처리하는 목적이기 때문에 던져서 처리한다.
 		}
 		
+		// System.out.println(resultCnt);
 		return resultCnt;
 		
 	}

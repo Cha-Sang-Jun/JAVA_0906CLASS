@@ -15,6 +15,15 @@ public class EditRequest {
 	
 	public EditRequest() {}
 
+	public EditRequest(int idx, String pw, String username, String fileName) {
+		this.idx = idx;
+		this.pw = pw;
+		this.username = username;
+		this.fileName = fileName;
+	}
+
+
+
 	public int getIdx() {
 		return idx;
 	}

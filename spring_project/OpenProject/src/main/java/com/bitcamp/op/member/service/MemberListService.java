@@ -82,7 +82,7 @@ public class MemberListService {
 		// } finally {
 		// JdbcUtil.close(conn);
 		// }
-
+		System.out.println(list);
 		return view;
 	}
 

@@ -25,6 +25,8 @@ public class MemberEditService {
 		
 		dao = template.getMapper(MemberDao.class);
 		
+		System.out.println(dao.selectByIdx(memberIdx));
+		
 		return dao.selectByIdx(memberIdx);
 	}
 	
