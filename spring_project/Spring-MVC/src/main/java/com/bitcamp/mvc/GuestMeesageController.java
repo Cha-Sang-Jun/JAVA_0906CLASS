@@ -7,6 +7,8 @@ import java.util.List;
 import java.util.Map;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -56,9 +58,18 @@ public class GuestMeesageController {
 	public Map<String, OrderItem> getOrderItems2() {
 
 		Map<String, OrderItem> map = new HashMap<String, OrderItem>();
-		map.put("product-10", new OrderItem("product-10", 10000, "파손주의"));   // 앞에있는 key값은 속성의 이름("product-10"), 뒤의 내용은 속성의 Data로 처리
-		map.put("product-20", new OrderItem("product-20", 100, "파손주의"));  // map으로 입력할때는 key값은 중복되지 않게
+		map.put("product-10", new OrderItem("product-10", 10000, "파손주의"));   // 앞에있는 key값은 속성의 이름("product-10"), 뒤의 내용은 속성의 data(value)
+		map.put("product-20", new OrderItem("product-20", 100, "파손주의"));  // map으로 입력할때는 key값은 중복되지 않게한다
 		
 		return map;
+	}
+	
+	@PostMapping("/orderitem")
+	@ResponseBody
+	public OrderItem getOrderItem(@RequestBody OrderItem item) {
+		
+		System.out.println(item);
+		
+		return item;
 	}
 }
