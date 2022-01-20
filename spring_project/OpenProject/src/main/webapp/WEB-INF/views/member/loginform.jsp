@@ -9,9 +9,6 @@
 <%@ include file="/WEB-INF/views/frame/pageset.jsp"%>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/signin.css">
 
-
-
-
 </head>
 <body>
 
@@ -22,10 +19,6 @@
 	<!-- 네비게이션 시작 -->
 	<%@ include file="/WEB-INF/views/frame/nav.jsp"%>
 	<!-- 네비게이션 끝 -->
-
-
-
-
 
 
 <form class="form-signin" method="post">
@@ -46,15 +39,6 @@
   <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
   
 </form>
-
-
-
-
-
-	<!-- content 시작 -->
-	
-	<!-- content 끝 -->
-
 
 	<!-- Javascript 추가 -->
 	<%@ include file="/WEB-INF/views/frame/footerset.jsp" %>

@@ -15,6 +15,12 @@ public interface MemberDao {
 	// 파라미터가 기본형, 문자열일 경우
 	public Member selectByIdPw(String uid, String pw);
 	
+	public Member selectById(String uid);
+	
+	public Member selectByIdx(int idx);
+	
+	public Member2 selectByIdx2(int idx);
+	
 	// public int selectTotalCount();
 	public int selectTotalCount(Map<String, String> params);
 	
@@ -23,12 +29,11 @@ public interface MemberDao {
 	
 	public int insertMember(MemberRegRequest regRequest);
 	
-	public Member selectByIdx(int idx);
-	
-	public Member2 selectByIdx2(int idx);
 
 	public int deleteByIdx(int memberIdx);
 
 	public int editMember(EditRequest editRequest);
+
+	
 	
 }

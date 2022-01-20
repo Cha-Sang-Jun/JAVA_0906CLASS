@@ -9,17 +9,6 @@
 
 <%@ include file="/WEB-INF/views/frame/pageset.jsp"%>
 
-<style>
-
-#content>form>table td {
-	padding: 5px;
-}
-#content>form input {
-	padding: 5px;
-}
-
-</style>
-
 
 </head>
 <body>
@@ -33,10 +22,14 @@
 	<!-- 네비게이션 끝 -->
 
 	<!-- content 시작 -->
-	<div id="content">
+	
+	<main role="main" class="container">
+
+		<div class="my-3 p-3 bg-white rounded shadow-sm ">
+		
 		<h3>회원 정보</h3>
 		<hr>
-			<table>
+			<table class="table">
 				<tr>
 					<td>아이디</td>
 					<td> ${member.userid} </td>
@@ -60,8 +53,15 @@
 					<td> ${member.regdate}</td>
 				</tr>		
 			</table>
-
-	</div>
+		
+		
+		</div>
+		
+	</main>
+	
+	
+	
+	
 	<!-- content 끝 -->
 
 

@@ -9,13 +9,6 @@
 <%@ include file="/WEB-INF/views/frame/pageset.jsp"%>
 
 <style>
-#content>form>table td {
-	padding: 5px;
-}
-
-#content>form input {
-	padding: 5px;
-}
 
 #msg {
 	display: none;
@@ -41,13 +34,16 @@
 
 		$('#userid').focusout(function() {
 
-			$.ajax({
-				url : 'http://locahost:8081/op/member/checkid.do',
+			$.ajax({             // http://localhost:8080/op/member/reg
+				url : 'checkid', // http://localhost:8080/op/member/checkid
 				type : 'get',
 				data : {
 					userid : $('#userid').val()
 				},
 				success : function(data) {
+					
+					console.log('통신 결과 : ', data);
+					
 					// Y | N
 					if (data == 'Y') {
 						// 사용 가능한 아이디
@@ -138,6 +134,7 @@
 					<label for="userid" class="col-sm-2 col-form-label">아이디</label>
 					<div class="col-sm-10">
 						<input type="email" name="userid" id="userid" class="form-control" required>
+						<div id="msg"></div>
 					</div>
 				</div>
 				

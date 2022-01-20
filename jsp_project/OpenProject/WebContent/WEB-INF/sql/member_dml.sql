@@ -40,6 +40,7 @@ update member set password=?, username=?, photo=? where idx=?
 DELETE FROM `project`.`member` WHERE idx=7;
 DELETE FROM member WHERE idx=?;
 
+delete from project.member where idx > 0;
 
 
 -- update
@@ -52,4 +53,4 @@ select * from project.guestbook;
 select * from project.member;
 
 -- 아이디 중복 체크 sql
-select count(*) from project.member where 
+-- select count(*) from project.member where;
