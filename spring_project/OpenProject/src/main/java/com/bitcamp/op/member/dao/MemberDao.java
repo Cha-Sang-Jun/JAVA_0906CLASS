@@ -34,6 +34,8 @@ public interface MemberDao {
 
 	public int editMember(EditRequest editRequest);
 
+	public int selectCountByUserId(String userId);
+
 	
 	
 }

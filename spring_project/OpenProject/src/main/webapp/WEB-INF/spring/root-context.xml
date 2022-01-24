@@ -14,6 +14,8 @@
 		  p:username = "bit"
 		  p:password = "bit">
 	</bean>
+	<!-- jdbcUrl = "jdbc:mysql://localhost:3306/project?serverTimezone=UTC" -->
+	<!-- jdbcUrl = "jdbc:mysql://database-op-mysql.cxzcfwea1m5f.ap-northeast-2.rds.amazonaws.com:3306/project?serverTimezone=UTC" -->
 	
 	<!-- JdbcTemplate 등록 -->
 	<bean id = "jdbcTemplate"
