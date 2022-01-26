@@ -53,7 +53,10 @@ public class WriteRequest {
 
 	@Override
 	public String toString() {
-		return "WriteRequest [memberIdx=" + memberIdx + ", subject=" + subject + ", content=" + content + "]";
+		return "WriteRequest [idx=" + idx + ", memberIdx=" + memberIdx + ", subject=" + subject + ", content=" + content
+				+ "]";
 	}
+
+	
 
 }

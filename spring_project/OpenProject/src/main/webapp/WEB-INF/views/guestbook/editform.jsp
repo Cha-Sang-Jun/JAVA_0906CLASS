@@ -33,16 +33,16 @@
 		<hr>
 		<form method="post" id="editform">
 			<input type="hidden" name="memberIdx" id="memberIdx" value="${loginInfo.idx}" >
-			<input type="hidden" name="guestbookIdx" id="memberIdx" value="${message.idx}" >
+			<input type="hidden" name="idx" id="guestbookIdx" value="${writeRequest.idx}" >
 			<table>
 				<tr>
 					<td>제목</td>
-					<td><input type="text" name="subject" id="subject" value="${message.subject}" placeholder="제목을 입력하세요"></td>
+					<td><input type="text" name="subject" id="subject" value="${writeRequest.subject}" placeholder="제목을 입력하세요"></td>
 				</tr>
 				<tr>
 					<td>내용</td>
 					<td>
-						<textarea name="content" id="message" rows="10" cols="50">${message.content}</textarea>
+						<textarea name="content" id="message" rows="10" cols="50">${writeRequest.content}</textarea>
 					</td>
 				</tr>
 				<tr>
@@ -50,8 +50,6 @@
 					<td>
 						<input type="submit" value="수정"> 
 						<input type="reset">
-						
-						
 					</td>
 				</tr>
 				

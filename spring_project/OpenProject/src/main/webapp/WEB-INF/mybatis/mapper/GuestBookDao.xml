@@ -68,7 +68,38 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			INSERT INTO project.guestbook (subject, content, memberidx) 
 			VALUES (#{subject}, #{content}, #{memberIdx})
 			
-			</insert>
+	</insert>
+	
+	<update id="updateGuestbook"
+			parameterType="com.bitcamp.op.guestbook.domain.WriteRequest"
+			>
+			
+			UPDATE guestbook 
+			set subject=#{subject}, content=#{content} where idx=#{idx}
+				
+	</update>
+	
+	<select id="selectByIdx2"
+			resultType="com.bitcamp.op.guestbook.domain.WriteRequest"
+	>
+	
+	select 
+		g.idx as idx, 
+		m.idx as memberidx, 
+		g.subject as subject, 
+		g.content as content
+	from project.guestbook g join project.member m 
+	on g.memberidx=m.idx 
+	where g.idx=#{idx}
+	
+	</select>
+	
+	<delete id="deleteByIdx2"
+			parameterType="com.bitcamp.op.guestbook.domain.WriteRequest">
+	
+	DELETE from guestbook where idx=#{idx}	
+	
+	</delete>
 	
 	
 	

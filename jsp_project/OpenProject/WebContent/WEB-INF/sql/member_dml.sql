@@ -26,6 +26,8 @@ select * from member where idx=?
 INSERT INTO member ( userid, password, username ) VALUES (?,?,?)
 ;
 
+INSERT INTO project.guestbook (subject, content, memberidx) VALUES ('test1', "테스트 글쓰기", 52);
+
 
 -- update
 update project.member
@@ -48,9 +50,15 @@ update project.guestbook
 set regdate=CURRENT_TIMESTAMP, CONTENT=? WHERE IDX=2;
 
 
-
+select * from project.reply;
 select * from project.guestbook;
+
+update project.guestbook set subject="reset", content="reset" where idx =8;
+UPDATE PROJECT.GEUSTBOOK SET SUBJECT=?, CONTENT=? WHERE IDX = ?;
+
 select * from project.member;
+
+delete from project.guestbook where idx between 11 and 22;
 
 -- 아이디 중복 체크 sql
 -- select count(*) from project.member where;

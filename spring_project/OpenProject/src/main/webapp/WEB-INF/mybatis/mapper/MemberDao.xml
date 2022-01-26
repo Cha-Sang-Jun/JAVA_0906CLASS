@@ -16,7 +16,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</resultMap>
 
 
-
 	<!-- interface의 추상메소드 이름을 id의 속성값으로 지정  -->
 	<!-- <select id="selectByIdPw" 
 			parameterType="com.bitcamp.op.member.domain.LoginParams"
@@ -36,8 +35,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	select * from member where userid=#{id} 
 	
 	</select>
-	
-	
 	
 	
 	<select id="selectTotalCount"
@@ -68,9 +65,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<sql id="searchName">
 		or username like concat('%', #{keyword}, '%')
 	</sql>
-	
-	
-	
+
 	
 	
 	<select id="selectList"

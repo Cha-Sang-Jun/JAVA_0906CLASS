@@ -255,13 +255,9 @@ div.reply>div.close>div {
 		function deleteReply(idx){
 			
 			if(confirm('댓글을 삭제하시겠습니까?')){
-				
 				//$('#reply'+idx).remove();
-				
-				
 				$.ajax({
-					//url : 'reply/delete', // http://localhost:8080/op/guestbook/reply/delete
-					//                                    /op/api/v1/guestbook/reply/69
+					//url : 'reply/delete',         // http://localhost:8080/op/guestbook/reply/delete
 					url : '${pageContext.request.contextPath}/api/v1/guestbook/reply/'+idx,
 					type : 'DELETE',
 					//data : {idx : idx},
