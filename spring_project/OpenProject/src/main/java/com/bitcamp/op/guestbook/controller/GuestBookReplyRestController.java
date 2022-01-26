@@ -13,7 +13,7 @@ import com.bitcamp.op.guestbook.service.ReplyRegService;
 
 @RestController
 @RequestMapping("/api/v1/guestbook/reply")
-public class GuestBookRepyRestController {
+public class GuestBookReplyRestController {
 
 	@Autowired
 	private ReplyRegService regService;
@@ -26,7 +26,7 @@ public class GuestBookRepyRestController {
 	public String regReply(ReplyRegRequest regRequest) {
 		
 		regService.insertReply(regRequest);
-		System.out.println("입력된 idx : " + regRequest.getIdx());
+		// System.out.println("입력된 idx : " + regRequest.getIdx());
 		return String.valueOf(regRequest.getIdx());
 	}
 

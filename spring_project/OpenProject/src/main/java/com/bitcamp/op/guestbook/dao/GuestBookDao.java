@@ -7,6 +7,7 @@ import org.apache.ibatis.annotations.Select;
 import com.bitcamp.op.guestbook.domain.GuestBookListMessage;
 import com.bitcamp.op.guestbook.domain.PageView;
 import com.bitcamp.op.guestbook.domain.ReplyListItem;
+import com.bitcamp.op.guestbook.domain.WriteRequest;
 
 public interface GuestBookDao {
 
@@ -18,5 +19,7 @@ public interface GuestBookDao {
 	public PageView selectByIdx(int idx);
 
 	public List<ReplyListItem> selectReplyList(int idx);
+
+	int writeArticle(WriteRequest writeRequest);
 
 }

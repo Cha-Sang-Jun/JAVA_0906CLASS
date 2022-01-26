@@ -79,28 +79,23 @@
 					content :  $('#message').val()					
 			};
 			
-			console.log(params);
-			
 			// 비동기 통신 			
 			$.ajax({
 				url : "writeAjax.do",
 				type : 'POST',
-				data : $('#writeform').serialize(), //params,
+				data : $('#writeform').serialize(),
 				success : function(data){
-					console.log(data);
-					
-					
 					
 					if(data == '1'){
 						alert('게시글이 등록되었습니다.');
 						location.href = 'list.do';
 						
-						
 					} else  {
 						alert('게시물 등록이 실패했습니다.\n다시 등록해주세요.');
 					}
+					
 				}, 
-				error : function(request){
+				error : function(request) {
 					console.log(request);
 				}
 			});
