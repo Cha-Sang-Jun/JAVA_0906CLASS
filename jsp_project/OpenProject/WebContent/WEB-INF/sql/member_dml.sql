@@ -53,7 +53,9 @@ set regdate=CURRENT_TIMESTAMP, CONTENT=? WHERE IDX=2;
 select * from project.reply;
 select * from project.guestbook;
 
-update project.guestbook set subject="reset", content="reset" where idx =8;
+insert into project.reply set content VALUES ("Test");
+
+update project.guestbook set subject="reset", content="reset" where idx =9;
 UPDATE PROJECT.GEUSTBOOK SET SUBJECT=?, CONTENT=? WHERE IDX = ?;
 
 select * from project.member;

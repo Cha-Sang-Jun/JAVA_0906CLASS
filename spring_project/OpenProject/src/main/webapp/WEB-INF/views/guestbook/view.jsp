@@ -101,6 +101,10 @@ div.reply>div.close>div {
 #replyWrite>form {
 	text-align: right;
 }
+
+.badge {
+	margin-right: 2px;
+}
 </style>
 </head>
 <body>
@@ -146,7 +150,8 @@ div.reply>div.close>div {
 			</table>
 		</div>
 
-		<div id="replyList" class="col-md-8 my-3 p-3 bg-white rounded shadow-sm">
+		<div id="replyList"
+			class="col-md-8 my-3 p-3 bg-white rounded shadow-sm">
 			<h3 class="border-bottom border-gray pb-2 mb-0">댓글</h3>
 			<c:if test="${not empty replyList}">
 				<c:forEach items="${replyList}" var="reply">
@@ -161,8 +166,9 @@ div.reply>div.close>div {
 							<strong class="d-block text-gray-dark">@${reply.userName}</strong>
 							${reply.content}
 						</p>
-
-						<div onclick="deleteReply(${reply.idx})" class="badge  badge-info">X</div>
+						<div onclick="editReply(${reply.idx})"
+							class="badge badge-secondary">수정</div>
+						<div onclick="deleteReply(${reply.idx})" class="badge badge-info">X</div>
 					</div>
 				</c:forEach>
 			</c:if>
@@ -177,10 +183,10 @@ div.reply>div.close>div {
 
 				<textarea name="message" id="message" rows="5" cols="30"
 					class="form-control p-3" required></textarea>
-					
+
 				<input type="hidden" name="memberIdx" value="${loginInfo.idx}">
 				<input type="hidden" name="guestbookIdx" value="${pageView.idx}">
-				
+
 				<br> <input type="submit" value="작성" class="btn btn-primary">
 			</form>
 
@@ -189,40 +195,32 @@ div.reply>div.close>div {
 		<div class="my-3 p-3 bg-white rounded shadow-sm mb-5">
 			<a href="list" class="btn btn-success">목록</a>
 			<c:if test="${loginInfo.idx eq pageView.memberidx}">
-				<a href="edit?idx=${pageView.idx}"  class="btn btn-info">수정</a>
-				<a href="javascript:deleteMessage(${pageView.idx})" class="btn btn-danger">삭제</a>
+				<a href="edit?idx=${pageView.idx}" class="btn btn-info">수정</a>
+				<a href="javascript:deleteMessage(${pageView.idx})"
+					class="btn btn-danger">삭제</a>
 			</c:if>
 
 		</div>
 
 
 	</main>
-
-
-
-
-
-
 	<!-- content 끝 -->
-
 	<!-- Javascript 추가 -->
+
 	<%@ include file="/WEB-INF/views/frame/footerset.jsp"%>
 
 
 	<script>
 		$(document).ready(function() {
-
 			$('#replyWriteForm').submit(function() {
+				// console.log($(this).serializeArray());
 				
-				console.log($(this).serializeArray());
-
-				
-				$.ajax({                 // http://localhost:8080/op/guestbook/view
-					url : '${pageContext.request.contextPath}/api/v1/guestbook/reply', // http://localhost:8080/op/guestbook/reply/write
+				$.ajax({                 // http://localhost:8080/op/guestbook/view , http://localhost:8080/op/guestbook/reply/write
+					url : '${pageContext.request.contextPath}/api/v1/guestbook/reply', 
 					type : 'POST',
 					data : $(this).serialize(),
 					success : function(data) {
-						console.log(data); // idx 값
+						// console.log(data); // idx 값
 						
 						var html = '';
 						html += '<div id="reply'+data+'" class="media text-muted pt-3">';
@@ -236,8 +234,6 @@ div.reply>div.close>div {
 						
 						$('#replyList').append(html);
 						$('#message').val('');
-							
-							
 						
 					},
 					error : function() {
@@ -251,13 +247,12 @@ div.reply>div.close>div {
 		});
 		
 		
-		
 		function deleteReply(idx){
 			
 			if(confirm('댓글을 삭제하시겠습니까?')){
 				//$('#reply'+idx).remove();
 				$.ajax({
-					//url : 'reply/delete',         // http://localhost:8080/op/guestbook/reply/delete
+					//url : 'reply/delete', // http://localhost:8080/op/guestbook/reply/delete
 					url : '${pageContext.request.contextPath}/api/v1/guestbook/reply/'+idx,
 					type : 'DELETE',
 					//data : {idx : idx},
@@ -271,12 +266,30 @@ div.reply>div.close>div {
 			}
 		}
 		
+	function updateReply(idx){
+		console.log('확인');
+		
+		var html = '';
+		html += '<div id="reply'+data+'" class="media text-muted pt-3">';
+		html += '<img src="/op/uploadfile/${loginInfo.photo}" style="height: 30px;" class="border rounded-circle mr-3">';
+		html += '<p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">';
+		html += '<strong class="d-block text-gray-dark">@${loginInfo.userName}</strong>';
+		html += $('#message').val();
+		html += '</p>';
+		html += '<div onclick="deleteReply('+data+')" class="badge  badge-info">X</div>';
+		html += '</div>';
+		
+		
+	}
+		
 		function deleteMessage(idx) {
 			
 			if(confirm('삭제하시겠습니까?')){
 				location.href = 'delete.do?idx='+idx;
 			}
 		}
+		
+		
 		
 	</script>
 

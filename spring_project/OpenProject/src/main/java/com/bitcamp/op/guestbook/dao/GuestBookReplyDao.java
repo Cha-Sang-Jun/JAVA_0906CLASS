@@ -8,5 +8,7 @@ public interface GuestBookReplyDao {
 
 	int deleteByIdx(int idx);
 
+	int updateByIdx(int idx);
+
 	
 }

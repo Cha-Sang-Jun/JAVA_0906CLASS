@@ -2,6 +2,7 @@ package com.bitcamp.op.guestbook.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.bitcamp.op.guestbook.domain.ReplyRegRequest;
 import com.bitcamp.op.guestbook.service.ReplyDeleteService;
 import com.bitcamp.op.guestbook.service.ReplyRegService;
+import com.bitcamp.op.guestbook.service.ReplyUpdateService;
 
 @RestController
 @RequestMapping("/api/v1/guestbook/reply")
@@ -20,6 +22,9 @@ public class GuestBookReplyRestController {
 	
 	@Autowired
 	private ReplyDeleteService deleteService;
+	
+	@Autowired
+	private ReplyUpdateService updateService;
 
 	// 댓글 입력
 	@PostMapping
@@ -33,14 +38,22 @@ public class GuestBookReplyRestController {
 	// 댓글 삭제
 	@DeleteMapping("/{idx}")
 	public String deleteReply( 
-			//@RequestParam("idx") int idx
+			// @RequestParam("idx") int idx
 			@PathVariable("idx") int idx
 			) {
 		
-		System.out.println("idx 확인 " + idx);
-		
-		
+		// System.out.println("idx 확인 " + idx);
 		return String.valueOf(deleteService.deleteReply(idx));
 	}
+	
+	// 댓글 수정
+	@PostMapping("/{idx}")
+	public String updateReply(
+			@PathVariable("idx") int idx) {
 
+		System.out.println("idx확인" + idx);
+		
+		return String.valueOf(updateService.updateReply(idx));
+	}
+	
 }
