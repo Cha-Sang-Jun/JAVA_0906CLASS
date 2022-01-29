@@ -51,7 +51,7 @@ public class GuestBookReplyRestController {
 	public String updateReply(
 			@PathVariable("idx") int idx) {
 
-		System.out.println("idx확인" + idx);
+		// System.out.println("idx확인" + idx);
 		
 		return String.valueOf(updateService.updateReply(idx));
 	}

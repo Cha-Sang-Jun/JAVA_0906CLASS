@@ -166,9 +166,8 @@ div.reply>div.close>div {
 							<strong class="d-block text-gray-dark">@${reply.userName}</strong>
 							${reply.content}
 						</p>
-						<div onclick="editReply(${reply.idx})"
-							class="badge badge-secondary">수정</div>
-						<div onclick="deleteReply(${reply.idx})" class="badge badge-info">X</div>
+						<div onclick="updateReply(${reply.idx})" class="badge badge-secondary"> 수정 </div>
+						<div onclick="deleteReply(${reply.idx})" class="badge badge-info"> X </div>
 					</div>
 				</c:forEach>
 			</c:if>
@@ -267,18 +266,11 @@ div.reply>div.close>div {
 		}
 		
 	function updateReply(idx){
-		console.log('확인');
-		
-		var html = '';
-		html += '<div id="reply'+data+'" class="media text-muted pt-3">';
-		html += '<img src="/op/uploadfile/${loginInfo.photo}" style="height: 30px;" class="border rounded-circle mr-3">';
-		html += '<p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">';
-		html += '<strong class="d-block text-gray-dark">@${loginInfo.userName}</strong>';
-		html += $('#message').val();
-		html += '</p>';
-		html += '<div onclick="deleteReply('+data+')" class="badge  badge-info">X</div>';
-		html += '</div>';
-		
+		$.ajax({
+			url :  '${pageContext.request.contextPath}/api/v1/guestbook/reply/'+idx,
+			type : 'POST',
+			data : 
+		})
 		
 	}
 		
