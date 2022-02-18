@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- nameSpace에는 interface의 전체 경로를 입력 -->
+<mapper namespace="com.bitcamp.hgs.member.dao.MemberDao">
+	
+	<!-- 로그인  -->
+	<select id="selectMember" resultType="com.bitcamp.hgs.member.domain.Logger">	
+		select member_idx, email, sns_type, name, profile from hgs.members where email = #{param1} and password = #{param2} 
+	</select>
+
+
+	<insert id="insertMemberInfo" useGeneratedKeys="true"  keyProperty="memberIdx" parameterType="com.bitcamp.hgs.member.domain.InsertMember">
+		
+		insert into hgs.members (
+			email,
+			password,
+			pet_number,
+			name,
+			profile,
+			birthday,
+			sex,
+			address,
+			breed_idx,
+			neutering,
+			sns_id,
+			sns_type
+		) values(
+			#{email}, #{password}, #{petNumber}, #{name}, #{profile}, 
+			#{birthday}, #{sex}, #{address}, #{breedIdx}, #{neutering}, #{snsId}, #{snsType}
+		)
+	</insert>
+
+	<insert id="insertMemberHashtag" parameterType="java.util.List">
+		insert into hgs.member_hashtags 
+		values
+		<foreach collection="list" item="item" separator=",">
+		 ( #{item.memberIdx}, #{item.hashtagIdx})
+		</foreach>
+	</insert>
+
+</mapper>
