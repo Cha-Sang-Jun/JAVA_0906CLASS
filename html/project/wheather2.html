@@ -1,0 +1,89 @@
+<html>
+
+<head>
+    <title>Weather</title>
+    <meta charset="utf-8">
+    <script src="http://code.jquery.com/jquery-1.7.min.js"></script>
+</head>
+<script>
+
+    // $API_KEY = "f25a266c07e9c4b842b6386b1068e10a";
+
+    const COORDS = "coords";
+
+    function getWeather(lat, lon) {
+        fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=f25a266c07e9c4b842b6386b1068e10a&units=metric`)
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                const temp = data.main.temp;
+                const weathers = data.weather[data.weather.length-1];
+                // weatherIcon.src = `https://openweathermap.org/img/wn/${weathers.icon}@2x.png`;
+                // weatherSpan.innerHTML = '${temp}$#176;C ${weathers.main}';
+            });       
+    //         .then(function (response) {
+    //             return response.json();
+    //         })
+    //         .then(function (json) {
+    //             // const weathers = json.weather[json.weather.length-1];
+    //             // const temp = json.main.temp;
+    //             // const place = json.name;
+    //             // weathers.innerHTML = `현재온도 :  ${temp}  현재 지역 : ${place}`;
+    //             const temp = json.main.temp;
+    //             const weathers = json.weather[json.weather.length - 1];
+    //             weatherIcon.src = `https://openweathermap.org/img/wn/${weathers.icon}@2x.png`;
+    //             weatherSpan.innerHTML = '${temp}$#176;C ${weathers.main}';
+    //         });
+     }
+
+    function saveCoords(coordsObj) {
+        localStorage.setItem(COORDS, JSON.stringify(coordsObj));
+    }
+
+    function handleGeoSucc(pos) {
+        const latitude = pos.coords.latitude;
+        const longitude = pos.coords.longitude;
+        const coordsObj = {
+            latitude,
+            longitude
+        };
+        saveCoords(coordsObj);
+        getWeather(latitude, longitude);
+    }
+
+    function handleGeoErr(err) {
+        console.log("에러! : 위치정보를 확인할 수 없습니다" + err)
+    }
+
+    function requestCoords() {
+        navigator.geolocation.getCurrentPosition(handleGeoSucc, handleGeoErr);
+    }
+
+    function loadCoords() {
+        const loadedCoords = localStorage.getItem(COORDS);
+        if (loadedCoords == null) {
+            requestCoords();
+        } else {
+            const parseCoords = JSON.parse(loadedCoords);
+            getWeather(parseCoords.latitude, parseCoords.longitude);
+        }
+    }
+
+    function init() {
+        loadCoords();
+    }
+
+    init();
+
+</script>
+
+<body>
+    <h1>Weather API</h1>
+    <h2> Today Weather Information </h2>
+    <div class="ctemp">현재 온도: </div>
+    <div class="clowtemp">최저 온도: </div>
+    <div class="chightemp">최고 온도: </div>
+    <div class="cicon">아이콘 : </div>
+</body>
+
+</html>

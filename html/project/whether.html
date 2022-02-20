@@ -1,11 +1,12 @@
 <html>
 <head>
 <title>Weather</title>
+<%@ include file="/WEB-INF/views/frame/pageSet.jsp" %>
     <meta charset="utf-8">
     <script src="http://code.jquery.com/jquery-1.7.min.js" ></script>
 </head>
 <script>
-    $.getJSON('http://api.openweathermap.org/data/2.5/weather?id=1835848&appid=f25a266c07e9c4b842b6386b1068e10a&units=metric',
+    $.getJSON('http://api.openweathermap.org/data/2.5/weather?lat=37.4747987&lon=126.7979346&appid=f25a266c07e9c4b842b6386b1068e10a&units=metric',
     function(data){
         var $now = new Date($.now());
         var $minTemp = data.main.temp_min;

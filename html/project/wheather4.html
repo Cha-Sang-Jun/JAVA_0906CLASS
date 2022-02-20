@@ -1,0 +1,58 @@
+<html>
+<head>
+<title>Weather</title>
+    <meta charset="utf-8">
+    <script src="http://code.jquery.com/jquery-1.7.min.js" ></script>
+</head>
+<script>
+
+function askForCoords(){
+    navigator.geolocation.getCurrentPosition(handleGeoSucces, handleGeoError);
+  }
+
+  function handleGeoSucces(position){
+    const latitude =  position.coords.latitude;
+    const longitude = position.coords.longitude;
+    const coordsObj = {
+      latitude,
+      longitude
+    };
+    // saveCoords(coordsObj);
+    getWeather(latitude, longitude);
+  }
+
+  function handleGeoError(position){
+    console.log('Cant get your position.');
+  }
+
+  function getWeather(lat, lon){
+    fetch(
+      `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=f25a266c07e9c4b842b6386b1068e10a&units=metric`
+    )
+      .then(function(response){
+      return response.json();
+    })
+      .then(function(json){
+        console.log(json);
+        const temparature = json.main.temp;  //온도
+        const place = json.name;   // 사용자 위치
+        weather.innerText = `${temparature} @${place}`;
+
+      });
+  }
+
+  askForCoords();
+
+</script>
+
+<body>
+
+<h1>Weather API</h1>
+<h2> Today Weather Information </h2>
+<div class="ctemp">현재 온도: </div>
+<div class="clowtemp">최저 온도: </div>
+<div class="chightemp">최고 온도: </div>
+<div class="cicon">아이콘 : </div>
+<!-- HTML -->
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="kr">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Docume"nt</title>
+    <script src="http://code.jquery.com/jquery-1.11.0.js"></script>
+    <script>
+        function getLocation() {
+            if (navigator.geolocation) { // GPS를 지원하면
+                navigator.geolocation.getCurrentPosition(function (position) {
+                    alert(position.coords.latitude + ' ' + position.coords.longitude);
+                }, function (error) {
+                    console.error(error);
+                }, {
+                    enableHighAccuracy: false,
+                    maximumAge: 0,
+                    timeout: Infinity
+                });
+            } else {
+                alert('GPS를 지원하지 않습니다');
+            }
+        }
+        getLocation();
+
+
+    </script>
+</head>
+
+<body>
+    <ul>
+        <li> 위도 : <span id="latitude"></span></li>
+        <li> 경도 : <span id="longitude"></span></li>
+
+    </ul>
+
+</body>
+
+</html>
