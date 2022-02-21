@@ -15,30 +15,35 @@
 const COORDS = "coords";
 
 function getWeather(lat, lon) {
-    fetch("https://api.openweathermap.org/data/2.5/weather?lat="+ lat +"&lon="+lon+"&appid=f25a266c07e9c4b842b6386b1068e10a&units=metric")
+    fetch("https://api.openweathermap.org/data/2.5/weather?lat=" + lat + "&lon=" + lon + "&appid=f25a266c07e9c4b842b6386b1068e10a&units=metric")
         .then(res => res.json())
         .then(data => {
-            // console.log(data);
+            console.log(data);
             const now = new Date($.now());
             const temp = data.main.temp;
             const minTemp = data.main.temp_min;
             const maxTemp = data.main.temp_max;
             const wIcon = data.weather[0].icon;
-            const date = now.getFullYear() + '/' + (now.getMonth()+1) + '/' + now.getDate() + '/' + now.getHours() + ' ';
-            const weathers = data.weather[data.weather.length-1];
-            
-            // console.log(minTemp);
-            // console.log(date);
-            console.log(wIcon);
-            
+            const date = now.getFullYear() + '/' + (now.getMonth() + 1) + '/' + now.getDate() + '/' + now.getHours() + ' ';
+            const weathers = data.weather[data.weather.length - 1];
+            const city = data.name;
+            const description = data.weather[0].main;
+
+            $('.local').append(city);
             $('.clowtemp').append(minTemp);
-        	$('.ctemp').append(temp);
-        	$('.chightemp').append(maxTemp);
-        	$('h2').prepend(date);
-        	$('.cicon').append('<img src="http://openweathermap.org/img/w/' + wIcon + '.png" />')
-			
-        });       
- }
+            $('.ctemp').append(temp);
+            $('.chightemp').append(maxTemp);
+            $('h2').prepend(date);
+            $('.cicon').append('<img src="http://openweathermap.org/img/w/' + wIcon + '.png" />')
+            
+            if(description == "Clear") {
+                $('.recomm').append("산책하기 좋은 날씨에요");
+            } else {
+                $('.recomm').append("산책하기엔 안좋은 날씨에요");
+            }
+
+        });
+}
 
 function saveCoords(coordsObj) {
     localStorage.setItem(COORDS, JSON.stringify(coordsObj));
@@ -51,6 +56,7 @@ function handleGeoSucc(pos) {
         latitude,
         longitude
     };
+    
     saveCoords(coordsObj);
     getWeather(latitude, longitude);
 }
@@ -81,18 +87,13 @@ init();
 </script>
 
 <body>
-	<h1>Weather API</h1>
-	<h2> 날씨 정보</h2>
-	<div class="cicon"> </div>
-	<div class="local"> </div>
-	<div class="ctemp">현재 온도 : </div>
-	<div class="clowtemp">최저 온도 : </div>
-	<div class="chightemp">최고 온도 : </div>
-
-<!-- 	<ul> -->
-<!-- 		<li>위도 : <span id="latitude"></span></li> -->
-<!-- 		<li>경도 : <span id="longitude"></span></li> -->
-<!-- 	</ul> -->
-
+    <h1>Weather API</h1>
+    <h2> 날씨 정보</h2>
+    <div class="cicon"> </div>
+    <div class="local"> 현재 위치 : </div>
+    <div class="ctemp">현재 온도 : </div>
+    <div class="clowtemp">최저 온도 : </div>
+    <div class="chightemp">최고 온도 : </div>
+    <div class="recomm"> </div>
 </body>
 </html>
