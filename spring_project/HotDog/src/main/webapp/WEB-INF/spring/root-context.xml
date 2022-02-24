@@ -10,8 +10,8 @@
 			class="com.zaxxer.hikari.HikariDataSource"
 			p:driverClassName="com.mysql.cj.jdbc.Driver"
 			p:jdbcUrl="jdbc:mysql://localhost:3306/hgs?serverTimezone=UTC"
-			p:username="jian"
-			p:password="jian"
+			p:username="bit"
+			p:password="bit"
 			
 			p:connectionTimeout="20000"
 			p:minimumIdle="5"

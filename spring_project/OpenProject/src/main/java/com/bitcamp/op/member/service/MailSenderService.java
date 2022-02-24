@@ -3,7 +3,6 @@ package com.bitcamp.op.member.service;
 import java.io.UnsupportedEncodingException;
 
 import javax.mail.Message.RecipientType;
-import javax.mail.MessagingException;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
@@ -11,7 +10,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
 
-import com.bitcamp.op.member.domain.Member;
+import com.sun.xml.internal.messaging.saaj.packaging.mime.MessagingException;
+
+import main.java.com.bitcamp.op.member.domain.Member;
 
 @Service
 public class MailSenderService {

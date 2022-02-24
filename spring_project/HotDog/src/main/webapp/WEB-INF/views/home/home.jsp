@@ -14,7 +14,7 @@
 		<div class="nav_logoAndSearch">
 			<div>로그 넣는 곳</div>
 			<div>
-				<form method="get">
+				<form method="get" action=>
 					<input type="text" id="allSearch" name="allSearch" placeholder="원하시는 내용은 무엇인가요~?">				
 					<button type="submit">서치이미지 넣을 것</button>
 				</form>

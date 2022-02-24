@@ -24,7 +24,7 @@ public class MemberService {
 	private BCryptPasswordEncoder encoder;
 	private MailSenderService senderService;
 
-	MemberService(	SqlSessionTemplate template,BCryptPasswordEncoder encoder,	MailSenderService senderService){
+	MemberService(SqlSessionTemplate template,BCryptPasswordEncoder encoder,	MailSenderService senderService){
 		this.template = template;
 		this.encoder = encoder;
 		this.senderService = senderService;
@@ -38,6 +38,7 @@ public class MemberService {
 	 *  5. DB에 해쉬태그 저장
 	 *  6. 메일발송
 	 */
+	
 	public void insertMember(RegMember regMember, HttpServletRequest request) throws IllegalStateException, IOException  {
 		
 		// DB관련 예외 발생 시  삭제처리를 위한 File 객체 변수 선언
@@ -56,7 +57,6 @@ public class MemberService {
 		// 파일이 없다면 기본 이미지
 		else newFile = new File("noProfile.jpg");
 		
-		
 		// 비밀번호 암호화
 		regMember.setPassword(encoder.encode(regMember.getPassword()));
 		
@@ -66,8 +66,6 @@ public class MemberService {
 			regMember.setEmail(regMember.getSnsId());
 			snsType = regMember.getSnsType().equals("kakao") ? 0 : 1;
 		}
-		
-		
 		
 		// DB에 저장할 유저정보 생성 및 DB에 저장
 		InsertMember insertMember = new InsertMember(
@@ -105,7 +103,6 @@ public class MemberService {
 			
 			System.out.println(insertMember.getMemberIdx()+"의 해쉬태그들 저장완료 ");
 		}
-		
 		
 		// 메일발송
 		if(senderService.send(insertMember.getEmail(), insertMember.getName()) > 0) {

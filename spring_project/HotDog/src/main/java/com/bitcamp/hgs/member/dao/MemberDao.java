@@ -2,10 +2,13 @@ package com.bitcamp.hgs.member.dao;
 
 
 import java.util.List;
+import java.util.Map;
 
+import com.bitcamp.hgs.member.domain.EditMember;
 import com.bitcamp.hgs.member.domain.InsertMember;
 import com.bitcamp.hgs.member.domain.Member;
 import com.bitcamp.hgs.member.domain.MemberHashtag;
+import com.bitcamp.hgs.member.domain.SearchParams;
 
 public interface MemberDao {
 	
@@ -18,5 +21,12 @@ public interface MemberDao {
 	// 유저 잇는지 확인
 	public Member selectMember(String email);
 	
+	public Member selectByIdx(int idx);
+	
+	public int editMember(EditMember editMember);
+	
+	public int selectTotalCount(Map<String, String> params);
+	
+	public List<Member> selectList(SearchParams params);
 
 }

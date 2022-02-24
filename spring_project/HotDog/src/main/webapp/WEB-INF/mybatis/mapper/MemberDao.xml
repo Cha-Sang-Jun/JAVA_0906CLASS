@@ -5,42 +5,132 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <!-- nameSpace에는 interface의 전체 경로를 입력 -->
 <mapper namespace="com.bitcamp.hgs.member.dao.MemberDao">
-	
-	
-	
-	<!-- 로그인  하는 유저의 email 확인 및 존재하는 유저인지 확인 -->
-	<select id="selectMember" resultType="com.bitcamp.hgs.member.domain.Member" >	
+
+	<!-- select의 결과를 매핑해주는 설정 -->
+	<resultMap type="com.bitcamp.hgs.member.domain.Member" id="memberResult">
+		<id column="idx" property="index" />
+		<result column="userid" property="memberid" />
+		<result column="username" property="membername" />
+		<result column="photo" property="memberphoto" />
+		<result column="regdate" property="date" />
+	</resultMap>
+
+
+	<!-- 로그인 하는 유저의 email 확인 및 존재하는 유저인지 확인 -->
+	<select id="selectMember"
+		resultType="com.bitcamp.hgs.member.domain.Member">
 		select * from hgs.members where email = #{param1}
 	</select>
 
 
-	<insert id="insertMemberInfo" useGeneratedKeys="true"  keyProperty="memberIdx" parameterType="com.bitcamp.hgs.member.domain.InsertMember">
-		
+	<insert id="insertMemberInfo" useGeneratedKeys="true"
+		keyProperty="memberIdx"
+		parameterType="com.bitcamp.hgs.member.domain.InsertMember">
+
 		insert into hgs.members (
-			email,
-			password,
-			pet_number,
-			name,
-			profile,
-			birthday,
-			sex,
-			address,
-			breed_idx,
-			neutering,
-			sns_id,
-			sns_type
+		email,
+		password,
+		pet_number,
+		name,
+		profile,
+		birthday,
+		sex,
+		address,
+		breed_idx,
+		neutering,
+		sns_id,
+		sns_type
 		) values (
-			#{email}, #{password}, #{petNumber}, #{name}, #{profile}, 
-			#{birthday}, #{sex}, #{address}, #{breedIdx}, #{neutering}, #{snsId}, #{snsType}
+		#{email}, #{password}, #{petNumber}, #{name}, #{profile},
+		#{birthday}, #{sex}, #{address}, #{breedIdx}, #{neutering}, #{snsId},
+		#{snsType}
 		)
 	</insert>
 
 	<insert id="insertMemberHashtag" parameterType="java.util.List">
-		insert into hgs.member_hashtags 
+		insert into hgs.member_hashtags
 		values
 		<foreach collection="list" item="item" separator=",">
-		 ( #{item.memberIdx}, #{item.hashtagIdx})
+			(
+			#{item.memberIdx}, #{item.hashtagIdx})
 		</foreach>
 	</insert>
+
+	<select id="selectByIdx"
+		resultType="com.bitcamp.hgs.member.domain.Member">
+
+		select * from member where idx=#{no}
+	</select>
+
+	<update id="editMember"
+		parameterType="com.bitcamp.hgs.member.domain.EditMember">
+
+		update member set pet_number=#{petNumber}
+
+		<if test="fileNmae != null">
+			, profile=#{fileName}
+		</if>
+
+		, address=#{address},
+		breed_idx=#{breedIdx},
+		neutering=#{neutering}
+
+		where member_idx=#{memberIdx}
+	</update>
+
+	<select id="selectTotalCount" parameterType="hashMap"
+		resultType="int">
+
+		select count(*) from member
+		<where>
+			<if test="searchType != null">
+				<if test="searchType == 'uid'">
+					<include refid="searchId" />
+				</if>
+				<if test="searchType == 'uname'">
+					<include refid="searchName" />
+				</if>
+				<if test="searchType == 'both'">
+					<include refid="searchId" />
+					<include refid="searchName" />
+				</if>
+			</if>
+		</where>
+	</select>
+
+	<sql id="searchId">
+		or userid like concat('%', #{keyword}, '%')
+	</sql>
+
+	<sql id="searchName">
+		or username like concat('%', #{keyword}, '%')
+	</sql>
+
+	<select id="selectList"
+		parameterType="com.bitcamp.hgs.member.domain.SearchParams"
+		resultType="com.bitcamp.hgs.member.domain.Member">
+
+		select * from member
+
+		<where>
+			<if test="searchType != null">
+
+				<if test="searchType == 'uid'">
+					<include refid="searchId" />
+				</if>
+				<if test="searchType == 'uname'">
+					<include refid="searchName" />
+				</if>
+				<if test="searchType == 'both'">
+					<include refid="searchId" />
+					<include refid="searchName" />
+				</if>
+			</if>
+		</where>
+
+		order by idx desc limit #{index}, #{count}
+	</select>
+
+
 
 </mapper>
