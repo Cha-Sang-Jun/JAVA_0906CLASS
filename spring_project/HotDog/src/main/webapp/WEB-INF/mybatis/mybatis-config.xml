@@ -11,7 +11,7 @@
 			<setting name="jdbcTypeForNull" value="NULL" />
 
 		</settings>
-	
+		
 		<mappers>
 			<mapper class="com.bitcamp.hgs.member.dao.BreedDao" />
 		</mappers>

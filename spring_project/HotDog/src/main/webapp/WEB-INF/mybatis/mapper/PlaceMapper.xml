@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- nameSpace에는 interface의 전체 경로를 입력 -->
+<mapper namespace="com.bitcamp.hgs.mapper.PlaceDao">
+
+<!-- criteria(검색조건) -->
+	<sql id="criteria">
+		<if test="keyword != null">
+			where (title like concat ('%', #{keyword}, '%'))
+		</if>
+	</sql>
+	
+	<!-- Place 검색 -->
+		<select id="getPlacesList" resultType="com.bitcamp.hgs.place.domain.Places">
+		
+			select place_idx, admin_idx, title, subject_category, affiliation, new_address,
+				homepage, phone from hgs.places
+				<include refid="criteria"> </include>
+				order by title desc limit #{skip}, #{amount}
+			
+		</select>
+	
+	<!-- Place의 수 -->
+		<select id="placesGetTotal" resultType="int"> 
+			
+			select count(*) from hgs.places
+			
+			<include refid="criteria"> </include>
+			
+		</select>
+	
+	</mapper>

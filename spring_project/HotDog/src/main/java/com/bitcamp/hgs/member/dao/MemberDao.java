@@ -4,7 +4,7 @@ package com.bitcamp.hgs.member.dao;
 import java.util.List;
 
 import com.bitcamp.hgs.member.domain.InsertMember;
-import com.bitcamp.hgs.member.domain.Logger;
+import com.bitcamp.hgs.member.domain.Member;
 import com.bitcamp.hgs.member.domain.MemberHashtag;
 
 public interface MemberDao {
@@ -16,6 +16,7 @@ public interface MemberDao {
 	public void insertMemberHashtag(List<MemberHashtag> memberHashtagList);
 
 	// 유저 잇는지 확인
-	public Logger selectMember(String email, String password);
+	public Member selectMember(String email);
+	
 
 }

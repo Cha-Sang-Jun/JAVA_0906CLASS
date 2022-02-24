@@ -11,7 +11,9 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import com.bitcamp.hgs.member.dao.MemberDao;
 import com.bitcamp.hgs.member.domain.InsertMember;
+import com.bitcamp.hgs.member.domain.Member;
 import com.bitcamp.hgs.member.domain.MemberHashtag;
 import com.bitcamp.hgs.member.domain.RegMember;
 
@@ -57,7 +59,6 @@ public class MemberService {
 		
 		// 비밀번호 암호화
 		regMember.setPassword(encoder.encode(regMember.getPassword()));
-		
 		
 		// sns계정 이용하는 분이라면, email = snsId 
 		int snsType = 0;
@@ -106,13 +107,17 @@ public class MemberService {
 		}
 		
 		
-		
 		// 메일발송
 		if(senderService.send(insertMember.getEmail(), insertMember.getName()) > 0) {
 			System.out.printf("%s님에게 메일을 발송했습니다.",insertMember.getName());
 		}else{
 			System.out.printf("%s님에게 메일 발송이 실패했습니다.",insertMember.getName());
 		};
+	}
+
+	// sns유저의 이메일 정보가 있는지 확인
+	public Member selectOauthId(String email) {
+		return template.getMapper(MemberDao.class).selectMember(email);
 	}
 	
 }

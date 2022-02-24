@@ -6,9 +6,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <!-- nameSpace에는 interface의 전체 경로를 입력 -->
 <mapper namespace="com.bitcamp.hgs.member.dao.MemberDao">
 	
-	<!-- 로그인  -->
-	<select id="selectMember" resultType="com.bitcamp.hgs.member.domain.Logger">	
-		select member_idx, email, sns_type, name, profile from hgs.members where email = #{param1} and password = #{param2} 
+	
+	
+	<!-- 로그인  하는 유저의 email 확인 및 존재하는 유저인지 확인 -->
+	<select id="selectMember" resultType="com.bitcamp.hgs.member.domain.Member" >	
+		select * from hgs.members where email = #{param1}
 	</select>
 
 
@@ -27,7 +29,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			neutering,
 			sns_id,
 			sns_type
-		) values(
+		) values (
 			#{email}, #{password}, #{petNumber}, #{name}, #{profile}, 
 			#{birthday}, #{sex}, #{address}, #{breedIdx}, #{neutering}, #{snsId}, #{snsType}
 		)

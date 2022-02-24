@@ -2,12 +2,10 @@ package com.bitcamp.hgs.member.dao;
 
 import java.util.List;
 
-import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 
 import com.bitcamp.hgs.member.domain.Breed;
 
-@Mapper
 public interface BreedDao {
 
 	@Select("select * from hgs.breeds")
