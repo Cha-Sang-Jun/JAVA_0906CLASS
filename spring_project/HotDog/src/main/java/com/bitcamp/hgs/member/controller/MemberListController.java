@@ -19,7 +19,7 @@ public class MemberListController {
 			SearchParams params,
 			Model model) {
 		
-		System.out.println(params);
+		// System.out.println(params);
 		
 		model.addAttribute("listView", listService.getPageView(params));
 		

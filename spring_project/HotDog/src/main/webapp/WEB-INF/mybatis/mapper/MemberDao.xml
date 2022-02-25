@@ -8,18 +8,22 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 	<!-- select의 결과를 매핑해주는 설정 -->
 	<resultMap type="com.bitcamp.hgs.member.domain.Member" id="memberResult">
-		<id column="idx" property="index" />
-		<result column="userid" property="memberid" />
-		<result column="username" property="membername" />
-		<result column="photo" property="memberphoto" />
-		<result column="regdate" property="date" />
+		<id column="member_idx" property="index" />
+		<result column="email" property="email" />
+		<result column="pet_number" property="petNumber" />
+		<result column="name" property="userName" />
+		<result column="profile" property="profile" />
+		<result column="sex" property="sex" />
+		<result column="address" property="address" />
+		<result column="breed_idx" property="breedIdx" />
+		<result column="neutering" property="neutering" />
 	</resultMap>
 
 
 	<!-- 로그인 하는 유저의 email 확인 및 존재하는 유저인지 확인 -->
 	<select id="selectMember"
 		resultType="com.bitcamp.hgs.member.domain.Member">
-		select * from hgs.members where email = #{param1}
+		select * from members where email = #{param1}
 	</select>
 
 
@@ -27,7 +31,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		keyProperty="memberIdx"
 		parameterType="com.bitcamp.hgs.member.domain.InsertMember">
 
-		insert into hgs.members (
+		insert into members (
 		email,
 		password,
 		pet_number,
@@ -48,7 +52,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</insert>
 
 	<insert id="insertMemberHashtag" parameterType="java.util.List">
-		insert into hgs.member_hashtags
+		insert into members_hashtags
 		values
 		<foreach collection="list" item="item" separator=",">
 			(
@@ -59,19 +63,20 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="selectByIdx"
 		resultType="com.bitcamp.hgs.member.domain.Member">
 
-		select * from member where idx=#{no}
+		select * from members where member_idx=#{no}
 	</select>
 
 	<update id="editMember"
 		parameterType="com.bitcamp.hgs.member.domain.EditMember">
 
-		update member set pet_number=#{petNumber}
+		update members set name=#{name}
 
-		<if test="fileNmae != null">
+		<if test="fileName != null">
 			, profile=#{fileName}
 		</if>
 
-		, address=#{address},
+		, pet_number=#{petNumber},
+		address=#{address},
 		breed_idx=#{breedIdx},
 		neutering=#{neutering}
 
@@ -81,7 +86,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="selectTotalCount" parameterType="hashMap"
 		resultType="int">
 
-		select count(*) from member
+		select count(*) from members
 		<where>
 			<if test="searchType != null">
 				<if test="searchType == 'uid'">
@@ -110,7 +115,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		parameterType="com.bitcamp.hgs.member.domain.SearchParams"
 		resultType="com.bitcamp.hgs.member.domain.Member">
 
-		select * from member
+		select * from members
 
 		<where>
 			<if test="searchType != null">
@@ -128,7 +133,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			</if>
 		</where>
 
-		order by idx desc limit #{index}, #{count}
+		order by member_idx limit #{index}, #{count}
 	</select>
 
 

@@ -51,7 +51,7 @@ public class MemberListService {
 		
 		view = new ListPageView(totalCount, currentPage, COUNT_PER_PAGE, list);
 		
-		System.out.println(list);
+		// System.out.println(list);
 		
 		return view;
 		

@@ -1,9 +1,6 @@
 package com.bitcamp.hgs.member.domain;
 
-import java.util.List;
-
-import main.java.com.bitcamp.op.member.domain.Member;
-
+import java.util.List; 
 
 public class ListPageView {
 
