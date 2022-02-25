@@ -195,12 +195,9 @@
 
 	<script>
 		function delMember(idx) {
-
 			if (confirm("해당 회원 정보를 삭제하시겠습니까?")) {
 				location.href = 'delete?idx=' + idx;
-				// http://localhost:8080/op/member/list
 			}
-
 		}
 	</script>
 

@@ -69,13 +69,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<update id="editMember"
 		parameterType="com.bitcamp.hgs.member.domain.EditMember">
 
-		update members set name=#{name}
+		update hgs.members set name=#{name},
 
 		<if test="fileName != null">
-			, profile=#{fileName}
+			profile=#{fileName}, 
 		</if>
 
-		, pet_number=#{petNumber},
+		pet_number=#{petNumber},
 		address=#{address},
 		breed_idx=#{breedIdx},
 		neutering=#{neutering}
@@ -135,7 +135,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 		order by member_idx limit #{index}, #{count}
 	</select>
-
+	
+	<delete id="deleteByIdx">
+		delete from members where member_idx=#{idx}
+	</delete>
 
 
 </mapper>

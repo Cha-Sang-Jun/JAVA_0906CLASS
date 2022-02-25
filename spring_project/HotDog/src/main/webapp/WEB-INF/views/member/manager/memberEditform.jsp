@@ -39,17 +39,17 @@
 				<div class="form-group row">
 					<label for="userid" class="col-sm-2 col-form-label">아이디</label>
 					<div class="col-sm-10">
-						<input type="hidden" name="idx" value="${member.memberIdx}"> <input
-							type="email" name="email" id="email" value="${member.email}"
-							class="form-control" readonly>
+						<input type="hidden" name="idx" value="${member.memberIdx}">
+						<input type="email" name="email" id="email"
+							value="${member.email}" class="form-control" readonly>
 					</div>
 				</div>
 
 				<div class="form-group row">
 					<label for="pw" class="col-sm-2 col-form-label">비밀번호</label>
 					<div class="col-sm-10">
-						<input type="password" name="pw" id="pw"
-							value="${member.password}" class="form-control" required>
+						<input type="password" name=password id="pw"
+							value="${member.password}" class="form-control" readonly>
 					</div>
 				</div>
 
@@ -57,15 +57,39 @@
 					<label for="repw" class="col-sm-2 col-form-label">비밀번호</label>
 					<div class="col-sm-10">
 						<input type="password" name="repw" id="repw"
-							value="${member.password}" class="form-control" required>
+							value="${member.password}" class="form-control" readonly>
 					</div>
 				</div>
 
 				<div class="form-group row">
 					<label for="username" class="col-sm-2 col-form-label">이름</label>
 					<div class="col-sm-10">
-						<input type="text" name="name" id="name"
-							value="${member.name}" class="form-control" required>
+						<input type="text" name="name" id="name" value="${member.name}"
+							class="form-control" required>
+					</div>
+				</div>
+
+				<div class="form-group row">
+					<label for="username" class="col-sm-2 col-form-label">주소</label>
+					<div class="col-sm-10">
+						<input type="text" name="address" id="address" value="${member.address}"
+							class="form-control" required>
+					</div>
+				</div>
+
+				<div class="form-group row">
+					<label for="username" class="col-sm-2 col-form-label">Breed번호</label>
+					<div class="col-sm-10">
+						<input type="text" name="breedIdx" id="breedIdx" value="${member.breedIdx}"
+							class="form-control" required>
+					</div>
+				</div>
+
+				<div class="form-group row">
+					<label for="username" class="col-sm-2 col-form-label">중성화 여부</label>
+					<div class="col-sm-10">
+						<input type="text" name="neutering" id="neutering" value="${member.neutering}"
+							class="form-control" required>
 					</div>
 				</div>
 

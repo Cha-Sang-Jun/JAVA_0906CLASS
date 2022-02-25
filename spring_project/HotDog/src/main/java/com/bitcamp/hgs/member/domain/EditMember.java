@@ -31,6 +31,22 @@ public class EditMember {
 		this.neutering = neutering;
 		this.fileName = fileName;
 	}
+	
+
+	public EditMember(int memberIdx, String email, String password, String petNumber, String name, String address,
+			int breedIdx, int neutering, String fileName) {
+		this.memberIdx = memberIdx;
+		this.email = email;
+		this.password = password;
+		this.petNumber = petNumber;
+		this.name = name;
+		this.address = address;
+		this.breedIdx = breedIdx;
+		this.neutering = neutering;
+		this.fileName = fileName;
+	}
+
+
 
 	public EditMember() {
 	}
@@ -112,6 +128,21 @@ public class EditMember {
 	}
 	public void setFileName(String fileName) {
 		this.fileName = fileName;
+	}
+
+
+	@Override
+	public String toString() {
+		return "EditMember [memberIdx=" + memberIdx + ", email=" + email + ", password=" + password + ", petNumber="
+				+ petNumber + ", name=" + name + ", oldFile=" + oldFile + ", profile=" + profile + ", birthday="
+				+ birthday + ", sex=" + sex + ", address=" + address + ", breedIdx=" + breedIdx + ", neutering="
+				+ neutering + ", snsId=" + snsId + ", snsType=" + snsType + ", fileName=" + fileName
+				+ ", getMemberIdx()=" + getMemberIdx() + ", getEmail()=" + getEmail() + ", getPassword()="
+				+ getPassword() + ", getName()=" + getName() + ", getOldFile()=" + getOldFile() + ", getProfile()="
+				+ getProfile() + ", getBirthday()=" + getBirthday() + ", getSex()=" + getSex() + ", getAddress()="
+				+ getAddress() + ", getNeutering()=" + getNeutering() + ", getSnsId()=" + getSnsId() + ", getSnsType()="
+				+ getSnsType() + ", getFileName()=" + getFileName() + ", getClass()=" + getClass() + ", hashCode()="
+				+ hashCode() + ", toString()=" + super.toString() + "]";
 	}
 	
 	

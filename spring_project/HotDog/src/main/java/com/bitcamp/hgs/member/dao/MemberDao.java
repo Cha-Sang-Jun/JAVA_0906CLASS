@@ -28,5 +28,7 @@ public interface MemberDao {
 	public int selectTotalCount(Map<String, String> params);
 	
 	public List<Member> selectList(SearchParams params);
+	
+	public int deleteByIdx(int memberIdx);
 
 }
