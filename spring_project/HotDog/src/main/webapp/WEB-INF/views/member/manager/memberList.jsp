@@ -152,10 +152,7 @@
 								href="javascript:delMember(${member.memberIdx})">삭제</a></td>
 						</tr>
 					</c:forEach>
-
 				</c:if>
-
-
 			</table>
 
 			<div class="btn-toolbar" role="toolbar" >
@@ -165,32 +162,17 @@
 		
 						<c:forEach begin="1" end="${listView.pageTotalCount}" var="pnum">
 							<a
-								href="list.do?p=${pnum}&searchType=${param.searchType}&keyword=${param.keyword}"
+								href="memberList.do?p=${pnum}&searchType=${param.searchType}&keyword=${param.keyword}"
 								class="btn ${listView.currentPage eq pnum ? 'btn-dark': 'btn-white'}">${pnum}</a>
 						</c:forEach>
-		
 					</c:if>
-				
-					
 				</div>
-				
 			</div>
-
-
-
 		</div>
 
-
 	</main>
-
-
-
-
-	
 	
 	<!-- content 끝 -->
-
-
 	<!-- Javascript 추가 -->
 
 	<script>
