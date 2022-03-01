@@ -4,7 +4,6 @@ import java.io.IOException;
 
 import javax.servlet.http.HttpServletRequest;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,7 +16,6 @@ import com.bitcamp.hgs.member.service.MemberService;
 @RequestMapping("/join")
 public class MemberRestController {
 	
-	@Autowired
 	MemberService service;
 	
 	MemberRestController(MemberService service){
@@ -27,10 +25,10 @@ public class MemberRestController {
 	
 	@PostMapping
 	public void joinMember(RegMember regMember, HttpServletRequest request, Model model) throws IllegalStateException, IOException {
-		System.out.println(regMember);
 		
 		service.insertMember(regMember, request);
 	}
+	
 	
 	
 }

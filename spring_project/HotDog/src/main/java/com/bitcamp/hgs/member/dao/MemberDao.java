@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 import com.bitcamp.hgs.member.domain.EditMember;
+import com.bitcamp.hgs.member.domain.Hashtag;
 import com.bitcamp.hgs.member.domain.InsertMember;
 import com.bitcamp.hgs.member.domain.Member;
 import com.bitcamp.hgs.member.domain.MemberHashtag;
@@ -20,6 +21,10 @@ public interface MemberDao {
 
 	// 유저 잇는지 확인
 	public Member selectMember(String email);
+
+	// 유저의 해시태그 리스트 얻기
+	public List<Hashtag> selectMemberHashtags(int memberIdx);
+	
 	
 	public Member selectByIdx(int idx);
 	
@@ -30,5 +35,7 @@ public interface MemberDao {
 	public List<Member> selectList(SearchParams params);
 	
 	public int deleteByIdx(int memberIdx);
+
+	
 
 }

@@ -46,8 +46,8 @@ public class Member {
 
 
 	// Logger를 반환한 하는 메소드
-	public Logger getLoggerInfo(){
-		return new Logger(memberIdx, email, snsType, name, profile);
+	public Logger getLoggerInfo() {
+		return new Logger(memberIdx, email, snsType, name, profile, null);
 	}
 
 	

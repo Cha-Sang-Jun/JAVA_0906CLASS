@@ -30,7 +30,7 @@ public class MemberDeleteService {
 		if (member != null) {
 			resultCnt = dao.deleteByIdx(memberIdx);
 
-			if (member.getProfile() != null || !member.getProfile().contentEquals("default.jpg")) {
+			if (member.getProfile() != null || !member.getProfile().contentEquals("noProfile.jpg")) {
 				String savePath = request.getSession().getServletContext().getRealPath("/uploadfile");
 				File file = new File(savePath, member.getProfile());
 

@@ -1,20 +1,24 @@
 package com.bitcamp.hgs.member.domain;
 
+import java.util.List;
+
 public class Logger {
 	private int memberIdx;
 	private String email;
 	private int snsType;
 	private String name;
 	private String profile;
-
+	private List<Hashtag> hashtags;
+	
 	public Logger() {}
 
-	public Logger(int memberIdx, String email, int snsType, String name, String profile) {
+	public Logger(int memberIdx, String email, int snsType, String name, String profile, List<Hashtag> hashtags) {
 		this.memberIdx = memberIdx;
 		this.email = email;
 		this.snsType = snsType;
 		this.name = name;
 		this.profile = profile;
+		this.hashtags = hashtags;
 	}
 
 	public int getMemberIdx() {
@@ -57,12 +61,24 @@ public class Logger {
 		this.profile = profile;
 	}
 
+	public List<Hashtag> getHashtags() {
+		return hashtags;
+	}
+
+	public void setHashtags(List<Hashtag> hashtags) {
+		this.hashtags = hashtags;
+	}
+
 	@Override
 	public String toString() {
 		return "Logger [memberIdx=" + memberIdx + ", email=" + email + ", snsType=" + snsType + ", name=" + name
-				+ ", profile=" + profile + "]";
-	}
+				+ ", profile=" + profile + ", hashtags=" + hashtags + "]";
+	};
 
+	
+	
+	
+	
 	
 	
 	

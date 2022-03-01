@@ -35,7 +35,7 @@ public class MemberEditController {
 	@PostMapping
 	public String edit(
 			EditMember editMember,
-			HttpServletRequest request) throws IllegalStateException, IOException {
+			HttpServletRequest request) throws Exception {
 		
 		System.out.println("Update" + editMember);
 		

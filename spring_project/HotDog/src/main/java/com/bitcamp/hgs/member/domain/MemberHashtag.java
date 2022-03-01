@@ -5,7 +5,7 @@ public class MemberHashtag {
 	private int memberIdx;
 	private int hashtagIdx;
 	
-	public MemberHashtag() {	}
+	public MemberHashtag() {}
 
 	public MemberHashtag(int memberIdx, int hashtagIdx) {
 		this.memberIdx = memberIdx;
@@ -33,7 +33,6 @@ public class MemberHashtag {
 		return "MemberHashtag [memberIdx=" + memberIdx + ", hashtagIdx=" + hashtagIdx + "]";
 	}
 	
-	
-	
+
 	
 }

@@ -25,12 +25,12 @@ public class MemberEditService {
 
 		dao = template.getMapper(MemberDao.class);
 
-		System.out.println("selectByIdx : " + dao.selectByIdx(memberIdx));
+		// System.out.println("selectByIdx : " + dao.selectByIdx(memberIdx));
 
 		return dao.selectByIdx(memberIdx);
 	}
 
-	public int editMember(EditMember editMember, HttpServletRequest request) throws IllegalStateException, IOException {
+	public int editMember(EditMember editMember, HttpServletRequest request) throws Exception {
 
 		// 파일 저장
 		int resultCnt = 0;

@@ -52,7 +52,10 @@ public class MailSenderService {
 			System.out.println("발송 실패 : " + e.getMessage());
 		} catch (MailSendException e) {
 			System.out.println("발송 실패 : " + e.getMessage());
-		} catch (MessagingException | UnsupportedEncodingException e) {
+		} catch (MessagingException e) {
+			result = 0;
+			e.printStackTrace();
+		} catch (UnsupportedEncodingException e) {
 			result = 0;
 			e.printStackTrace();
 		}

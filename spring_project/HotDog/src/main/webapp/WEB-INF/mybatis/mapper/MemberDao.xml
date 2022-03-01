@@ -5,9 +5,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <!-- nameSpace에는 interface의 전체 경로를 입력 -->
 <mapper namespace="com.bitcamp.hgs.member.dao.MemberDao">
-
 	<!-- select의 결과를 매핑해주는 설정 -->
-	<resultMap type="com.bitcamp.hgs.member.domain.Member" id="memberResult">
+	<resultMap type="com.bitcamp.hgs.member.domain.Member"
+		id="memberResult">
 		<id column="member_idx" property="index" />
 		<result column="email" property="email" />
 		<result column="pet_number" property="petNumber" />
@@ -23,7 +23,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<!-- 로그인 하는 유저의 email 확인 및 존재하는 유저인지 확인 -->
 	<select id="selectMember"
 		resultType="com.bitcamp.hgs.member.domain.Member">
-		select * from members where email = #{param1}
+		select * from hgs.members where email = #{param1}
 	</select>
 
 
@@ -31,7 +31,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		keyProperty="memberIdx"
 		parameterType="com.bitcamp.hgs.member.domain.InsertMember">
 
-		insert into members (
+		insert into hgs.members (
 		email,
 		password,
 		pet_number,
@@ -46,19 +46,29 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		sns_type
 		) values (
 		#{email}, #{password}, #{petNumber}, #{name}, #{profile},
-		#{birthday}, #{sex}, #{address}, #{breedIdx}, #{neutering}, #{snsId},
-		#{snsType}
+		#{birthday}, #{sex}, #{address}, #{breedIdx}, #{neutering}, #{snsId}, #{snsType}
 		)
 	</insert>
 
 	<insert id="insertMemberHashtag" parameterType="java.util.List">
-		insert into members_hashtags
+		insert into hgs.member_hashtags
 		values
 		<foreach collection="list" item="item" separator=",">
-			(
-			#{item.memberIdx}, #{item.hashtagIdx})
+			( #{item.memberIdx}, #{item.hashtagIdx})
 		</foreach>
 	</insert>
+
+	<!-- 유저의 해시태그 정보 가져오기 -->
+	<select id="selectMemberHashtags"
+		resultType="com.bitcamp.hgs.member.domain.Hashtag">
+		select hs.hashtag_idx, hs.tag from hgs.hashtags as hs
+		join
+		hgs.member_hashtags as mhs
+		on mhs.hashtag_idx = hs.hashtag_idx
+		where
+		mhs.member_idx = #{param1};
+	</select>
+
 
 	<select id="selectByIdx"
 		resultType="com.bitcamp.hgs.member.domain.Member">
@@ -72,7 +82,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		update hgs.members set name=#{name},
 
 		<if test="fileName != null">
-			profile=#{fileName}, 
+			profile=#{fileName},
 		</if>
 
 		pet_number=#{petNumber},
@@ -102,12 +112,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		</where>
 	</select>
 
-	<sql id="searchId">
-		or userid like concat('%', #{keyword}, '%')
-	</sql>
-
 	<sql id="searchName">
-		or username like concat('%', #{keyword}, '%')
+		or name like concat('%', #{keyword}, '%')
 	</sql>
 
 	<select id="selectList"
@@ -134,10 +140,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 		order by member_idx limit #{index}, #{count}
 	</select>
-	
+
 	<delete id="deleteByIdx">
 		delete from members where member_idx=#{idx}
 	</delete>
-
 
 </mapper>
