@@ -30,39 +30,31 @@
 	<main role="main" class="container">
 
 		<div class="my-3 p-3 bg-white rounded shadow-sm ">
-			<h3>회원 가입</h3>
+			<h3>회원 수정</h3>
 			<hr>
 			<!-- form 경로와 처리 경로가 동일 -> method 로 구분 -->
 			<!-- action="reg.do" 생략 가능 -->
 			<form method="post" enctype="multipart/form-data">
 
 				<div class="form-group row">
-					<label for="userid" class="col-sm-2 col-form-label">아이디</label>
+					<label for="email" class="col-sm-2 col-form-label">이메일</label>
 					<div class="col-sm-10">
-						<input type="hidden" name="idx" value="${member.memberIdx}">
+						<input type="hidden" name="memberIdx" value="${member.memberIdx}">
 						<input type="email" name="email" id="email"
 							value="${member.email}" class="form-control" readonly>
 					</div>
 				</div>
 
 				<div class="form-group row">
-					<label for="pw" class="col-sm-2 col-form-label">비밀번호</label>
+					<label for="petNumber" class="col-sm-2 col-form-label">펫넘버</label>
 					<div class="col-sm-10">
-						<input type="password" name=password id="pw"
-							value="${member.password}" class="form-control" readonly>
+						<input type="text" name="petNumber" id="petNumber"
+							value="${member.petNumber}" class="form-control" required>
 					</div>
 				</div>
 
 				<div class="form-group row">
-					<label for="repw" class="col-sm-2 col-form-label">비밀번호</label>
-					<div class="col-sm-10">
-						<input type="password" name="repw" id="repw"
-							value="${member.password}" class="form-control" readonly>
-					</div>
-				</div>
-
-				<div class="form-group row">
-					<label for="username" class="col-sm-2 col-form-label">이름</label>
+					<label for="name" class="col-sm-2 col-form-label">이름</label>
 					<div class="col-sm-10">
 						<input type="text" name="name" id="name" value="${member.name}"
 							class="form-control" required>
@@ -70,26 +62,19 @@
 				</div>
 
 				<div class="form-group row">
-					<label for="username" class="col-sm-2 col-form-label">주소</label>
+					<label for="address" class="col-sm-2 col-form-label">주소</label>
 					<div class="col-sm-10">
-						<input type="text" name="address" id="address" value="${member.address}"
-							class="form-control" required>
+						<input type="text" name="address" id="address"
+							value="${member.address}" class="form-control" required>
 					</div>
 				</div>
 
 				<div class="form-group row">
-					<label for="username" class="col-sm-2 col-form-label">Breed번호</label>
+					<label for="neutering" class="col-sm-2 col-form-label">중성화
+						여부</label>
 					<div class="col-sm-10">
-						<input type="text" name="breedIdx" id="breedIdx" value="${member.breedIdx}"
-							class="form-control" required>
-					</div>
-				</div>
-
-				<div class="form-group row">
-					<label for="username" class="col-sm-2 col-form-label">중성화 여부</label>
-					<div class="col-sm-10">
-						<input type="text" name="neutering" id="neutering" value="${member.neutering}"
-							class="form-control" required>
+						<input type="text" name="neutering" id="neutering"
+							value="${member.neutering}" class="form-control" required>
 					</div>
 				</div>
 

@@ -29,7 +29,7 @@ public class MemberRegController {
 	
 	@PostMapping
 	public void memberReg(MemberRegRequest regRequest, Model model
-			, HttpServletRequest request) throws IllegalStateException, IOException, SQLException {
+			, HttpServletRequest request) throws Exception {
 		
 		// System.out.println(regRequest);
 		

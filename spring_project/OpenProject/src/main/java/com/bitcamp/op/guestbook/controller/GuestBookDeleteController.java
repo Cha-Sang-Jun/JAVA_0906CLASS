@@ -5,7 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import main.java.com.bitcamp.op.guestbook.service.GuestBookDeleteService;
+import com.bitcamp.op.guestbook.service.GuestBookDeleteService;
 
 @Controller
 public class GuestBookDeleteController {

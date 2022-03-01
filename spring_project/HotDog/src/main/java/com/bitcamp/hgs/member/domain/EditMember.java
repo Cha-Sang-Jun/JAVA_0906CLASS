@@ -22,35 +22,28 @@ public class EditMember {
 	private int snsType;
 	private String fileName;
 	
-
-	public EditMember(int memberIdx, String petNumber, String address, int breedIdx, int neutering, String fileName) {
-		this.memberIdx = memberIdx;
-		this.petNumber = petNumber;
-		this.address = address;
-		this.breedIdx = breedIdx;
-		this.neutering = neutering;
-		this.fileName = fileName;
+	public EditMember() {
 	}
-	
 
-	public EditMember(int memberIdx, String email, String password, String petNumber, String name, String address,
-			int breedIdx, int neutering, String fileName) {
+	public EditMember(int memberIdx, String petNumber, String name, String address, int neutering,
+			String fileName) {
 		this.memberIdx = memberIdx;
-		this.email = email;
-		this.password = password;
 		this.petNumber = petNumber;
 		this.name = name;
 		this.address = address;
-		this.breedIdx = breedIdx;
 		this.neutering = neutering;
 		this.fileName = fileName;
 	}
 
-
-
-	public EditMember() {
-	}
 	
+	public String getPetNumber() {
+		return petNumber;
+	}
+
+	public void setPetNumber(String petNumber) {
+		this.petNumber = petNumber;
+	}
+
 	public int getMemberIdx() {
 		return memberIdx;
 	}

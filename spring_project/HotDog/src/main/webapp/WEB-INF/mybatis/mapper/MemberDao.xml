@@ -77,7 +77,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 		pet_number=#{petNumber},
 		address=#{address},
-		breed_idx=#{breedIdx},
 		neutering=#{neutering}
 
 		where member_idx=#{memberIdx}

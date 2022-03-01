@@ -37,7 +37,7 @@ public class MemberRegService {
 	@Autowired
 	private MailSenderService senderService;
 	
-	public int insertMember(MemberRegRequest regRequest, HttpServletRequest request) throws IllegalStateException, IOException, SQLException {
+	public int insertMember(MemberRegRequest regRequest, HttpServletRequest request) throws Exception {
 		
 		int resultCnt = 0;
 		
