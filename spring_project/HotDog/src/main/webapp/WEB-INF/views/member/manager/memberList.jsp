@@ -7,8 +7,21 @@
 <meta charset="UTF-8">
 <title>회원 리스트</title>
 
+<%@ include file="/WEB-INF/views/frame/pageform.jsp"%>
 
-<!-- <style>
+<style>
+
+body {
+	background-color: #ffe395;
+	padding-top: 80px;
+	padding-left: 100px;
+
+	background-image : url('${pageContext.request.contextPath}/uploadfile/civa.jpg');
+	
+	backdrop-filter: blur(4px);
+	
+	height : 2000px;
+}
 
 #content>div {
 	padding: 15px;
@@ -64,7 +77,7 @@
 	color: #fff;
 }
 
-</style> -->
+</style>
 </head>
 <body>
 
@@ -72,6 +85,7 @@
 	<!-- 해더 끝 -->
 
 	<!-- 네비게이션 시작 -->
+	<%@ include file="/WEB-INF/views/frame/nav.jsp"%>
 	<!-- 네비게이션 끝 -->
 
 
@@ -79,11 +93,11 @@
 	<main role="main" class="container">
 
 		<div
-			class="d-flex align-items-center p-3 my-3 text-white bg-purple rounded shadow-sm">
-			<h4>회원 리스트</h4>
+			class="d-flex align-items-center p-3 my-3 bg-purple rounded shadow-sm">
+			<h3> 전체 회원 리스트</h3>
 		</div>
 
-		<div class="my-3 p-3 bg-white rounded shadow-sm">
+		<div class="my-3 p-3 bg-orange rounded shadow-sm">
 
 			<form>
 				<div class="form-row">
@@ -114,17 +128,14 @@
 			<table class="table table-striped table-hover">
 				<thead class="thead-dark">
 					<tr>
-						<th>memberIdx</th>
-						<th>email</th>
-						<th>password</th>
-						<th>petNumber</th>
-						<th>userName</th>
-						<th>profile</th>
-						<th>birthday</th>
-						<th>sex</th>
-						<th>address</th>
-						<th>breed_idx</th>
-						<th>neutering</th>
+						<th>회원번호</th>
+						<th>이메일</th>
+						<th>펫 등록번호</th>
+						<th>이름</th>
+						<th>생일</th>
+						<th>성별</th>
+						<th>주소</th>
+						<th>중성화 여부</th>
 					</tr>
 				</thead>
 
@@ -139,14 +150,11 @@
 						<tr>
 							<td>${member.memberIdx}</td>
 							<td>${member.email}</td>
-							<td>${member.password}</td>
 							<td>${member.petNumber}</td>
 							<td>${member.name}</td>
-							<td>${member.profile}</td>
 							<td>${member.birthday}</td>
 							<td>${member.sex}</td>
 							<td>${member.address}</td>
-							<td>${member.breedIdx}</td>
 							<td>${member.neutering}</td>
 							<td><a href="memberEdit?idx=${member.memberIdx}">수정</a> <a
 								href="javascript:delMember(${member.memberIdx})">삭제</a></td>
@@ -157,7 +165,7 @@
 
 			<div class="btn-toolbar" role="toolbar" >
 				<div class="btn-group mr-2" role="group">
-				
+					
 					<c:if test="${listView.pageTotalCount > 0}">
 		
 						<c:forEach begin="1" end="${listView.pageTotalCount}" var="pnum">

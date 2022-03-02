@@ -21,14 +21,17 @@
 	crossorigin="anonymous"></script>
 
 <style>
+
 #oldfile {
 	height: 100px;
 }
 
 body {
 	background-color: #ffe395;
-	padding-top: 110px;
+	padding-top: 80px;
 	padding-left: 100px;
+
+	background-image : url('${pageContext.request.contextPath}/uploadfile/civa.jpg');
 }
 
 .my-3 {
@@ -37,9 +40,9 @@ body {
 	border: 1px solid;
 	border-radius: 10px;
 	border-color: white;
-	margin-top: 20px;
 	margin-left: 80px;
 }
+
 </style>
 
 
@@ -65,7 +68,7 @@ body {
 				</div>
 
 				<div class="form-group row">
-					<label for="petNumber" class="col-sm-2 col-form-label">펫넘버</label>
+					<label for="petNumber" class="col-sm-2 col-form-label">펫 등록번호</label>
 					<div class="col-sm-10">
 						<input type="text" name="petNumber" id="petNumber"
 							value="${member.petNumber}" class="form-control" required>
@@ -88,21 +91,20 @@ body {
 					</div>
 				</div>
 
-				<div class="form-group row">
-					<label for="neutering" class="col-sm-2 col-form-label">중성화
-						여부</label>
-					<div class="col-sm-10">
-						<c:if test="${member.neutering eq 1}">
-							<input type="text" name="neutering" id="neutering" value="Y"
-								class="form-control" required>
-						</c:if>
-						<c:if test="${member.neutering ne 1}">
-							<input type="text" name="neutering" id="neutering" value="N"
-								class="form-control" required>
-						</c:if>
-
-					</div>
-				</div>
+<!-- 				<div class="form-group row"> -->
+<!-- 					<label for="neutering" class="col-sm-2 col-form-label">중성화 -->
+<!-- 						여부</label> -->
+<!-- 					<div class="col-sm-10"> -->
+<%-- 						<c:if test="${member.neutering eq 1}"> --%>
+<%-- 							<input type="text" name="neutering" id="neutering" value="${member.neutering}" --%>
+<!-- 								class="form-control" autocomplete="1" required> -->
+<%-- 						</c:if> --%>
+<%-- 						<c:if test="${member.neutering ne 1}"> --%>
+<%-- 							<input type="text" name="neutering" id="neutering" value="${member.neutering}" --%>
+<!-- 								class="form-control" autocomplete="0" required> -->
+<%-- 						</c:if> --%>
+<!-- 					</div> -->
+<!-- 				</div> -->
 
 				<div class="form-group row">
 					<label for="profile" class="col-sm-2 col-form-label"> 프로필
@@ -128,15 +130,25 @@ body {
 					</div>
 				</div>
 
-				<input type="submit" value="정보수정" class="btn btn-primary"> <input
-					type="reset" class="btn btn-secondary">
+				<input type="submit" value="정보수정" class="btn btn-primary">
+				<input type="reset" class="btn btn-secondary">
 					
-				<a href="/hgs/member/manager/memberList" class="btn btn-info"> 목록으로 </a>
+				<a href="/hgs/home" class="btn btn-info"> 홈으로 </a>
+				
+				<a href="javascript:delMember(${member.memberIdx})" class="btn btn-danger">탈퇴하기 </a>
 
 			</form>
 		</div>
 
 	</main>
+	
+		<script>
+		function delMember(idx) {
+			if (confirm("정말로 탈퇴하시겠습니까?")) {
+				location.href = 'delete?idx=' + idx;
+			}
+		}
+	</script>
 
 </body>
 </html>

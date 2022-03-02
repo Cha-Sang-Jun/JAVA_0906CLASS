@@ -30,7 +30,7 @@ public class MypageService {
 
 		member = dao.selectByIdx2(memberIdx);
 
-		System.out.println("mypage :" + dao.selectByIdx(memberIdx));
+		// System.out.println("mypage :" + dao.selectByIdx(memberIdx));
 
 		return member;
 	}

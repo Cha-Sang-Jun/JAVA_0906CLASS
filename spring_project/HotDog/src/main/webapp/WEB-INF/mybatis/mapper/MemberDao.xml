@@ -149,7 +149,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			</if>
 		</where>
 
-		order by member_idx limit #{index}, #{count}
+		order by member_idx desc limit #{index}, #{count}
 	</select>
 
 	<delete id="deleteByIdx">
