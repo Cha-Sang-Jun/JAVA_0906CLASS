@@ -3,41 +3,40 @@
 	pageEncoding="UTF-8"%>
 <html>
 <head>
-	<meta charset="utf-8">
-	<title>Weather</title>
-	<%@ include file="/WEB-INF/views/frame/pageSet.jsp"%>
-	<link rel="stylesheet" href="css/home.css" />
-	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=c3d33077d50916de6b6521acf72299f7&libraries=services"></script>
-	<style>
-		.qna{
-		    background-color: #fbe300;
-		    height: 420px;
-		    width: 500px;
-		    margin: 30px 20px 20px;
-		    border-radius: 20px;
-		}
-		
-		.qna_text{
-			font-size: 40px;
-			font-weight: bold;
-			margin: 22px 10px 0 10px;
-		
-		}
-	</style>
+<meta charset="utf-8">
+<title>Weather</title>
+<%@ include file="/WEB-INF/views/frame/pageSet.jsp"%>
+<link rel="stylesheet" href="css/home.css" />
+<script type="text/javascript"
+	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=c3d33077d50916de6b6521acf72299f7&libraries=services"></script>
+<style>
+.qna {
+	background-color: #fbe300;
+	height: 420px;
+	width: 500px;
+	margin: 30px 20px 20px;
+	border-radius: 20px;
+}
+
+.qna_text {
+	font-size: 40px;
+	font-weight: bold;
+	margin: 22px 10px 0 10px;
+}
+</style>
 </head>
 
 <body>
 	<!-- Top nav Bar -->
 	<%@ include file="/WEB-INF/views/frame/nav.jsp"%>
 	<hr>
-	
+
 	<!-- 날씨데이터  -->
 	<div class="weather">
 		<div>
-			<span class="weather_date" id="today"></span>
-			<span class="weather_temp">현재 온도</span>
-			<span class="ctemp"></span>
-			<span class="weather_temp">도 입니다.</span>
+			<span class="weather_date" id="today"></span> <span
+				class="weather_temp">현재 온도</span> <span class="ctemp"></span> <span
+				class="weather_temp">도 입니다.</span>
 		</div>
 		<div class="comment">
 			<!-- <span class="cicon"></span> -->
@@ -56,9 +55,12 @@
 		<!-- 지도 위에  유저의 스크랩한 장소들을 표시하기 -->
 		<div>
 			<div class="logger-map-container standard-box box-outside">
-				<div class="logger-map_location-text" style="font-size: 22px; padding : 0 10px 10px;">현재위치 및 스크랩장소 정보</div>
+				<div class="logger-map_location-text"
+					style="font-size: 22px; padding: 0 10px 10px;">현재위치 및 스크랩장소
+					정보</div>
 				<div class="">
-					<div id="map" style="width: 500px; height: 460px; border-radius: 20px"></div>
+					<div id="map"
+						style="width: 500px; height: 460px; border-radius: 20px"></div>
 				</div>
 			</div>
 
@@ -67,19 +69,23 @@
 				<div class="qna_text">${logger.name}야</div>
 				<div class="qna_text">궁금한게 있니?</div>
 				<div class="qna_text">날 눌러!</div>
-				<img style="width: 180px;  float:right;  padding: 50px 5px;" alt="" src="	https://www.kakaocorp.com/page/bg_home_service.png">	
+				<img style="width: 180px; float: right; padding: 50px 5px;" alt=""
+					src="	https://www.kakaocorp.com/page/bg_home_service.png">
 			</div>
-		
+
 		</div>
-				
+
 		<div class="board-container">
-			<c:forEach items="${HomeBoard}" var="board" > 
-				<div class="board medium-box box-outside" onclick="boardDetail(${board.boardIdx})">
+			<c:forEach items="${HomeBoard}" var="board">
+				<div class="board medium-box box-outside"
+					onclick="boardDetail(${board.boardIdx})">
 					<div class="board_top-nav">
-						<div class="board_top-nav-img"><img alt="" src="${board.profile}"></div>
+						<div class="board_top-nav-img">
+							<img alt="" src="${board.profile}">
+						</div>
 						<div class="board-top-nav-member">
 							<div>${board.name}</div>
-							<div>${board.createDate}시간 전</div>
+							<div>${board.createDate}시간전</div>
 						</div>
 					</div>
 					<div class="board-img">${board.fileName}</div>
@@ -94,12 +100,15 @@
 						<div>${board.content}</div>
 					</div>
 				</div>
-			</c:forEach>	
+			</c:forEach>
 		</div>
-	
+
+ 		<a href="./member/mypage.do">마이페이지(${logger.memberIdx})</a>
+
 		<div class="place-container">
 			<c:forEach items="${HomePlace}" var="place">
-				<div class="box-outside place" onclick="placeDetail(${place.placeIdx})" >
+				<div class="box-outside place"
+					onclick="placeDetail(${place.placeIdx})">
 					<div class="place_cate">#${place.subjectCategory}</div>
 					<div class="place_title">${place.title}</div>
 					<div class="place_address">${place.newAddress}</div>

@@ -45,10 +45,9 @@
 			autocomplete="new-password" placeholder="비밀번호 확인. *"><br>
 		<div id="password_answer"></div>
 		<input type="text" id="dogName" name="name"
-			placeholder="반려견 이름을 입력해주세요 . *"><br> <input
-			type="text" id="petNumber" name="petNumber"
-			placeholder="등록번호가 있으시면 입력해주세요! *"><br> <input
-			type="file" name="profile" id="profile"><br>
+			placeholder="반려견 이름을 입력해주세요 . *"><br> <input type="text"
+			id="petNumber" name="petNumber" placeholder="등록번호가 있으시면 입력해주세요! *"><br>
+		<input type="file" name="profile" id="profile"><br>
 		<div id="address" name="address">
 			<input type="text" id="postcode" placeholder="우편번호"> <input
 				type="button" onclick="daumPostcode()" value="우편번호 찾기"><br>
@@ -80,9 +79,11 @@
 					<option data-value="${breed.breedIdx}" value="${breed.dogType}"></option>
 				</c:forEach>
 			</datalist>
+
 			<ul id="breedList">
 
 			</ul>
+
 		</div>
 
 		<h3>관심사</h3>
@@ -101,7 +102,7 @@
 		<div id="joinBtn">text</div>
 		<!-- 		<button id="joinBtn">회원가입</button> -->
 		<input type="submit" value="회원가입" class="btn  btn-primary"> 
-		<a href="/hgs">로그인창으로 돌아가기</a>
+		<input type="reset" class="btn btn-secondary"> <a href="/hgs">로그인창으로 돌아가기</a>
 	</form>
 
 </body>

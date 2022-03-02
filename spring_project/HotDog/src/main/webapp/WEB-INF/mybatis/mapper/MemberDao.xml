@@ -46,7 +46,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		sns_type
 		) values (
 		#{email}, #{password}, #{petNumber}, #{name}, #{profile},
-		#{birthday}, #{sex}, #{address}, #{breedIdx}, #{neutering}, #{snsId}, #{snsType}
+		#{birthday}, #{sex}, #{address}, #{breedIdx}, #{neutering}, #{snsId},
+		#{snsType}
 		)
 	</insert>
 
@@ -54,7 +55,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		insert into hgs.member_hashtags
 		values
 		<foreach collection="list" item="item" separator=",">
-			( #{item.memberIdx}, #{item.hashtagIdx})
+			(
+			#{item.memberIdx}, #{item.hashtagIdx})
 		</foreach>
 	</insert>
 
@@ -69,11 +71,16 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		mhs.member_idx = #{param1};
 	</select>
 
-
 	<select id="selectByIdx"
 		resultType="com.bitcamp.hgs.member.domain.Member">
 
 		select * from members where member_idx=#{no}
+	</select>
+	
+	<select id="selectByIdx2"
+		resultType="com.bitcamp.hgs.member.domain.Member">
+		
+		select * from members where member_idx=#{no}	
 	</select>
 
 	<update id="editMember"
@@ -112,8 +119,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		</where>
 	</select>
 
+	<sql id="searchId">
+		or userid like concat('%', #{keyword}, '%')
+	</sql>
+
 	<sql id="searchName">
-		or name like concat('%', #{keyword}, '%')
+		or user=name like concat('%', #{keyword}, '%')
 	</sql>
 
 	<select id="selectList"
@@ -144,5 +155,4 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<delete id="deleteByIdx">
 		delete from members where member_idx=#{idx}
 	</delete>
-
 </mapper>

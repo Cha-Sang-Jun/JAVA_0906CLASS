@@ -55,7 +55,7 @@ public class MemberService {
 		
 		// 파일이 없다면 기본 이미지
 		else newFile = new File("noProfile.jpg");
-		
+			
 		
 		// 비밀번호 암호화
 		regMember.setPassword(encoder.encode(regMember.getPassword()));
@@ -66,8 +66,6 @@ public class MemberService {
 			regMember.setEmail(regMember.getSnsId());
 			snsType = regMember.getSnsType().equals("kakao") ? 0 : 1;
 		}
-		
-		
 		
 		// DB에 저장할 유저정보 생성 및 DB에 저장
 		InsertMember insertMember = new InsertMember(

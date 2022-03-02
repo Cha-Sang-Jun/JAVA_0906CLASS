@@ -5,12 +5,40 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>회원 수정</title>
+<title>회원 정보 수정</title>
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
+	integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn"
+	crossorigin="anonymous">
 
+<script
+	src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
+	integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+	crossorigin="anonymous"></script>
+<script
+	src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"
+	integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF"
+	crossorigin="anonymous"></script>
 
 <style>
 #oldfile {
 	height: 100px;
+}
+
+body {
+	background-color: #ffe395;
+	padding-top: 110px;
+	padding-left: 100px;
+}
+
+.my-3 {
+	height: 520px;
+	width: 900px;
+	border: 1px solid;
+	border-radius: 10px;
+	border-color: white;
+	margin-top: 20px;
+	margin-left: 80px;
 }
 </style>
 
@@ -18,19 +46,10 @@
 </head>
 <body>
 
-	<!-- 해더 시작 -->
-	<!-- 해더 끝 -->
-
-	<!-- 네비게이션 시작 -->
-	<!-- 네비게이션 끝 -->
-
-	<!-- content 시작 -->
-
-
 	<main role="main" class="container">
 
-		<div class="my-3 p-3 bg-white rounded shadow-sm ">
-			<h3>회원 수정</h3>
+		<div class="my-3 p-3 bg-white shadow-sm">
+			<h3>프로필 수정</h3>
 			<hr>
 			<!-- form 경로와 처리 경로가 동일 -> method 로 구분 -->
 			<!-- action="reg.do" 생략 가능 -->
@@ -73,13 +92,21 @@
 					<label for="neutering" class="col-sm-2 col-form-label">중성화
 						여부</label>
 					<div class="col-sm-10">
-						<input type="text" name="neutering" id="neutering"
-							value="${member.neutering}" class="form-control" required>
+						<c:if test="${member.neutering eq 1}">
+							<input type="text" name="neutering" id="neutering" value="Y"
+								class="form-control" required>
+						</c:if>
+						<c:if test="${member.neutering ne 1}">
+							<input type="text" name="neutering" id="neutering" value="N"
+								class="form-control" required>
+						</c:if>
+
 					</div>
 				</div>
 
 				<div class="form-group row">
-					<label for="profile" class="col-sm-2 col-form-label">현재 사진</label>
+					<label for="profile" class="col-sm-2 col-form-label"> 프로필
+						사진 </label>
 					<div class="col-sm-10">
 						<c:if test="${not empty member.profile}">
 							<img id="oldfile"
@@ -93,27 +120,23 @@
 				</div>
 
 				<div class="form-group row">
-					<label for="profile" class="col-sm-2 col-form-label">사진</label>
+					<label for="profile" class="col-sm-2 col-form-label"> 사진 변경
+					</label>
 					<div class="col-sm-10">
 						<input type="file" name="profile" id="profile"
 							class="form-control-plaintext">
 					</div>
 				</div>
 
-				<input type="submit" value="정보수정" class="btn  btn-primary">
-				<input type="reset" class="btn btn-secondary">
-
+				<input type="submit" value="정보수정" class="btn btn-primary"> <input
+					type="reset" class="btn btn-secondary">
+					
+				<a href="/hgs/member/manager/memberList" class="btn btn-info"> 목록으로 </a>
 
 			</form>
 		</div>
 
 	</main>
-
-
-	<!-- content 끝 -->
-
-
-	<!-- Javascript 추가 -->
 
 </body>
 </html>

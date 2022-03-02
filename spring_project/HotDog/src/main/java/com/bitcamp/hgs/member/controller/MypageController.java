@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.bitcamp.hgs.member.service.MypageService;
 
 @Controller
-@RequestMapping("/member/my")
+@RequestMapping("/member")
 public class MypageController {
 	
 	@Autowired
@@ -19,6 +19,6 @@ public class MypageController {
 	@RequestMapping("/mypage")
 	public void getMypage(HttpSession session, Model model) {
 		
-		model.addAttribute("member", myPageService.getMember(session));
+		model.addAttribute("member", myPageService.getLoginInfo(session));
 	}
 }

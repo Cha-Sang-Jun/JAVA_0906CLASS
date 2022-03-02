@@ -37,7 +37,7 @@ public class MemberEditController {
 			EditMember editMember,
 			HttpServletRequest request) throws Exception {
 		
-		System.out.println("Update" + editMember);
+		// System.out.println("Update" + editMember);
 		
 		editService.editMember(editMember, request);
 		

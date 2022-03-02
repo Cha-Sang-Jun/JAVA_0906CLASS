@@ -19,23 +19,29 @@
 					<td>${member.email}</td>
 				</tr>
 				<tr>
-					<td>비밀번호</td>
-					<td>${member.password}</td>
-				</tr>
-				<tr>
 					<td>이름</td>
 					<td>${member.name}</td>
 				</tr>
 				<tr>
-					<td>사진</td>
+					<td>펫넘버</td>
+					<td>${member.petNumber}</td>
+				</tr>
+				<tr>
+					<td>중성화여부</td>
+					<td>${member.neutering}</td>
+				</tr>
+				<tr>
+					<td>주소</td>
+					<td>${member.address}</td>
+				</tr>
+				<tr>
+					<td>프로필사진</td>
 					<td><img
 						src="${pageContext.request.contextPath}/uploadfile/${member.profile}"
 						height="100"></td>
 				</tr>
-				<tr>
-					<td>가입일</td>
-					<td>${member.regdate}</td>
-				</tr>
+
+				<a href="/hgs/member/manager/memberEdit?idx=${member.memberIdx}">정보수정</a>
 			</table>
 
 
